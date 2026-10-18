@@ -1,0 +1,15 @@
+---
+interface Props { inverse?: boolean; }
+const { inverse = false } = Astro.props;
+---
+<a class:list={['brand-mark', { inverse }]} href="/" aria-label="AMZ Data Software — início">
+  <strong>amz<span>.</span></strong>
+  <span class="brand-caption">DATA<br />SOFTWARE</span>
+</a>
+<style>
+.brand-mark { display: inline-flex; align-items: center; gap: .7rem; width: fit-content; color: var(--brand-navy); }
+.brand-mark strong { font-size: 2.25rem; letter-spacing: -.105em; line-height: 1; font-family: var(--font-display); font-weight: 800; }
+.brand-mark strong span { color: var(--brand-coral); }
+.brand-caption { font-family: var(--font-mono); font-size: .54rem; line-height: 1.33; letter-spacing: .1em; font-weight: 700; border-left: 1px solid currentColor; padding-left: .65rem; }
+.inverse { color: var(--text-inverse); }
+</style>

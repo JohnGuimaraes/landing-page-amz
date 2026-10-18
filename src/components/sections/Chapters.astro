@@ -1,0 +1,53 @@
+---
+const chapters = [
+  { id: 'organizar', number: '01', title: 'Organizar', note: 'ESTRUTURA / CONTEÚDO PROVISÓRIO', tone: 'organize' },
+  { id: 'conectar', number: '02', title: 'Conectar', note: 'RELAÇÃO / CONTEÚDO PROVISÓRIO', tone: 'connect' },
+  { id: 'evoluir', number: '03', title: 'Evoluir', note: 'CONTINUIDADE / CONTEÚDO PROVISÓRIO', tone: 'evolve' },
+];
+---
+
+<section id="capitulos" class="chapters section">
+  <div class="container chapters-heading" data-reveal>
+    <span class="section-eyebrow">02 / CAPÍTULOS VISUAIS</span>
+    <p class="section-description">Uma sequência contínua para organizar, conectar e evoluir ideias.</p>
+  </div>
+  <div class="chapter-track">
+    {chapters.map((chapter) => <article class={`chapter-step ${chapter.tone}`} data-chapter-step>
+      <div class="chapter-card container">
+        <div class="chapter-top"><span>{chapter.number} / 03</span><span>{chapter.note}</span></div>
+        <div class="chapter-content">
+          <div class="chapter-title"><span class="chapter-index">{chapter.number}</span><h2>{chapter.title}<span>.</span></h2></div>
+          <div class="chapter-aside"><div class="chapter-rule"></div><p>Área reservada para conteúdo aprovado.</p><span class="mono">CAPÍTULO {chapter.number}</span></div>
+        </div>
+        <div class="chapter-baseline"><span>AMZ / DATA SOFTWARE</span><span>ESTRUTURA EM DESENVOLVIMENTO</span></div>
+      </div>
+    </article>)}
+  </div>
+</section>
+
+<style>
+.chapters { padding-block:clamp(4rem,8vw,7rem) 0; overflow:clip; }
+.chapters-heading { display:flex; justify-content:space-between; align-items:end; gap:2rem; padding-bottom:2.5rem; }
+.chapters-heading .section-description { max-width:24rem; margin:0; }
+.chapter-track { position:relative; }
+.chapter-step { min-height:100svh; padding:1.5rem var(--gutter) var(--space-chapter-overlap); position:relative; }
+.chapter-card { height:min(76svh,720px); min-height:520px; position:sticky; top:calc(50vh - min(38svh,360px)); overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1px solid rgba(23,50,77,.17); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,3rem); background:var(--surface-glass); box-shadow:var(--shadow-chapter); transform-origin:50% 10%; }
+.chapter-step:nth-child(2) .chapter-card { background:rgba(234,242,245,.96); }
+.chapter-step:nth-child(3) .chapter-card { background:rgba(23,50,77,.96); border-color:rgba(255,255,255,.18); color:white; }
+.chapter-top,.chapter-baseline { display:flex; justify-content:space-between; gap:1rem; font:600 .63rem var(--font-mono); letter-spacing:.1em; color:var(--text-secondary); }
+.chapter-top span:last-child { text-align:right; }
+.chapter-step:nth-child(3) .chapter-top,.chapter-step:nth-child(3) .chapter-baseline { color:#c9dae3; }
+.chapter-content { display:flex; align-items:end; justify-content:space-between; gap:2rem; }
+.chapter-title { position:relative; }
+.chapter-index { display:block; margin-bottom:1rem; font:500 .78rem var(--font-mono); letter-spacing:.12em; color:var(--brand-blue); }
+.chapter-title h2 { font:650 clamp(4.2rem,12vw,12rem)/.82 var(--font-display); letter-spacing:-.105em; margin:0; }
+.chapter-title h2 span { color:var(--brand-teal); }
+.chapter-step:nth-child(3) .chapter-title h2 span { color:#89bfb3; }
+.chapter-aside { width:min(23rem,32%); border-top:1px solid currentColor; padding-top:1.15rem; margin-bottom:.5rem; }
+.chapter-aside p { color:inherit; opacity:.76; line-height:1.55; margin:0 0 2rem; }
+.chapter-aside .mono { font:600 .62rem var(--font-mono); letter-spacing:.1em; opacity:.76; }
+.chapter-rule { width:100%; height:1px; margin-bottom:1rem; background:linear-gradient(90deg,var(--brand-blue),var(--brand-teal),transparent); }
+@media(max-width:700px){.chapters-heading{align-items:start;flex-direction:column;gap:1rem}.chapter-step{min-height:88svh;padding-inline:var(--gutter)}.chapter-card{height:70svh;min-height:470px;top:15vh;border-radius:var(--radius-md);padding:1.25rem}.chapter-content{align-items:start;flex-direction:column;gap:2rem}.chapter-title h2{font-size:clamp(4rem,17vw,7rem)}.chapter-aside{width:100%;max-width:24rem}.chapter-top span:last-child{max-width:54%;font-size:.55rem}.chapter-baseline{font-size:.54rem}.chapter-baseline span:last-child{text-align:right}}
+@media(max-width:420px){.chapter-step{min-height:82svh}.chapter-card{height:66svh;min-height:430px;top:17vh}.chapter-title h2{font-size:16vw}}
+@media(prefers-reduced-motion:reduce){.chapter-card{position:relative;top:auto;min-height:420px;height:auto;aspect-ratio:1.05}}
+</style>

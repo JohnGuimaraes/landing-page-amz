@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import Atmosphere from '../components/graphics/Atmosphere.astro';
+import { site } from '../config/site';
+interface Props { title?: string; description?: string; ambient?: boolean; }
+const { title = site.name, description = site.description, ambient = true } = Astro.props;
+---
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#f7f9fa" />
+<title>{title}</title><meta name="description" content={description} /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head><body>{ambient && <Atmosphere />}<a class="skip-link" href="#conteudo">Pular para o conteúdo</a><SiteHeader /><main id="conteudo"><slot /></main><SiteFooter /><div class="scroll-progress" data-scroll-progress aria-hidden="true"></div></body></html>
+<style is:global>
+.scroll-progress{position:fixed;z-index:var(--layer-progress);top:0;left:0;height:3px;width:100%;background:var(--brand-coral);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+body>main,body>.site-footer{position:relative;z-index:1}
+</style>
+<script>
+import { initPageMotion } from '../scripts/pageMotion';
+initPageMotion();
+if (document.querySelector('[data-ambient-canvas]')) {
+  import('../scripts/atmosphere').then(({ initAtmosphere }) => initAtmosphere());
+}
+</script>

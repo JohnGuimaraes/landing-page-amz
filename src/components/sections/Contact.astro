@@ -1,0 +1,17 @@
+---
+import Button from '../ui/Button.astro';
+---
+<section id="contato" class="contact"><div class="container contact-inner" data-reveal>
+ <span class="section-eyebrow">06 / ENCERRAMENTO</span><h2>Uma chamada para o <em>próximo passo.</em></h2>
+ <div class="contact-bottom"><p>Área reservada para chamada e canal oficial de contato.</p><Button href="#inicio" label="Voltar ao início" variant="light" /></div>
+</div></section>
+<style>
+.contact { background:var(--brand-blue);color:white;padding:var(--section-space) 0;overflow:hidden;position:relative; }
+.contact::before{content:'AMZ';font:800 29vw/1 var(--font-display);letter-spacing:-.12em;position:absolute;right:-3%;bottom:-20%;color:rgba(255,255,255,.045);pointer-events:none;}
+.contact .section-eyebrow {color:#d8eef6}.contact .section-eyebrow::before {background:#d8eef6}
+h2{font:650 clamp(2.6rem,6.7vw,7rem)/1.03 var(--font-display);letter-spacing:-.077em;max-width:13ch;margin:2rem 0 3.5rem}
+h2 em{font:normal italic 1em Georgia,serif;color:#c9e3e1}
+.contact-bottom {display:flex;justify-content:space-between;gap:3rem;align-items:end;border-top:1px solid rgba(255,255,255,.3);padding-top:1.6rem;position:relative;z-index:1;}
+p{color:#e6f2f7;max-width:31rem;line-height:1.6;margin:0}
+@media(max-width:680px){.contact-bottom{align-items:start;flex-direction:column;gap:1.5rem}}
+</style>

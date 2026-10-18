@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AMZ — Prévia editorial v0.1</title><style>/* AMZ DS / v0.1 — source of truth: edit this file, not individual page colors */
+:root {
+  /* Brand */
+  --brand-navy: #17324d;
+  --brand-blue: #2878b5;
+  --brand-electric: #1f6fe5;
+  --brand-teal: #258a78;
+  --brand-coral: #f0835e; /* Decorative accents only */
+
+  /* Semantic colors */
+  --text-primary: #17324d;
+  --text-secondary: #526173;
+  --text-inverse: #ffffff;
+  --bg-canvas: #f7f9fa;
+  --bg-surface: #ffffff;
+  --bg-soft: #eaf2f5;
+  --bg-navy: #17324d;
+  --border-subtle: #d9e3e9;
+  --focus-ring: #1f6fe5;
+
+  /* Typography: system-first and self-host-ready; no CDN requirement */
+  --font-display: 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --type-xs: .75rem;
+  --type-sm: .875rem;
+  --type-md: 1rem;
+  --type-lg: clamp(1.125rem, 1.3vw, 1.3rem);
+  --type-h3: clamp(1.4rem, 2.3vw, 2rem);
+  --type-h2: clamp(2.3rem, 4.8vw, 5.25rem);
+  --type-display: clamp(3.4rem, 7.8vw, 8rem);
+  --leading-tight: 0.99;
+  --leading-heading: 1.06;
+  --leading-body: 1.58;
+
+  /* 4pt-derived spacing scale */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --section-space: clamp(5rem, 10vw, 9rem);
+  --gutter: clamp(1.25rem, 5.2vw, 6rem);
+  --container-max: 1440px;
+  --measure: 67ch;
+
+  /* Surfaces */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 20px 65px rgba(23, 50, 77, .075);
+  --shadow-raised: 0 32px 90px rgba(23, 50, 77, .11);
+
+  /* Motion */
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-reveal: 760ms;
+  --ease-standard: cubic-bezier(.22, 1, .36, 1);
+  --layer-header: 50;
+  --layer-ambient: 0;
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg-canvas); color: var(--text-primary); font-family: var(--font-body); font-size: var(--type-md); -webkit-font-smoothing: antialiased; }
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+::selection { background: #b7dbe7; color: var(--brand-navy); }
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
+.skip-link { position: absolute; z-index: 1000; top: -100px; left: 1rem; background: white; padding: 1rem; }
+.skip-link:focus { top: 1rem; }
+.container { width: min(calc(100% - var(--gutter)*2), var(--container-max)); margin-inline: auto; }
+.section { padding-block: var(--section-space); position: relative; }
+.section-eyebrow { display: inline-flex; gap: .7rem; align-items: center; font-family: var(--font-mono); text-transform: uppercase; font-size: .70rem; font-weight: 600; letter-spacing: .13em; color: var(--brand-blue); }
+.section-eyebrow::before { content: ''; width: 23px; height: 1px; background: currentColor; }
+.section-title { margin: var(--space-6) 0 var(--space-5); max-width: 18ch; font-family: var(--font-display); font-size: var(--type-h2); letter-spacing: -.065em; line-height: var(--leading-heading); font-weight: 650; }
+.section-description { max-width: var(--measure); color: var(--text-secondary); line-height: var(--leading-body); font-size: var(--type-lg); }
+.mono { font-family: var(--font-mono); letter-spacing: .08em; }
+.soft-divider { border: 0; border-top: 1px solid var(--border-subtle); margin: 0; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+.brand-mark { display: inline-flex; align-items: center; gap: .7rem; width: fit-content; color: var(--brand-navy); }
+.brand-mark strong { font-size: 2.25rem; letter-spacing: -.105em; line-height: 1; font-family: var(--font-display); font-weight: 800; }
+.brand-mark strong span { color: var(--brand-coral); }
+.brand-caption { font-family: var(--font-mono); font-size: .54rem; line-height: 1.33; letter-spacing: .1em; font-weight: 700; border-left: 1px solid currentColor; padding-left: .65rem; }
+.inverse { color: var(--text-inverse); }
+.amz-button { display:inline-flex; align-items:center; justify-content:space-between; gap:2.7rem; min-height: 52px; padding: .9rem 1.15rem; border-radius:var(--radius-sm); font-size:.87rem; font-weight:700; transition:transform var(--duration-base) var(--ease-standard),background var(--duration-base); }
+.amz-button:hover { transform:translateY(-2px); }
+.primary { background:var(--brand-navy); color:white; }
+.primary:hover { background:#244d70; }
+.secondary { background:transparent; border:1px solid #9fb5c3; color:var(--brand-navy); }
+.secondary:hover { background:white; }
+.light { background:white; color:var(--brand-navy); }
+.arrow { font-size:1.15rem; font-weight:400; transition:transform var(--duration-base) var(--ease-standard); }
+.amz-button:hover .arrow { transform:translate(3px,-3px); }
+.site-header { position:sticky; top:0; z-index:var(--layer-header); background:rgba(247,249,250,.92); backdrop-filter:blur(20px); border-bottom:1px solid rgba(217,227,233,.7); }
+.site-header .header-inner { display:flex; align-items:center; justify-content:space-between; min-height:80px; }
+.site-header .nav-desktop { display:flex; align-items:center; gap:2.5rem; font-size:.85rem; font-weight:600; }
+.site-header .nav-desktop a { color:var(--text-secondary); transition:color .2s; }
+.site-header .nav-desktop a:hover { color:var(--brand-electric); }
+.site-header .header-cta { font-size:.83rem; font-weight:700; border-bottom:1px solid var(--brand-navy); padding-block:.5rem; }
+.site-header .header-cta span { margin-left:.65rem; }
+.site-header .menu-toggle { display:none; border:0; background:transparent; width:42px; height:42px; cursor:pointer; }
+.site-header .menu-toggle span { display:block; height:2px; width:22px; background:var(--brand-navy); margin:5px auto; }
+.site-header .nav-mobile[hidden] { display:none; }
+.site-header .nav-mobile { display:grid; gap:0; padding:1rem var(--gutter) 2rem; border-top:1px solid var(--border-subtle); }
+.site-header .nav-mobile a { padding: .9rem 0; border-bottom:1px solid var(--border-subtle); }
+@media (max-width:930px)  {.site-header .nav-desktop, .site-header .header-cta {display:none;}
+.site-header .menu-toggle {display:block;}
+.site-header .header-inner {min-height:72px;}}
+.site-footer { background:var(--brand-navy); color:white; padding:4rem 0 2.4rem; }
+.site-footer .footer-inner { display:flex; justify-content:space-between; gap:3rem; }
+.site-footer p { margin:1.4rem 0 0; max-width:22rem; color:#c9dae3; line-height:1.6; }
+.site-footer .footer-right { display:flex; flex-direction:column; gap:1.2rem; align-items:flex-end; font-size:.86rem; color:#c9dae3; }
+.site-footer .footer-right a { color:white; text-decoration:underline; text-underline-offset:5px; }
+.site-footer .mono { font-size:.68rem; letter-spacing:.15em; }
+@media (max-width:640px) {.site-footer .footer-inner {flex-direction:column}
+.site-footer .footer-right {align-items:flex-start}}
+.atmosphere { position:absolute; z-index:0; inset:0; overflow:hidden; pointer-events:none; }
+.atmosphere .ambient-fallback { position:absolute; inset:0; background:radial-gradient(ellipse 65% 70% at 87% 41%,rgba(87,166,190,.20),transparent 72%),radial-gradient(ellipse 35% 38% at 78% 93%,rgba(37,138,120,.12),transparent 75%); }
+.atmosphere canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.78; }
+@media (max-width:640px) {.atmosphere canvas {display:none}
+.atmosphere .ambient-fallback {opacity:.65}}
+.hero { min-height:min(825px, calc(100svh - 80px)); overflow:hidden; position:relative; border-bottom:1px solid var(--border-subtle); }
+.hero .hero-inner { min-height:700px; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr); align-items:center; gap:2rem; padding-block:5rem 4rem; position:relative; z-index:1; }
+.hero .hero-copy { position:relative; z-index:2; }
+.hero h1 { font: 650 var(--type-display)/var(--leading-tight) var(--font-display); letter-spacing:-.085em; max-width:10ch; margin:1.65rem 0 2rem; }
+.hero h1 em { color:var(--brand-blue); font-weight:500; font-family:Georgia,"Times New Roman",serif; letter-spacing:-.08em; }
+.hero .hero-lead { color:var(--text-secondary); font-size:clamp(1.04rem,1.55vw,1.25rem); max-width:34rem; line-height:1.65; }
+.hero .hero-actions { display:flex; gap:.7rem; flex-wrap:wrap; margin-top:2rem; }
+.hero .draft-note { font: 600 .64rem var(--font-mono); letter-spacing:.1em; margin-top:3rem; color:#768896; text-transform:uppercase; }
+.hero .hero-composition { width:100%; aspect-ratio:4/4.8; position:relative; display:flex; align-items:center; justify-content:center; border:1px solid rgba(40,120,181,.18); border-radius:240px 240px 12px 12px; background:linear-gradient(148deg,rgba(255,255,255,.85),rgba(233,243,246,.60)); box-shadow:inset 0 0 80px rgba(255,255,255,.8), 0 45px 100px rgba(23,50,77,.04); margin:0 auto; max-width:430px; }
+.hero .hero-composition::before { content:""; position:absolute; inset:24px; border:1px solid rgba(40,120,181,.15); border-radius:230px 230px 8px 8px; }
+.hero .composition-label { position:absolute; top:10%; inset-inline:12%; display:flex; justify-content:space-between; color:var(--brand-blue); font:.62rem var(--font-mono); letter-spacing:.2em; }
+.hero .letterform { font:800 clamp(6rem,14vw,13rem)/1 var(--font-display); letter-spacing:-.17em; transform:translateX(-.13em) rotate(-90deg); color:var(--brand-navy); }
+.hero .letterform span { color:var(--brand-coral); }
+.hero .composition-line { position:absolute; bottom:8%; inset-inline:12%; display:flex; justify-content:space-between; font:600 .58rem var(--font-mono); letter-spacing:.12em; }
+.hero .floating-accent { position:absolute; height:20px; width:20px; border-radius:50%; background:var(--brand-coral); left:6%; top:47%; box-shadow:0 0 0 13px rgba(240,131,94,.13); }
+.hero .hero-end { display:flex; justify-content:space-between; position:relative; z-index:1; padding-bottom:2rem; font:600 .62rem var(--font-mono); color:var(--text-secondary); letter-spacing:.12em; }
+@media (max-width:930px) {.hero .hero-inner {min-height:unset;grid-template-columns:1fr;padding-top:5rem}
+.hero .hero-composition {max-width:330px; aspect-ratio:4/3; border-radius:160px 160px 12px 12px; margin:2rem 0 0 auto;}
+.hero .hero-composition::before {border-radius:160px 160px 8px 8px}
+.hero .letterform {font-size:7rem}
+.hero {min-height:unset}}
+@media (max-width:600px) {.hero .hero-inner {padding-top:3.5rem}
+.hero .hero-composition {max-width:100%;height:290px;aspect-ratio:auto}
+.hero .hero-end span:last-child {display:none}
+.hero h1 {font-size:clamp(3.1rem,12vw,4.8rem)}
+.hero .draft-note {margin-top:2rem}}
+.overview { background:white; }
+.overview .overview-grid { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr); gap:6vw; align-items:end; }
+.overview h2 span { color:var(--brand-blue); }
+.overview .overview-aside { padding-bottom:.5rem; border-top:1px solid var(--border-subtle); }
+.overview .oversize-mark { display:block; font-size:3rem; color:var(--brand-teal); margin:1rem 0 1.8rem; }
+.overview .caption-mono { font:600 .67rem var(--font-mono); color:var(--brand-blue); letter-spacing:.12em; }
+@media (max-width:800px) {.overview .overview-grid {grid-template-columns:1fr;gap:1.5rem}}
+.solutions { background:var(--bg-canvas); }
+.solutions .solutions-heading { display:flex; justify-content:space-between; align-items:end; gap:2rem; margin-bottom:3rem; }
+.solutions .solutions-heading .section-description { max-width:23rem; font-size:1rem; margin-bottom:.7rem; }
+.solutions .section-title { max-width:13ch; }
+.solutions .section-title em { font-family:Georgia,serif; font-weight:400; color:var(--brand-teal); }
+.solutions .solution-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; }
+.solutions .solution-card { border:1px solid var(--border-subtle); border-radius:var(--radius-md); overflow:hidden; background:white; min-width:0; transition:transform .42s var(--ease-standard), box-shadow .42s var(--ease-standard); }
+.solutions .solution-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-soft); }
+.solutions .card-top { display:flex; justify-content:space-between; padding:1.5rem 1.7rem 0; font:700 .68rem var(--font-mono); letter-spacing:.11em; }
+.solutions .card-top span:last-child { font-size:1.3rem; font-weight:400; }
+.solutions .card-art { position:relative; display:flex; align-items:center; min-height:260px; margin:1.1rem 1.7rem 0; overflow:hidden; border-radius:var(--radius-sm); isolation:isolate; }
+.solutions .art-a { background:#d6e6ed; color:#17324d; }
+.solutions .art-b { background:#d9ede7; color:#155344; }
+.solutions .card-art span { position:relative; z-index:1; font:750 clamp(2rem,5.3vw,5.2rem)/.93 var(--font-display); letter-spacing:-.07em; margin-left:2.1rem; }
+.solutions .card-art i { position:absolute; z-index:0; right:-16%; bottom:-50%; width:72%; aspect-ratio:1; border-radius:50%; border:clamp(22px,5vw,63px) solid rgba(40,120,181,.24); }
+.solutions .art-b i { border-color:rgba(37,138,120,.25); border-width:clamp(35px,7vw,90px); bottom:-60%; }
+.solutions .card-body { padding:1.5rem 1.7rem 2.2rem; }
+.solutions .card-caption { font:700 .66rem var(--font-mono); letter-spacing:.12em; color:var(--brand-blue); }
+.solutions h3 { font:650 clamp(1.45rem,2.4vw,2.4rem)/1.1 var(--font-display); letter-spacing:-.05em; margin:1.1rem 0 .8rem; }
+.solutions .card-body>p:last-child { max-width:33rem; color:var(--text-secondary); line-height:1.6; }
+@media (max-width:800px) {.solutions .solutions-heading {display:block}
+.solutions .solution-grid {grid-template-columns:1fr}
+.solutions .card-art {min-height:220px}}
+@media (max-width:500px) {.solutions .card-art {margin:1rem 1rem 0;min-height:220px}
+.solutions .card-art span {margin-left:1rem;font-size:clamp(2.2rem,11vw,4rem)}
+.solutions .card-body {padding:1.5rem 1rem}
+.solutions .card-top {padding:1.3rem 1rem 0}}
+.approach { background:white; }
+.approach .approach-intro {margin-bottom:3.3rem}
+.approach .approach-intro .section-title {max-width:18ch}
+.approach .section-title em {font:normal italic 1em Georgia,serif;color:var(--brand-blue)}
+.approach .step { display:grid;grid-template-columns:80px 1fr 1fr 32px;align-items:center;gap:1.5rem;border-top:1px solid var(--border-subtle);padding:1.65rem 0; }
+.approach .step:last-child {border-bottom:1px solid var(--border-subtle)}
+.approach .step>span:first-child {font:600 .75rem var(--font-mono);color:var(--brand-blue)}
+.approach h3 {font:650 clamp(1.5rem,2.8vw,2.7rem)/1.1 var(--font-display);letter-spacing:-.055em;margin:0}
+.approach p {color:var(--text-secondary);line-height:1.5}
+.approach .step-arrow {font-size:1.4rem;color:var(--brand-teal)}
+@media (max-width:680px) {.approach .step {grid-template-columns:2.5rem 1fr 1.5rem;gap:1rem}
+.approach .step p {grid-column:2/3;margin:0}
+.approach .step-arrow {grid-column:3/4;grid-row:1/3}}
+.contact { background:var(--brand-blue);color:white;padding:var(--section-space) 0;overflow:hidden;position:relative; }
+.contact::before {content:"AMZ";font:800 29vw/1 var(--font-display);letter-spacing:-.12em;position:absolute;right:-3%;bottom:-20%;color:rgba(255,255,255,.045);pointer-events:none;}
+.contact .section-eyebrow {color:#d8eef6}
+.contact .section-eyebrow::before {background:#d8eef6}
+.contact h2 {font:650 clamp(2.6rem,6.7vw,7rem)/1.03 var(--font-display);letter-spacing:-.077em;max-width:13ch;margin:2rem 0 3.5rem}
+.contact h2 em {font:normal italic 1em Georgia,serif;color:#c9e3e1}
+.contact .contact-bottom {display:flex;justify-content:space-between;gap:3rem;align-items:end;border-top:1px solid rgba(255,255,255,.3);padding-top:1.6rem;position:relative;z-index:1;}
+.contact p {color:#e6f2f7;max-width:31rem;line-height:1.6;margin:0}
+@media (max-width:680px) {.contact .contact-bottom {align-items:start;flex-direction:column;gap:1.5rem}}
+.scroll-progress {position:fixed;z-index:100;top:0;left:0;height:3px;width:100%;background:var(--brand-coral);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+</style></head><body><a href="#conteudo" class="skip-link">Pular para o conteúdo</a><header class="site-header"><div class="header-inner container"><a href="index.html" class="brand-mark" aria-label="AMZ Data Software — início"><strong>amz<span>.</span></strong><span class="brand-caption">DATA<br>SOFTWARE</span></a><nav class="nav-desktop" aria-label="Navegação principal"><a href="#visao">Visão</a><a href="#solucoes">Soluções</a><a href="#abordagem">Abordagem</a><a href="#contato">Contato</a></nav><a class="header-cta" href="#contato">Iniciar conversa <span>↗</span></a><button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span></button></div><nav class="nav-mobile" id="mobile-menu" hidden aria-label="Navegação mobile"><a href="#visao">Visão</a><a href="#solucoes">Soluções</a><a href="#abordagem">Abordagem</a><a href="#contato">Contato</a></nav></header><main id="conteudo"><section id="inicio" class="hero"><div class="atmosphere" aria-hidden="true"><div class="ambient-fallback"></div></div><div class="container hero-inner">
+ <div class="hero-copy" data-reveal>
+   <p class="section-eyebrow">AMZ / DATA SOFTWARE</p>
+   <h1>O futuro se constrói com <em>clareza.</em></h1>
+   <p class="hero-lead">Tecnologia clara, humana e confiável. Uma apresentação institucional da AMZ pensada para conectar ideias, contexto e soluções.</p>
+   <div class="hero-actions"><a href="#solucoes" class="amz-button primary"><span>Conhecer a AMZ</span><span class="arrow" aria-hidden="true">↗</span></a><a href="#visao" class="amz-button secondary"><span>Nossa visão</span><span class="arrow" aria-hidden="true">↗</span></a></div>
+   <p class="draft-note">01 / Estrutura editorial · Conteúdo em validação</p>
+ </div>
+ <div class="hero-composition" aria-hidden="true">
+   <div class="composition-label"><span>IDEIAS</span><span>IMPACTO</span></div>
+   <div class="letterform">amz<span>.</span></div>
+   <div class="composition-line"><span>01 — 03</span><span>DATA / SOFTWARE</span></div>
+   <div class="floating-accent"></div>
+ </div>
+</div><div class="hero-end container"><span>EXPLORAR ↓</span><span>TECNOLOGIA + PESSOAS + CONTEXTO</span></div></section>
+<section id="visao" class="section overview"><div class="container overview-grid">
+  <div data-reveal><span class="section-eyebrow">01 / NOSSA VISÃO</span><h2 class="section-title">Uma linguagem mais humana para falar de <span>tecnologia.</span></h2></div>
+  <div class="overview-aside" data-reveal><span class="oversize-mark" aria-hidden="true">↗</span><p class="section-description">A AMZ tem uma identidade que valoriza clareza, confiança e foco no que importa. Esta seção receberá o posicionamento institucional aprovado pela empresa.</p><span class="caption-mono">POSICIONAMENTO / TEXTO EM REVISÃO</span></div>
+</div></section>
+<section id="solucoes" class="section solutions"><div class="container">
+  <div class="solutions-heading" data-reveal><div><span class="section-eyebrow">02 / SOLUÇÕES</span><h2 class="section-title">O que a tecnologia pode tornar <em>possível.</em></h2></div><p class="section-description">Dois espaços editoriais prontos para apresentar soluções, produtos ou projetos reais da AMZ após validação do conteúdo.</p></div>
+  <div class="solution-grid">
+    <article class="solution-card blue" data-reveal><div class="card-top"><span>01 / SOLUÇÃO</span><span aria-hidden="true">↗</span></div><div class="card-art art-a" aria-hidden="true"><span>FORMA<br/>E FUNÇÃO</span><i></i></div><div class="card-body"><p class="card-caption">CONTEÚDO A VALIDAR</p><h3>Experiências que simplificam</h3><p>Espaço reservado para apresentar uma solução real, seus usuários e o problema que resolve.</p></div></article>
+    <article class="solution-card mint" data-reveal><div class="card-top"><span>02 / SOLUÇÃO</span><span aria-hidden="true">↗</span></div><div class="card-art art-b" aria-hidden="true"><span>CONEXÕES<br/>COM SENTIDO</span><i></i></div><div class="card-body"><p class="card-caption">CONTEÚDO A VALIDAR</p><h3>Tecnologia com direção</h3><p>Espaço reservado para uma segunda solução ou experiência autorizada pela empresa.</p></div></article>
+  </div>
+</div></section>
+<section id="abordagem" class="section approach"><div class="container">
+ <div class="approach-intro" data-reveal><span class="section-eyebrow">03 / ABORDAGEM</span><h2 class="section-title">Clareza em cada <em>etapa.</em></h2><p class="section-description">Estrutura sugerida para apresentar o método de trabalho. As etapas serão revisadas com a AMZ antes da publicação.</p></div>
+ <div class="step-list">
+   <div class="step" data-reveal><span>01</span><h3>Entender</h3><p>Contexto, pessoas e necessidades.</p><span class="step-arrow" aria-hidden="true">↗</span></div><div class="step" data-reveal><span>02</span><h3>Construir</h3><p>Soluções orientadas pelo problema.</p><span class="step-arrow" aria-hidden="true">↗</span></div><div class="step" data-reveal><span>03</span><h3>Evoluir</h3><p>Aprendizado e melhoria contínua.</p><span class="step-arrow" aria-hidden="true">↗</span></div>
+ </div>
+</div></section>
+<section id="contato" class="contact"><div class="container contact-inner" data-reveal>
+ <span class="section-eyebrow">04 / PRÓXIMO PASSO</span><h2>Ideias melhores começam com uma <em>conversa.</em></h2>
+ <div class="contact-bottom"><p>Seção preparada para receber os canais oficiais de contato da AMZ. Nenhum endereço ou número foi presumido.</p><a href="#inicio" class="amz-button light"><span>Voltar ao início</span><span class="arrow" aria-hidden="true">↗</span></a></div>
+</div></section></main><footer class="site-footer"><div class="container footer-inner"><div><a href="index.html" class="brand-mark inverse" aria-label="AMZ Data Software — início"><strong>amz<span>.</span></strong><span class="brand-caption">DATA<br>SOFTWARE</span></a><p>Uma presença digital à altura de ideias claras.</p></div><div class="footer-right"><span class="mono">AMZ DATA SOFTWARE</span><a href="design-system-preview.html">Design system ↗</a><span>© 2026 AMZ.</span></div></div></footer><div class="scroll-progress" data-scroll-progress></div><script>
+const btn=document.querySelector('.menu-toggle'),nav=document.querySelector('#mobile-menu'); if(btn&&nav) {btn.onclick=()=>{const on=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(on));nav.hidden=!on;};nav.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.hidden=true;btn.setAttribute('aria-expanded','false')})}
+window.addEventListener('scroll',()=>{const p=document.querySelector('[data-scroll-progress]');if(p){let d=document.documentElement;let n=window.scrollY/Math.max(1,d.scrollHeight-window.innerHeight);p.style.transform=`scaleX(${n})`;}},{passive:true});
+</script></body></html>

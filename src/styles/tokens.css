@@ -1,0 +1,76 @@
+/* AMZ DS / v0.1 — source of truth: edit this file, not individual page colors */
+:root {
+  /* Brand */
+  --brand-navy: #17324d;
+  --brand-blue: #2878b5;
+  --brand-electric: #1f6fe5;
+  --brand-teal: #258a78;
+  --brand-coral: #f0835e; /* Decorative accents only */
+
+  /* Semantic colors */
+  --text-primary: #17324d;
+  --text-secondary: #526173;
+  --text-inverse: #ffffff;
+  --bg-canvas: #f7f9fa;
+  --bg-surface: #ffffff;
+  --bg-soft: #eaf2f5;
+  --bg-navy: #17324d;
+  --border-subtle: #d9e3e9;
+  --focus-ring: #1f6fe5;
+
+  /* Typography: system-first and self-host-ready; no CDN requirement */
+  --font-display: 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --type-xs: .75rem;
+  --type-sm: .875rem;
+  --type-md: 1rem;
+  --type-lg: clamp(1.125rem, 1.3vw, 1.3rem);
+  --type-h3: clamp(1.4rem, 2.3vw, 2rem);
+  --type-h2: clamp(2.3rem, 4.8vw, 5.25rem);
+  --type-display: clamp(3.4rem, 7.8vw, 8rem);
+  --leading-tight: 0.99;
+  --leading-heading: 1.06;
+  --leading-body: 1.58;
+
+  /* 4pt-derived spacing scale */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --section-space: clamp(5rem, 10vw, 9rem);
+  --gutter: clamp(1.25rem, 5.2vw, 6rem);
+  --container-max: 1440px;
+  --measure: 67ch;
+
+  /* Surfaces */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 20px 65px rgba(23, 50, 77, .075);
+  --shadow-raised: 0 32px 90px rgba(23, 50, 77, .11);
+  --shadow-chapter: 0 28px 100px rgba(23, 50, 77, .12);
+  --surface-glass: rgba(255, 255, 255, .86);
+
+  /* Motion */
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-reveal: 760ms;
+  --ease-standard: cubic-bezier(.22, 1, .36, 1);
+  --ease-scene: cubic-bezier(.2, .7, .2, 1);
+  --space-chapter-overlap: 12vh;
+  --layer-header: 50;
+  --layer-content: 1;
+  --layer-ambient: 0;
+  --layer-progress: 100;
+}

@@ -1,0 +1,29 @@
+---
+import BrandMark from '../ui/BrandMark.astro';
+import { site } from '../../config/site';
+const baseHref = Astro.url.pathname === '/' ? '' : '/';
+---
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand"><BrandMark inverse /><p>Espaço reservado para uma apresentação institucional validada.</p></div>
+    <div class="footer-column"><span class="footer-label mono">NAVEGAÇÃO</span><nav aria-label="Navegação do rodapé">{site.nav.map(item => <a href={`${baseHref}${item.href}`}>{item.label}</a>)}</nav></div>
+    <div class="footer-column"><span class="footer-label mono">CONTATO</span><a href={`${baseHref}#contato`}>Canal oficial a definir <span aria-hidden="true">↗</span></a><span class="footer-muted">Redes sociais a definir</span></div>
+  </div>
+  <div class="container footer-legal"><span>© {new Date().getFullYear()} AMZ Data Software</span><span>Informações legais a validar</span><a href={`${baseHref}#inicio`}>Voltar ao início ↑</a></div>
+</footer>
+<style>
+.site-footer { background:var(--brand-navy); color:white; padding:4.5rem 0 1.5rem; }
+.footer-main { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:4rem; }
+.footer-brand p { margin:1.4rem 0 0; max-width:20rem; color:#c9dae3; line-height:1.6; }
+.footer-column { display:flex; flex-direction:column; align-items:flex-start; gap:.8rem; }
+.footer-label { font-size:.63rem; letter-spacing:.13em; color:#9bc9d2; margin-bottom:.4rem; }
+.footer-column nav { display:grid; gap:.7rem; }
+.footer-column a,.footer-muted { font-size:.86rem; color:#e0ebef; }
+.footer-column a:hover,.footer-legal a:hover { color:white; text-decoration:underline; text-underline-offset:4px; }
+.footer-column a span { margin-left:.4rem; }
+.footer-muted { color:#a9bdc8; }
+.footer-legal { display:flex; justify-content:space-between; gap:1rem; border-top:1px solid rgba(255,255,255,.19); padding-top:1.25rem; color:#a9bdc8; font-size:.72rem; }
+.footer-legal a { color:white; }
+@media(max-width:720px){.footer-main{grid-template-columns:1fr 1fr;gap:2.5rem 1.5rem}.footer-brand{grid-column:1/-1}}
+@media(max-width:520px){.footer-main{grid-template-columns:1fr}.footer-brand{grid-column:auto}.footer-legal{flex-direction:column;align-items:flex-start}}
+</style>

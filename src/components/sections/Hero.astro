@@ -1,0 +1,30 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section id="inicio" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-kicker"><span class="section-eyebrow">AMZ / DATA SOFTWARE</span><span class="mono">PÁGINA INSTITUCIONAL · EM ESTRUTURAÇÃO</span></div>
+    <h1 data-reveal>Tecnologia<br />em outro<br /><em>enquadramento.</em></h1>
+    <div class="hero-bottom">
+      <p>Área reservada para a apresentação institucional aprovada.</p>
+      <div class="hero-actions"><Button href="#capitulos" label="Explorar a estrutura" /><Button href="#solucoes" label="Ver soluções" variant="secondary" /></div>
+    </div>
+    <a class="hero-cue mono" href="#visao"><span>01 — 09</span><span>ROLAR PARA EXPLORAR ↓</span></a>
+  </div>
+</section>
+
+<style>
+.hero { min-height:min(920px,calc(100svh - 72px)); min-height:calc(100svh - 72px); display:flex; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
+.hero-inner { min-height:680px; display:flex; flex-direction:column; justify-content:space-between; padding-block:clamp(2.5rem,5vh,4.5rem) 1.5rem; position:relative; }
+.hero-kicker { display:flex; justify-content:space-between; align-items:center; gap:1rem; position:relative; z-index:1; }
+.hero-kicker .mono,.hero-cue { font:600 .63rem var(--font-mono); letter-spacing:.12em; color:var(--text-secondary); }
+h1 { font:650 clamp(5rem,13.4vw,13.5rem)/.8 var(--font-display); letter-spacing:-.105em; max-width:100%; margin:clamp(3rem,9vh,7rem) 0 2.5rem; position:relative; z-index:1; }
+h1 em { font:normal italic .92em/.95 Georgia,serif; color:var(--brand-blue); letter-spacing:-.09em; }
+.hero-bottom { display:flex; justify-content:space-between; align-items:end; gap:2rem; border-top:1px solid rgba(23,50,77,.19); padding-top:1.25rem; position:relative; z-index:1; }
+.hero-bottom>p { max-width:18rem; color:var(--text-secondary); line-height:1.55; margin:0; }
+.hero-actions { display:flex; gap:.65rem; flex-wrap:wrap; }
+.hero-cue { display:flex; justify-content:space-between; padding-top:1.4rem; }
+@media(max-width:780px){.hero{min-height:calc(100svh - 72px)}.hero-inner{min-height:620px}.hero-kicker .mono{display:none}h1{font-size:clamp(4rem,11.5vw,6.2rem);margin-block:4rem 3rem}.hero-bottom{align-items:start;flex-direction:column;gap:1.2rem}}
+@media(max-width:480px){.hero-inner{min-height:600px;padding-block:2.3rem 1.2rem}.hero h1{font-size:clamp(2.75rem,12vw,4.5rem);letter-spacing:-.1em}.hero-cue span:first-child{display:none}}
+</style>
