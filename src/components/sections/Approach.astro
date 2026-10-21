@@ -1,14 +1,52 @@
-<section id="abordagem" class="section approach"><div class="container">
- <div class="approach-intro" data-reveal><span class="section-eyebrow">04 / ABORDAGEM</span><h2 class="section-title">Clareza em cada <em>etapa.</em></h2><p class="section-description">Estrutura provisória para apresentar a abordagem de trabalho.</p></div>
- <div class="step-list">
-   {[{n:'01',name:'Etapa a definir'},{n:'02',name:'Etapa a definir'},{n:'03',name:'Etapa a definir'}].map(step => <div class="step" data-reveal><span>{step.n}</span><h3>{step.name}</h3><p>Conteúdo a validar.</p><span class="step-arrow" aria-hidden="true">↗</span></div>)}
- </div>
-</div></section>
+---
+const steps = [
+  { name: 'Entender o desafio', text: 'Compreender o contexto do negócio e a necessidade a resolver.', tone: 'coral', mark: '01', icon: 'listen', cue: 'CONTEXTO' },
+  { name: 'Organizar as necessidades', text: 'Reunir informações, prioridades e requisitos para orientar o projeto.', tone: 'teal', mark: '02', icon: 'organize', cue: 'PRIORIDADES' },
+  { name: 'Estruturar a solução', text: 'Traduzir o entendimento em fluxos, arquitetura e uma proposta coerente.', tone: 'blue', mark: '03', icon: 'blueprint', cue: 'ARQUITETURA' },
+  { name: 'Desenvolver e evoluir', text: 'Transformar o projeto em uma aplicação funcional, com espaço para validação e evolução.', tone: 'navy', mark: '04', icon: 'build', cue: 'EVOLUÇÃO' },
+];
+---
+<section id="abordagem" class="section approach scroll-scene" data-scroll-scene="approach" aria-labelledby="approach-title">
+  <div class="container approach-inner">
+    <header class="approach-intro" data-scroll-reveal="approach">
+      <span class="section-eyebrow">04 / COMO A AMZ TRABALHA</span>
+      <h2 id="approach-title" class="section-title">Clareza em cada <em>etapa.</em></h2>
+      <p class="section-description">Cada projeto começa com uma necessidade. A partir dela, organizamos informações, estruturamos possibilidades e desenvolvemos um caminho claro até a solução.</p>
+    </header>
+
+    <div class="journey-heading" aria-hidden="true"><span>UM CAMINHO CLARO, DO DESAFIO À SOLUÇÃO</span></div>
+    <div class="step-stage">
+      <ol class="step-list">
+      {steps.map((step) => <li class="step" data-journey-step data-tone={step.tone}>
+        <div class="step-topline"><span class="step-number">{step.mark}</span><span class="step-index">ETAPA {step.mark}</span></div>
+        <span class="step-symbol" aria-hidden="true">
+          {step.icon === 'listen' && <svg viewBox="0 0 48 48" fill="none"><path d="M8 12.5A4.5 4.5 0 0 1 12.5 8h17a4.5 4.5 0 0 1 4.5 4.5v11a4.5 4.5 0 0 1-4.5 4.5H19l-8 6v-7.5a4.5 4.5 0 0 1-3-4.25z"/><path d="M17 18h.01M23 18h.01M29 18h.01"/><path d="M26 29v2.5A4.5 4.5 0 0 0 30.5 36H36l5 4v-8a4.5 4.5 0 0 0-4.5-4.5H34"/></svg>}
+          {step.icon === 'organize' && <svg viewBox="0 0 48 48" fill="none"><rect x="9" y="8" width="30" height="33" rx="4"/><path d="M18 8V6h12v2m-14 11 2.5 2.5L23 15m5 4h6m-18 10 2.5 2.5L23 26m5 4h6"/></svg>}
+          {step.icon === 'blueprint' && <svg viewBox="0 0 48 48" fill="none"><rect x="6.5" y="8" width="15" height="12" rx="2"/><rect x="27" y="8" width="14.5" height="12" rx="2"/><rect x="16.5" y="29" width="15" height="12" rx="2"/><path d="M14 20v4.5h20V20m-10 4.5V29"/><circle cx="14" cy="14" r="1"/><path d="M31 14h6m-12 19h6"/></svg>}
+          {step.icon === 'build' && <svg viewBox="0 0 48 48" fill="none"><path d="M8 39h33M12 35V25h8v10m4 0V18h8v17m4 0V11h8v24"/><path d="m10 18 9-6 8 3 12-9m-7 0h7v7"/></svg>}
+        </span>
+        <span class="step-cue">{step.cue}</span>
+        <h3>{step.name}</h3><p>{step.text}</p>
+      </li>)}
+      </ol>
+    </div>
+    <div class="approach-bridge"><span>Da clareza do processo nasce uma experiência real.</span></div>
+  </div>
+</section>
 <style>
-.approach { background:rgba(255,255,255,.78); }.approach-intro{margin-bottom:3.3rem}.approach-intro .section-title{max-width:18ch}.section-title em{font:normal italic 1em Georgia,serif;color:var(--brand-blue)}
-.step { display:grid;grid-template-columns:80px 1fr 1fr 32px;align-items:center;gap:1.5rem;border-top:1px solid var(--border-subtle);padding:1.65rem 0; }
-.step:last-child{border-bottom:1px solid var(--border-subtle)}.step>span:first-child {font:600 .75rem var(--font-mono);color:var(--brand-blue)}
-h3{font:650 clamp(1.5rem,2.8vw,2.7rem)/1.1 var(--font-display);letter-spacing:-.055em;margin:0}
-p{color:var(--text-secondary);line-height:1.5}.step-arrow{font-size:1.4rem;color:var(--brand-teal)}
-@media(max-width:680px){.step{grid-template-columns:2.5rem 1fr 1.5rem;gap:1rem}.step p{grid-column:2/3;margin:0}.step-arrow{grid-column:3/4;grid-row:1/3}}
+.approach{position:relative;isolation:isolate;overflow-x:clip;overflow-y:visible;background:linear-gradient(125deg,#fff 0%,var(--bg-canvas) 58%,#edf4f6 100%);padding-block:clamp(4.2rem,7vw,6.5rem) 3.25rem}
+.approach-inner{position:relative;z-index:1;width:min(calc(100% - var(--gutter)*2),1680px)}
+.approach::before{position:absolute;z-index:-1;inset:auto -12rem -28rem auto;width:42rem;height:42rem;border:1px solid color-mix(in srgb,var(--brand-blue) 9%,transparent);border-radius:50%;box-shadow:0 0 0 4rem color-mix(in srgb,var(--brand-blue) 2%,transparent),0 0 0 9rem color-mix(in srgb,var(--brand-teal) 2%,transparent);content:'';pointer-events:none}
+.approach-intro{--scroll-reveal-progress:1;position:relative;z-index:1;max-width:58rem;margin-bottom:clamp(2.8rem,5.5vw,5rem);opacity:calc(.78 + var(--scroll-reveal-progress)*.22);transform:translate3d(0,calc((1 - var(--scroll-reveal-progress))*14px),0)}
+.approach-intro .section-title{max-width:16ch;margin-bottom:1.1rem}.approach-intro .section-description{max-width:48rem;margin:0;color:var(--text-secondary);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.68}.approach .section-title em{font:normal italic 1em Georgia,serif;color:var(--brand-blue)}
+.journey-heading{display:flex;justify-content:flex-start;gap:1rem;padding:0 .2rem .8rem;color:color-mix(in srgb,var(--text-secondary) 72%,transparent);font:500 .58rem var(--font-mono);letter-spacing:.1em}
+.step-stage{position:relative}.step-list{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(1.6rem,2.4vw,2.4rem);row-gap:1.2rem;list-style:none;padding:0;margin:0}
+.step{--step-color:var(--brand-blue);--step-surface:#eaf2f9;--step-icon-surface:#d7e8f5;--journey-progress:1;position:relative;display:flex;min-width:0;min-height:clamp(21rem,28vw,25rem);flex-direction:column;align-items:flex-start;padding:clamp(1.3rem,2.15vw,2rem);overflow:hidden;border:1px solid #c7d3dc;border-radius:var(--radius-md);background:var(--step-surface);box-shadow:0 12px 30px rgba(23,50,77,.07);opacity:calc(.62 + var(--journey-progress,1)*.38);transform:translate3d(0,calc((1 - var(--journey-progress,1))*12px),0);transition:box-shadow var(--duration-base) var(--ease-standard),transform var(--duration-base) var(--ease-standard),opacity var(--duration-base) var(--ease-standard)}
+.step[data-tone="coral"]{--step-color:#a84e32;--step-surface:#fff0e9;--step-icon-surface:#f8d8ca}.step[data-tone="teal"]{--step-color:#17685b;--step-surface:#e8f3ef;--step-icon-surface:#cfe6dd}.step[data-tone="blue"]{--step-color:#205d90;--step-surface:#eaf2f9;--step-icon-surface:#d7e8f5}.step[data-tone="navy"]{--step-color:#8bbcff;--step-surface:var(--brand-navy);--step-icon-surface:#244866;color:#fff}
+.step-topline{display:flex;width:100%;align-items:baseline;justify-content:space-between;gap:.6rem;padding-bottom:.75rem;border-bottom:1px solid #c7d3dc}.step-number{color:var(--step-color);font:500 clamp(3.2rem,5.2vw,4.8rem)/.86 Georgia,serif;letter-spacing:-.09em}.step-index{color:var(--step-color);font:600 var(--type-micro) var(--font-mono);letter-spacing:.12em;white-space:nowrap}.step-symbol{--icon-progress:1;display:grid;place-items:center;width:3.8rem;height:3.8rem;margin:1.2rem 0 .8rem;border:1px solid var(--step-color);border-radius:.95rem;background:var(--step-icon-surface);color:var(--step-color);transform:translate3d(0,calc((1 - var(--icon-progress,1))*4px),0)}.step-symbol svg{width:2.1rem;height:2.1rem;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.step-cue{display:inline-flex;align-items:center;min-height:1.45rem;padding:.2rem .48rem;border:1px solid var(--step-color);border-radius:2px;color:var(--step-color);font:600 var(--type-micro) var(--font-mono);letter-spacing:.13em}.step h3{max-width:13ch;margin:.7rem 0 .55rem;color:var(--brand-navy);font:650 clamp(1.5rem,2.1vw,2.05rem)/1.04 var(--font-display);letter-spacing:-.055em}.step[data-tone="navy"] h3{color:#fff}.step p{max-width:20rem;margin:0;color:#405b70;font-size:.92rem;line-height:1.6}.step[data-tone="navy"] p{color:#d5e2ee}.step[data-tone="navy"] .step-index{color:#d5e2ee}
+.approach-bridge{display:flex;align-items:center;justify-content:flex-end;margin-top:1.7rem;color:var(--brand-blue);font:600 .72rem var(--font-mono);letter-spacing:.025em}
+@media(max-width:960px){.step-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.step{min-height:19rem}}
+@media(max-width:760px){.approach-intro{margin-bottom:2.7rem}.journey-heading{padding-left:1.1rem}.step-list{grid-template-columns:1fr;gap:0;padding-left:1.1rem}.step{min-height:0;margin:0 0 1rem;padding:1.05rem 1rem 1.2rem 4.6rem;border-radius:var(--radius-sm)}.step-topline{position:absolute;top:1.05rem;left:1rem;width:3rem;display:block;padding:0;border:0}.step-number{font-size:2.35rem}.step-index{display:block;margin-top:.35rem;font-size:var(--type-micro-compact)}.step-symbol{width:2.8rem;height:2.8rem;margin:.1rem 0 .65rem}.step-symbol svg{width:1.65rem;height:1.65rem}.step-cue{font-size:var(--type-micro-compact)}.step h3{max-width:none;margin:.4rem 0;font-size:1.48rem}.step p{font-size:.88rem}.approach-bridge{margin-top:.6rem;font-size:.62rem}}
+@media(prefers-reduced-motion:reduce){.approach-intro,.step,.step-symbol{opacity:1;transform:none;transition:none}}
 </style>

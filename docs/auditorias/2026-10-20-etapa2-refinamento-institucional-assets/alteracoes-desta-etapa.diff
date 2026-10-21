@@ -1,0 +1,102 @@
+--- antes/src/components/sections/Overview.astro
++++ depois/src/components/sections/Overview.astro
+@@ -64,7 +64,7 @@
+       </div>
+     </header>
+
+-    <div class="capability-deck" data-capability-accordion role="group" aria-label="Capacidades tecnológicas da AMZ" aria-roledescription="acordeão horizontal">
++    <div class="capability-deck" data-capability-accordion role="group" aria-label="Capacidades tecnológicas da AMZ" aria-roledescription="acordeão">
+       {capabilities.map((capability, index) => (
+         <article
+           class:list={["capability-card", { "is-active": index === 0 }]}
+--- antes/src/components/sections/Chapters.astro
++++ depois/src/components/sections/Chapters.astro
+@@ -186,6 +186,7 @@
+ .visual-footnote { position:absolute; right:1.35rem; bottom:.82rem; color:#fff; max-width:calc(100% - 2.7rem); font:500 var(--type-micro-compact)/1.35 var(--font-mono); letter-spacing:.065em; text-align:right; }
+ .visual-caption { display:flex; align-items:center; justify-content:center; gap:.75rem; margin-top:1rem; color:#fff; font-size:.68rem; }
+ .visual-caption span:nth-child(2) { color:var(--brand-coral); }
++.service-visual.integrations { padding-bottom:3rem; } /* Reserve space for the illustrative disclaimer below the caption. */
+ .architecture-flow { display:grid; grid-template-columns:minmax(0,.85fr) 48px minmax(0,1.15fr); align-items:center; gap:.65rem; min-height:212px; padding-top:1.25rem; }
+ .architecture-brief { display:flex; flex-direction:column; gap:.65rem; padding:1rem .9rem; border:1px solid rgba(255,255,255,.2); border-radius:9px; background:rgba(255,255,255,.08); opacity:0; animation:architecture-appear .65s .25s var(--ease-standard) forwards; }
+ .architecture-brief strong { font-size:.83rem; line-height:1.3; }
+--- antes/src/scripts/pageMotion.ts
++++ depois/src/scripts/pageMotion.ts
+@@ -76,6 +76,16 @@
+     staticStackApplied = true;
+   };
+
++  const stackEntryRange = (index: number) => {
++    const viewport = Math.max(1, window.innerHeight);
++    return {
++      start: index === 0
++        ? trackTop - stickyTop - viewport * .48
++        : (markerTops[index - 1] ?? trackTop) - viewport * .32,
++      duration: viewport * (index === 0 ? .48 : .54),
++    };
++  };
++
+   const updateStack = (scrollY: number) => {
+     if (reducedMotion.matches || window.innerWidth <= 700 || !track || !deck || !steps.length) {
+       setStaticStack();
+@@ -85,10 +95,7 @@
+
+     const viewport = Math.max(1, window.innerHeight);
+     const entry = steps.map((_, index) => {
+-      const start = index === 0
+-        ? trackTop - stickyTop - viewport * .48
+-        : (markerTops[index - 1] ?? trackTop) - viewport * .32;
+-      const duration = viewport * (index === 0 ? .48 : .54);
++      const { start, duration } = stackEntryRange(index);
+       return easeSmoothstep(clamp01((scrollY - start) / Math.max(1, duration)));
+     });
+
+@@ -223,6 +230,49 @@
+   updateFromScroll(getProgress());
+   cleanups.push(scroll(updateFromScroll));
+
++  // Transformed sticky cards are not stable native fragment-scroll destinations.
++  // Navigate to the point where the requested card has completed its existing entry.
++  let chapterNavigationFrame = 0;
++  const navigateChapter = (hash: string, behavior: ScrollBehavior, focus = false) => {
++    if (reducedMotion.matches || window.innerWidth <= 700 || !track || !deck) return false;
++    const index = steps.findIndex(step => `#${step.id}` === hash);
++    if (index < 0) return false;
++    measureStack();
++    const { start, duration } = stackEntryRange(index);
++    const top = index === 0 ? trackTop - stickyTop : start + duration + 1;
++    window.scrollTo({ top: Math.max(0, top), behavior });
++    if (focus) {
++      const target = steps[index];
++      const hadTabindex = target.hasAttribute('tabindex');
++      if (!hadTabindex) target.setAttribute('tabindex', '-1');
++      target.focus({ preventScroll: true });
++      if (!hadTabindex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
++    }
++    return true;
++  };
++  const onChapterLink = (event: MouseEvent) => {
++    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
++    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
++    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
++    const url = new URL(link.href);
++    if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search) return;
++    if (!navigateChapter(url.hash, 'smooth', true)) return;
++    event.preventDefault();
++    if (location.hash !== url.hash) history.pushState(null, '', url.hash);
++  };
++  const restoreChapterFragment = () => {
++    cancelAnimationFrame(chapterNavigationFrame);
++    chapterNavigationFrame = requestAnimationFrame(() => navigateChapter(location.hash, 'instant'));
++  };
++  document.addEventListener('click', onChapterLink);
++  window.addEventListener('hashchange', restoreChapterFragment);
++  restoreChapterFragment();
++  cleanups.push(() => {
++    cancelAnimationFrame(chapterNavigationFrame);
++    document.removeEventListener('click', onChapterLink);
++    window.removeEventListener('hashchange', restoreChapterFragment);
++  });
++
+   const heroLines = Array.from(document.querySelectorAll<HTMLElement>('.hero .hero-line'));
+   const heroMark = document.querySelector<HTMLElement>('.hero .hero-mark');
+   const heroAccent = document.querySelector<HTMLElement>('.hero .hero-accent');

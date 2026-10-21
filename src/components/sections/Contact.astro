@@ -1,17 +1,42 @@
 ---
-import Button from '../ui/Button.astro';
+import InstitutionalForm from '../ui/InstitutionalForm.astro';
+import VisualEffect from '../graphics/VisualEffect.astro';
 ---
-<section id="contato" class="contact"><div class="container contact-inner" data-reveal>
- <span class="section-eyebrow">06 / ENCERRAMENTO</span><h2>Uma chamada para o <em>próximo passo.</em></h2>
- <div class="contact-bottom"><p>Área reservada para chamada e canal oficial de contato.</p><Button href="#inicio" label="Voltar ao início" variant="light" /></div>
-</div></section>
+<section id="contato" class="contact" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div class="contact-panel">
+      <div class="contact-art">
+        <VisualEffect effect="halo" />
+        <div class="contact-copy">
+          <span class="contact-eyebrow mono">06 / UMA CONVERSA, NOVAS POSSIBILIDADES</span>
+          <p class="contact-prompt">O próximo desafio pode ser o seu.</p>
+          <h2 id="contact-title">Qual desafio podemos ajudar a resolver?</h2>
+          <p>Conte o que sua empresa precisa. Vamos entender o contexto e conversar sobre os próximos passos.</p>
+          <span class="contact-signature mono"><i aria-hidden="true"></i> AMZ / DATA SOFTWARE</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="contact-form-content"><InstitutionalForm /></div>
+      </div>
+    </div>
+  </div>
+</section>
 <style>
-.contact { background:var(--brand-blue);color:white;padding:var(--section-space) 0;overflow:hidden;position:relative; }
-.contact::before{content:'AMZ';font:800 29vw/1 var(--font-display);letter-spacing:-.12em;position:absolute;right:-3%;bottom:-20%;color:rgba(255,255,255,.045);pointer-events:none;}
-.contact .section-eyebrow {color:#d8eef6}.contact .section-eyebrow::before {background:#d8eef6}
-h2{font:650 clamp(2.6rem,6.7vw,7rem)/1.03 var(--font-display);letter-spacing:-.077em;max-width:13ch;margin:2rem 0 3.5rem}
-h2 em{font:normal italic 1em Georgia,serif;color:#c9e3e1}
-.contact-bottom {display:flex;justify-content:space-between;gap:3rem;align-items:end;border-top:1px solid rgba(255,255,255,.3);padding-top:1.6rem;position:relative;z-index:1;}
-p{color:#e6f2f7;max-width:31rem;line-height:1.6;margin:0}
-@media(max-width:680px){.contact-bottom{align-items:start;flex-direction:column;gap:1.5rem}}
+.contact{padding:clamp(1.25rem,2vw,2rem) 0 clamp(2.8rem,5vw,5rem);background:var(--bg-canvas)}
+.contact-inner{width:min(calc(100% - var(--gutter)*2),1680px)}
+.contact-panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid #d2dfe7;border-radius:12px;overflow:hidden;background:#fff}
+.contact-art{position:relative;isolation:isolate;overflow:hidden;background:var(--brand-navy);color:#fff;min-width:0}
+.contact-art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,35,55,.76),rgba(12,35,55,.5) 48%,rgba(12,35,55,.12));pointer-events:none;z-index:1}
+.contact-art :global(.visual-effect--halo){z-index:0;inset:0;width:100%;height:100%;opacity:.16;filter:blur(24px) saturate(.38);mask-image:radial-gradient(ellipse at 72% 62%,#000 3%,rgba(0,0,0,.58) 34%,transparent 72%)}
+.contact-copy{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;min-height:100%;padding:clamp(2rem,3.5vw,4rem)}
+.contact-eyebrow{font-size:.62rem;letter-spacing:.12em;line-height:1.7;color:#9edee6;max-width:30ch}
+.contact-prompt{margin:2.2rem 0 .65rem;color:var(--brand-coral);font:650 clamp(.88rem,1vw,1rem)/1.45 var(--font-mono);letter-spacing:.015em}
+.contact h2{font:650 clamp(2.5rem,3.65vw,4rem)/1.09 var(--font-hero-display);letter-spacing:-.055em;max-width:18ch;margin:0 0 1.5rem;text-wrap:balance}
+.contact-copy p{font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.75;color:#e1eaf0;max-width:34ch;margin:0 0 2.5rem}
+.contact-copy .contact-prompt{margin:2.2rem 0 .65rem;color:color-mix(in srgb,var(--brand-coral) 48%,#fff);font:italic 500 clamp(1rem,1.2vw,1.2rem)/1.45 Georgia,serif;letter-spacing:0}
+.contact-signature{display:flex;align-items:center;gap:.7rem;font-size:.62rem;letter-spacing:.12em;margin-top:auto;padding-top:3rem;color:#e1eaf0}.contact-signature i{width:7px;height:7px;border-radius:50%;background:var(--brand-coral)}
+.contact-form{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:clamp(2rem,3.8vw,4rem);min-width:0;align-self:stretch;background:#f4f7f9;border-left:1px solid #e3e9ee}
+.contact-form-content{position:relative;z-index:1;width:100%;max-width:54rem;margin-inline:auto;padding:clamp(1.4rem,2.2vw,2.2rem);border:1px solid rgba(197,210,220,.88);border-radius:10px;background:#fff;box-shadow:0 12px 34px rgba(23,50,77,.07)}
+@media(max-width:900px){.contact-panel{grid-template-columns:.9fr 1.1fr}.contact-copy{padding:2rem}.contact-form{padding:1.6rem}.contact-form-content{padding:1.4rem}.contact h2{font-size:clamp(2.25rem,4.3vw,3rem)}}
+@media(max-width:767px){.contact-panel{grid-template-columns:1fr}.contact-copy{padding:2.4rem 1.6rem;min-height:400px}.contact h2{max-width:18ch;font-size:clamp(2.25rem,8vw,3.1rem);margin:0 0 1rem}.contact-prompt{margin-top:1.8rem}.contact-copy p:not(.contact-prompt){max-width:40ch;margin-bottom:1rem}.contact-signature{padding-top:2rem}.contact-art :global(.visual-effect--halo){opacity:.12;filter:blur(26px) saturate(.3)}.contact-form{padding:1.2rem;border-left:0;border-top:1px solid #e3e9ee}.contact-form-content{padding:1.25rem;border-radius:8px}}
 </style>

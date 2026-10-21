@@ -1,30 +1,68 @@
 ---
 import Button from '../ui/Button.astro';
+import VisualEffect from '../graphics/VisualEffect.astro';
 ---
-
-<section id="inicio" class="hero">
-  <div class="container hero-inner">
-    <div class="hero-kicker"><span class="section-eyebrow">AMZ / DATA SOFTWARE</span><span class="mono">PÁGINA INSTITUCIONAL · EM ESTRUTURAÇÃO</span></div>
-    <h1 data-reveal>Tecnologia<br />em outro<br /><em>enquadramento.</em></h1>
-    <div class="hero-bottom">
-      <p>Área reservada para a apresentação institucional aprovada.</p>
-      <div class="hero-actions"><Button href="#capitulos" label="Explorar a estrutura" /><Button href="#solucoes" label="Ver soluções" variant="secondary" /></div>
+<section id="inicio" class="hero scroll-scene" data-scroll-scene="hero">
+  <div class="hero-panel">
+    <VisualEffect effect="topology" />
+    <img class="hero-mark" src="/amz-logo-transparent.png" width="1254" height="1254" alt="" aria-hidden="true" />
+    <div class="hero-inner">
+      <div class="hero-kicker">
+        <span class="section-eyebrow">AMZ / ENGENHARIA DE IA + AUTOMAÇÃO</span>
+        <span class="mono">PÁGINA INSTITUCIONAL · PROPOSTA EDITORIAL</span>
+      </div>
+      <div class="hero-main">
+        <div class="hero-copy">
+          <h1>
+            <span class="hero-line">Desafios reais.</span>
+            <span class="hero-line hero-line--blue">Engenharia inteligente.</span>
+          </h1>
+          <p class="hero-description">Engenharia de software, inteligência artificial e automação orientadas aos desafios de cada negócio. Tecnologia pensada para problemas concretos, com clareza e propósito.</p>
+          <div class="hero-actions">
+            <Button href="#contato" label="Conversar sobre um desafio" />
+            <Button href="#abordagem" label="Conhecer a abordagem" variant="secondary" />
+          </div>
+        </div>
+      </div>
+      <div class="hero-footer">
+        <span class="hero-status mono"><i aria-hidden="true"></i> TECNOLOGIA ORIENTADA A DESAFIOS REAIS</span>
+        <a class="hero-cue mono" href="#visao"><span>01 — 10</span><span>ROLAR PARA EXPLORAR ↓</span></a>
+      </div>
     </div>
-    <a class="hero-cue mono" href="#visao"><span>01 — 09</span><span>ROLAR PARA EXPLORAR ↓</span></a>
   </div>
 </section>
-
 <style>
-.hero { min-height:min(920px,calc(100svh - 72px)); min-height:calc(100svh - 72px); display:flex; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
-.hero-inner { min-height:680px; display:flex; flex-direction:column; justify-content:space-between; padding-block:clamp(2.5rem,5vh,4.5rem) 1.5rem; position:relative; }
-.hero-kicker { display:flex; justify-content:space-between; align-items:center; gap:1rem; position:relative; z-index:1; }
-.hero-kicker .mono,.hero-cue { font:600 .63rem var(--font-mono); letter-spacing:.12em; color:var(--text-secondary); }
-h1 { font:650 clamp(5rem,13.4vw,13.5rem)/.8 var(--font-display); letter-spacing:-.105em; max-width:100%; margin:clamp(3rem,9vh,7rem) 0 2.5rem; position:relative; z-index:1; }
-h1 em { font:normal italic .92em/.95 Georgia,serif; color:var(--brand-blue); letter-spacing:-.09em; }
-.hero-bottom { display:flex; justify-content:space-between; align-items:end; gap:2rem; border-top:1px solid rgba(23,50,77,.19); padding-top:1.25rem; position:relative; z-index:1; }
-.hero-bottom>p { max-width:18rem; color:var(--text-secondary); line-height:1.55; margin:0; }
-.hero-actions { display:flex; gap:.65rem; flex-wrap:wrap; }
-.hero-cue { display:flex; justify-content:space-between; padding-top:1.4rem; }
-@media(max-width:780px){.hero{min-height:calc(100svh - 72px)}.hero-inner{min-height:620px}.hero-kicker .mono{display:none}h1{font-size:clamp(4rem,11.5vw,6.2rem);margin-block:4rem 3rem}.hero-bottom{align-items:start;flex-direction:column;gap:1.2rem}}
-@media(max-width:480px){.hero-inner{min-height:600px;padding-block:2.3rem 1.2rem}.hero h1{font-size:clamp(2.75rem,12vw,4.5rem);letter-spacing:-.1em}.hero-cue span:first-child{display:none}}
+.hero{position:relative;padding:clamp(.65rem,1.2vw,1.1rem) 2vw clamp(1.1rem,2vh,1.6rem);background:var(--bg-canvas)}
+.hero-panel{width:100%;max-width:1920px;min-height:clamp(560px,calc(100svh - 190px),640px);margin-inline:auto;display:flex;overflow:hidden;position:relative;isolation:isolate;border:1px solid #203c55;border-radius:10px;background:#102c46;color:#f4f8fa}
+.hero-panel::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(9,28,45,.85),rgba(9,28,45,.62) 46%,rgba(9,28,45,.12))}
+.hero-panel :global(.visual-effect--topology){opacity:.88}
+.hero-mark{position:absolute;z-index:2;inset-block:0;margin-block:auto;right:clamp(2rem,7vw,8rem);width:clamp(15rem,34vw,31rem);height:clamp(15rem,34vw,31rem);object-fit:contain;opacity:.86;pointer-events:none}
+.hero-inner{position:relative;z-index:3;width:100%;min-height:0;padding:clamp(1.5rem,3.5vh,2.5rem) clamp(2rem,5vw,5.5rem) 1.35rem;display:flex;flex-direction:column;justify-content:space-between}
+.hero-kicker{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.hero-kicker .section-eyebrow{color:#c6edf3}
+.hero-kicker .section-eyebrow::before{width:1.8rem;height:2px;background:var(--brand-coral)}
+.hero-kicker .mono,.hero-cue,.hero-status{font:600 .63rem var(--font-mono);letter-spacing:.1em;color:#b9cbd8}
+.hero-main{flex:1;min-height:0;display:flex;align-items:center;padding-block:clamp(2rem,4vh,3.5rem)}
+.hero-copy{min-width:0;max-width:min(72%,68rem)}
+.hero h1{margin:0 0 1.25rem;font:650 clamp(3.5rem,5.5vw,5.5rem)/1.04 var(--font-hero-display);letter-spacing:-.058em;text-wrap:balance}
+.hero-line{display:block;max-width:100%;will-change:transform}
+.hero-line--blue{color:#a4dce9}
+.hero-description{max-width:39rem;margin:0;color:#d7e3eb;font-size:clamp(1.02rem,1.2vw,1.15rem);line-height:1.65}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.75rem}
+.hero-actions :global(.amz-button.primary){background:#e8f5f8;color:#17324d;box-shadow:none}
+.hero-actions :global(.amz-button.primary:hover){background:#fff}
+.hero-actions :global(.amz-button.secondary){color:#f4f8fa;background:#15354b;border-color:#718d9f}
+.hero-actions :global(.amz-button.secondary:hover){background:#23485f;border-color:#bfdde7}
+.hero-actions :global(.amz-button:focus-visible){outline-color:#b8f1fa}
+.hero-footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:1px solid #416074;padding-top:1rem}
+.hero-status{display:flex;align-items:center;gap:.6rem}.hero-status i{width:6px;height:6px;flex-shrink:0;border-radius:50%;background:var(--brand-coral)}
+.hero-cue{display:flex;gap:1.4rem;text-decoration:none;min-height:28px;align-items:center}.hero-cue:hover{color:#fff}.hero-cue:focus-visible{outline-color:#b8f1fa}
+@media(min-width:1600px){.hero-panel{min-height:640px}.hero-inner{padding-inline:clamp(5rem,6vw,7rem)}}
+@media(min-width:781px) and (max-width:1150px){.hero-inner{padding-inline:clamp(1.8rem,3.2vw,3rem)}.hero h1{font-size:clamp(3rem,5.5vw,4rem)}}
+@media(max-width:1150px){.hero-mark{right:1.5rem;width:12rem;height:12rem;opacity:.38}}
+@media(max-width:900px){.hero-mark{display:none}.hero-copy{max-width:100%}}
+@media(max-width:780px){.hero{padding-inline:1.5vw}.hero-inner{padding:1.6rem clamp(1.5rem,4vw,2.5rem) 1.1rem}.hero-kicker .mono{display:none}.hero h1{font-size:clamp(2.8rem,6vw,3.8rem)}.hero-footer{align-items:flex-start}.hero-status{max-width:15rem;line-height:1.6}}
+@media(max-width:560px){.hero{padding:.6rem 1.5vw 1rem}.hero-panel{min-height:570px;border-radius:9px}.hero-mark{display:none}.hero-copy{max-width:100%}.hero-inner{padding:1.4rem 1.2rem 1rem}.hero-main{padding-block:2.4rem 2rem}.hero h1{font-size:clamp(2.35rem,9.6vw,3.35rem);line-height:1.05;letter-spacing:-.065em;margin-bottom:1.1rem}.hero-description{font-size:.98rem}.hero-actions{margin-top:1.4rem;gap:.7rem}.hero-actions>*{flex:1 1 100%}.hero-footer{align-items:flex-end}.hero-status{font-size:.52rem;max-width:11rem}.hero-cue{font-size:.54rem;gap:.6rem}.hero-cue span:first-child{display:none}}
+@media(max-width:340px){.hero-inner{padding-inline:.85rem}.hero h1{font-size:2.08rem}.hero-description{font-size:.92rem}}
+@media(prefers-reduced-motion:reduce){.hero-line,.hero-description,.hero-actions{will-change:auto}}
 </style>

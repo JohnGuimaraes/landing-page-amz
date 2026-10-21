@@ -1,0 +1,254 @@
+{
+  "viewports": [
+    {
+      "fieldsOverflow": false,
+      "heroWidth": 1365.763916015625,
+      "overflow": false,
+      "title": {
+        "height": 114.54861450195312,
+        "width": 544.1319580078125
+      },
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "fieldsOverflow": false,
+      "heroWidth": 1212.15283203125,
+      "overflow": false,
+      "title": {
+        "height": 101.8402862548828,
+        "width": 483.6111450195313
+      },
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "fieldsOverflow": false,
+      "heroWidth": 729.1666870117188,
+      "overflow": false,
+      "title": {
+        "height": 117.70833587646484,
+        "width": 256.19793701171875
+      },
+      "viewport": [
+        768,
+        1024
+      ]
+    },
+    {
+      "overflow": false,
+      "title": {
+        "height": 117.70833587646484,
+        "width": 287.91668701171875
+      },
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "overflow": false,
+      "title": {
+        "height": 117.70833587646484,
+        "width": 257.91668701171875
+      },
+      "viewport": [
+        360,
+        800
+      ]
+    }
+  ],
+  "resize": [
+    {
+      "backing": [
+        1210,
+        608
+      ],
+      "count": 1,
+      "css": [
+        1210,
+        608
+      ],
+      "state": "active",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "backing": [
+        727,
+        638
+      ],
+      "count": 1,
+      "css": [
+        727,
+        638
+      ],
+      "state": "active",
+      "viewport": [
+        768,
+        1024
+      ]
+    }
+  ],
+  "palettes": [
+    "verde-azul",
+    "violeta-ciano"
+  ],
+  "reduced": {
+    "canvases": 0,
+    "reduced": true,
+    "states": [
+      "static",
+      "static"
+    ]
+  },
+  "reducedEngineRequests": {
+    "result": {
+      "type": "string",
+      "value": "[]"
+    }
+  },
+  "mobileEngineRequests": {
+    "result": {
+      "type": "string",
+      "value": "[]"
+    }
+  },
+  "cycles": [
+    {
+      "effects": [
+        {
+          "count": 0,
+          "state": "static",
+          "type": "topology"
+        },
+        {
+          "count": 1,
+          "state": "active",
+          "type": "halo"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "contact"
+    },
+    {
+      "effects": [
+        {
+          "count": 1,
+          "state": "active",
+          "type": "topology"
+        },
+        {
+          "count": 0,
+          "state": "static",
+          "type": "halo"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "hero-return"
+    },
+    {
+      "effects": [
+        {
+          "count": 0,
+          "state": "static",
+          "type": "topology"
+        },
+        {
+          "count": 1,
+          "state": "active",
+          "type": "halo"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "contact-return"
+    }
+  ],
+  "anchor": {
+    "active": "integracao",
+    "focus": "integracao",
+    "hash": "#integracao"
+  },
+  "performance": {
+    "halo": {
+      "seconds": 73.58107000000018,
+      "taskSeconds": 8.505583999999999,
+      "scriptSeconds": 1.626597,
+      "heapBytes": 13044564
+    },
+    "topology": {
+      "seconds": 46.39259999999922,
+      "taskSeconds": 8.477639000000003,
+      "scriptSeconds": 4.595958,
+      "heapBytes": 21591868
+    }
+  },
+  "resolvedResizeIssue": [
+    {
+      "level": "error",
+      "message": "TypeError: Cannot read properties of undefined (reading '3')\n    at B (http://localhost:4323/_astro/vantaTopology.CBN4jyHt.js:1:10177)\n    at P (http://localhost:4323/_astro/vantaTopology.CBN4jyHt.js:1:9459)\n    at t.draw (http://localhost:4323/_astro/vantaTopology.CBN4jyHt.js:1:9183)\n    at i.default.redraw (http://localhost:4323/_astro/p5.min.DOWOzpiy.js:1788:40971)\n    at _draw (http://localhost:4323/_astro/p5.min.DOWOzpiy.js:1787:9409)",
+      "timestamp": "2026-10-21T02:39:02.712Z",
+      "url": "http://localhost:4323/_astro/vantaTopology.CBN4jyHt.js"
+    }
+  ],
+  "finalValidation": {
+    "started": "2026-10-21T02:45:08.273Z",
+    "resize": {
+      "backing": [
+        1364,
+        638
+      ],
+      "count": 1,
+      "css": [
+        1364,
+        638
+      ],
+      "state": "active",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    "contact": {
+      "effects": [
+        {
+          "count": 0,
+          "state": "static",
+          "type": "topology"
+        },
+        {
+          "count": 1,
+          "state": "active",
+          "type": "halo"
+        }
+      ],
+      "hash": "#contato"
+    },
+    "hero": {
+      "effects": [
+        {
+          "count": 1,
+          "state": "active",
+          "type": "topology"
+        },
+        {
+          "count": 0,
+          "state": "static",
+          "type": "halo"
+        }
+      ],
+      "hash": "#inicio"
+    },
+    "reduced": {
+      "canvases": 0,
+      "reduced": true
+    },
+    "console": []
+  }
+}

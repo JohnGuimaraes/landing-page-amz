@@ -11,3 +11,12 @@
 
 ## Explicitamente rejeitado
 Fundo preto/neon/roxo, globos ou circuitos de IA, card grid genérico, 13 mil partículas decorativas, efeitos que bloqueiem scroll, art direction arbitrária e seções duplicadas.
+
+## Atualização — 18/10/2026
+
+9. **Trevo 3D encerrado**: o laboratório, o Motion Conductor 3D e a dependência Three.js foram removidos do projeto ativo. A landing preserva o desenho institucional e passa a usar Motion.dev e CSS para as transições editoriais.
+10. **Ritmo dos capítulos**: Organizar, Conectar e Evoluir formam uma sequência sticky sobreposta, guiada por uma única assinatura de progresso do Motion.dev. A rolagem continua nativa, reversível e sem trapping.
+11. **Fluxo visual**: uma única atmosfera CSS discreta acompanha o progresso do scroll; não há nova escultura ou efeito 3D.
+12. **Narrativa 4.1**: a landing apresenta uma sequência provisória do Hero ao CTA; não reivindica resultados, clientes, oferta confirmada nem processo aprovado.
+13. **Continuidade 4.1**: uma assinatura de progresso Motion.dev coordena os sinais editoriais; scroll permanece nativo, reversível e com fallback estático para movimento reduzido.
+14. **Referência Collet**: observação direta da abertura mostrou fotografia de grande escala com recorte curvo e campo rosa de projetos. A AMZ usa apenas o princípio de composição expressiva e recorte, preservando seus tokens navy, blue e teal; não copia ativos, rosa, fontes ou layout.

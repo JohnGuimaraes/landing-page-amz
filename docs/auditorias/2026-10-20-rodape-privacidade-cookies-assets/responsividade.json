@@ -1,0 +1,132 @@
+[
+  {
+    "columns": "260.729px 292.031px 299.861px 325.938px",
+    "footerOverflow": false,
+    "height": 900,
+    "overflow": false,
+    "path": "/",
+    "width": 1440
+  },
+  {
+    "columns": "231.354px 259.115px 266.059px 289.201px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/",
+    "width": 1280
+  },
+  {
+    "columns": "332.882px 332.899px",
+    "footerOverflow": false,
+    "height": 1024,
+    "overflow": false,
+    "path": "/",
+    "width": 768
+  },
+  {
+    "columns": "341.319px",
+    "footerOverflow": false,
+    "height": 844,
+    "overflow": false,
+    "path": "/",
+    "width": 390
+  },
+  {
+    "columns": "311.319px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/",
+    "width": 360
+  },
+  {
+    "columns": "260.729px 292.031px 299.861px 325.938px",
+    "footerOverflow": false,
+    "height": 900,
+    "overflow": false,
+    "path": "/privacidade",
+    "robots": "noindex, nofollow",
+    "width": 1440
+  },
+  {
+    "columns": "231.354px 259.115px 266.059px 289.201px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/privacidade",
+    "robots": "noindex, nofollow",
+    "width": 1280
+  },
+  {
+    "columns": "332.882px 332.899px",
+    "footerOverflow": false,
+    "height": 1024,
+    "overflow": false,
+    "path": "/privacidade",
+    "robots": "noindex, nofollow",
+    "width": 768
+  },
+  {
+    "columns": "341.319px",
+    "footerOverflow": false,
+    "height": 844,
+    "overflow": false,
+    "path": "/privacidade",
+    "robots": "noindex, nofollow",
+    "width": 390
+  },
+  {
+    "columns": "311.319px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/privacidade",
+    "robots": "noindex, nofollow",
+    "width": 360
+  },
+  {
+    "columns": "260.729px 292.031px 299.861px 325.938px",
+    "footerOverflow": false,
+    "height": 900,
+    "overflow": false,
+    "path": "/cookies",
+    "robots": "noindex, nofollow",
+    "width": 1440
+  },
+  {
+    "columns": "231.354px 259.115px 266.059px 289.201px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/cookies",
+    "robots": "noindex, nofollow",
+    "width": 1280
+  },
+  {
+    "columns": "332.882px 332.899px",
+    "footerOverflow": false,
+    "height": 1024,
+    "overflow": false,
+    "path": "/cookies",
+    "robots": "noindex, nofollow",
+    "width": 768
+  },
+  {
+    "columns": "341.319px",
+    "footerOverflow": false,
+    "height": 844,
+    "overflow": false,
+    "path": "/cookies",
+    "robots": "noindex, nofollow",
+    "width": 390
+  },
+  {
+    "columns": "311.319px",
+    "footerOverflow": false,
+    "height": 800,
+    "overflow": false,
+    "path": "/cookies",
+    "robots": "noindex, nofollow",
+    "width": 360
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "accordion": "acordeão",
+    "captionAndNoticeOverlap": false,
+    "cards": [
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      }
+    ],
+    "height": 900,
+    "noticeGap": 25,
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "accordion": "acordeão",
+    "captionAndNoticeOverlap": false,
+    "cards": [
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      }
+    ],
+    "height": 800,
+    "noticeGap": 23,
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "accordion": "acordeão",
+    "captionAndNoticeOverlap": false,
+    "cards": [
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      }
+    ],
+    "height": 1024,
+    "noticeGap": 11,
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "accordion": "acordeão",
+    "captionAndNoticeOverlap": false,
+    "cards": [
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      }
+    ],
+    "height": 844,
+    "noticeGap": 13,
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "accordion": "acordeão",
+    "captionAndNoticeOverlap": false,
+    "cards": [
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      },
+      {
+        "overflow": false
+      }
+    ],
+    "height": 800,
+    "noticeGap": 13,
+    "overflow": false,
+    "width": 360
+  }
+]

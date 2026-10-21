@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Document",
+    "url": "http://localhost:4323/"
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "type": "Stylesheet",
+    "url": "http://localhost:4323/_astro/design-system.NQRh6OLu.css"
+  },
+  {
+    "type": "Stylesheet",
+    "url": "http://localhost:4323/_astro/index.BQyYf6Ds.css"
+  },
+  {
+    "type": "Image",
+    "url": "http://localhost:4323/amz-logo-transparent.png"
+  },
+  {
+    "type": "Script",
+    "url": "http://localhost:4323/_astro/index.astro_astro_type_script_index_0_lang.C_i3pjMl.js"
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "status": 200,
+    "setCookie": []
+  },
+  {
+    "type": "Font",
+    "url": "http://localhost:4323/_astro/sora-latin-800-normal.2tKLL3qT.woff2"
+  },
+  {
+    "type": "Font",
+    "url": "http://localhost:4323/_astro/manrope-latin-500-normal.BYYD-dBL.woff2"
+  }
+]

@@ -1,0 +1,46 @@
+<section id="ecossistema" class="ecosystem-stage scroll-scene" data-scroll-scene="ecosystem" aria-labelledby="ecosystem-title">
+  <div class="ecosystem-panel">
+    <div class="ecosystem-inner container">
+      <div class="ecosystem-transition">
+        <span class="section-eyebrow">04 / MUDANÇA DE ATMOSFERA</span>
+        <p>Tudo funciona melhor<br /><em>quando trabalha junto.</em></p>
+        <span class="transition-copy">É assim que diferentes tecnologias podem formar uma experiência mais integrada.</span>
+      </div>
+      <div class="ecosystem-composition">
+        <div class="ecosystem-heading">
+          <span class="section-eyebrow">05 / ECOSSISTEMA AMZ · CONTEÚDO PROVISÓRIO</span>
+          <h2 id="ecosystem-title">Uma visão integrada.<br /><em>Diferentes possibilidades.</em></h2>
+          <p>Software, dados, integrações e automações podem atuar de forma complementar para resolver desafios reais.</p>
+        </div>
+        <div class="ecosystem-map" aria-label="Composição visual provisória de capacidades que se relacionam">
+          <svg class="ecosystem-lines" viewBox="0 0 1000 380" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M500 190 C420 190 420 72 290 72 H116" pathLength="1" />
+            <path d="M500 190 C420 190 420 308 290 308 H116" pathLength="1" />
+            <path d="M500 190 C580 190 580 72 710 72 H884" pathLength="1" />
+            <path d="M500 190 C580 190 580 308 710 308 H884" pathLength="1" />
+          </svg>
+          <span class="ecosystem-origin" aria-hidden="true"></span>
+          <div class="ecosystem-node ecosystem-node--one"><span>CAPACIDADE</span><strong>Software</strong></div>
+          <div class="ecosystem-node ecosystem-node--two"><span>CAPACIDADE</span><strong>Dados</strong></div>
+          <div class="ecosystem-node ecosystem-node--three"><span>CAPACIDADE</span><strong>Integrações</strong></div>
+          <div class="ecosystem-node ecosystem-node--four"><span>CAPACIDADE</span><strong>Automações</strong></div>
+        </div>
+        <span class="ecosystem-note mono">RELAÇÕES ILUSTRATIVAS · CAPACIDADES A VALIDAR</span>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.ecosystem-stage{height:168svh;position:relative;background:var(--brand-navy);padding:0 clamp(8px,1.2vw,18px)}
+.ecosystem-panel{height:100svh;min-height:690px;position:sticky;top:0;overflow:hidden;border-radius:var(--scene-radius,var(--radius-lg));background:var(--brand-navy);color:white;transform:scale(calc(.96 + var(--scene-progress,0)*.04));transform-origin:50% 50%;}
+.ecosystem-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 68% at 80% 85%,color-mix(in srgb,var(--brand-teal) 22%,transparent),transparent 70%),linear-gradient(110deg,color-mix(in srgb,var(--brand-blue) 12%,transparent),transparent 62%);opacity:calc(.2 + var(--scene-progress,0)*.8);pointer-events:none}
+.ecosystem-inner{height:100%;position:relative;display:grid;grid-template-columns:.38fr 1fr;gap:6vw;align-items:center;padding-block:clamp(4rem,8vh,7rem)}
+.ecosystem-transition{align-self:center;max-width:22rem;position:relative;z-index:1;opacity:calc(1 - var(--scene-progress,0)*1.2);transform:translateY(calc(var(--scene-progress,0)*-20px));}.ecosystem-stage .section-eyebrow{color:color-mix(in srgb,var(--bg-soft) 84%,var(--brand-blue))}.ecosystem-transition>p{font:600 clamp(2rem,3.4vw,3.8rem)/1 var(--font-display);letter-spacing:-.065em;color:white;margin:2rem 0}.ecosystem-transition em{font:normal italic 1em Georgia,serif;color:color-mix(in srgb,var(--brand-teal) 54%,var(--bg-surface))}.transition-copy{display:block;max-width:20rem;color:color-mix(in srgb,var(--bg-soft) 90%,var(--brand-blue));line-height:1.55}
+.ecosystem-composition{position:relative;z-index:1;min-width:0;opacity:calc(.2 + var(--scene-progress,0)*.8);transform:translateY(calc((1 - var(--scene-progress,0))*18px));}.ecosystem-heading{max-width:60rem}.ecosystem-heading h2{font:620 clamp(2.4rem,5vw,5.2rem)/.98 var(--font-display);letter-spacing:-.075em;margin:1.25rem 0}.ecosystem-heading h2 em{font:normal italic .9em Georgia,serif;color:color-mix(in srgb,var(--brand-teal) 48%,var(--bg-soft))}.ecosystem-heading p{max-width:39rem;color:color-mix(in srgb,var(--bg-soft) 90%,var(--brand-blue));line-height:1.55;margin:0}
+.ecosystem-map{height:clamp(220px,30vh,340px);margin-top:1.1rem;position:relative}.ecosystem-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.ecosystem-lines path{fill:none;stroke:color-mix(in srgb,var(--brand-teal) 48%,var(--bg-soft));stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--scene-progress,0));opacity:.85}.ecosystem-origin{position:absolute;left:50%;top:50%;width:16px;height:16px;border-radius:50%;background:color-mix(in srgb,var(--brand-teal) 35%,var(--bg-surface));box-shadow:0 0 0 10px color-mix(in srgb,var(--brand-teal) 12%,transparent);transform:translate(-50%,-50%) scale(calc(.75 + var(--scene-progress,0)*.25))}.ecosystem-origin::after{content:'';position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:var(--brand-coral);transform:translate(-50%,-50%)}
+.ecosystem-node{position:absolute;width:22%;min-height:74px;border-top:1px solid color-mix(in srgb,var(--bg-surface) 46%,transparent);padding-top:.75rem;opacity:calc(.5 + var(--scene-progress,0)*.5);transform:translateY(calc((1 - var(--scene-progress,0))*12px));}.ecosystem-node span{display:block;font:600 .58rem var(--font-mono);letter-spacing:.12em;color:color-mix(in srgb,var(--brand-teal) 45%,var(--bg-soft));margin-bottom:.4rem}.ecosystem-node strong{font:560 clamp(1rem,1.5vw,1.35rem) var(--font-display);letter-spacing:-.03em}.ecosystem-node--one{left:0;top:7%}.ecosystem-node--two{left:0;bottom:5%}.ecosystem-node--three{right:0;top:7%}.ecosystem-node--four{right:0;bottom:5%}
+.ecosystem-note{display:block;text-align:right;color:color-mix(in srgb,var(--bg-soft) 74%,var(--brand-blue));font-size:.56rem;letter-spacing:.1em}
+@media(max-width:850px){.ecosystem-stage{height:auto;padding:0}.ecosystem-panel{position:relative;top:auto;height:auto;min-height:0;border-radius:0;transform:none}.ecosystem-inner{min-height:100svh;grid-template-columns:1fr;gap:3rem;padding-block:5rem}.ecosystem-transition{max-width:34rem}.ecosystem-transition>p{margin:1.2rem 0}.ecosystem-transition .section-eyebrow{font-size:.6rem}.ecosystem-heading h2{font-size:clamp(2.3rem,8vw,4rem)}.ecosystem-map{height:250px;margin-top:2rem}.ecosystem-node{width:30%}}
+@media(max-width:520px){.ecosystem-inner{padding-inline:var(--gutter);gap:3.5rem}.ecosystem-map{height:230px}.ecosystem-lines{inset:0 -5%;width:110%}.ecosystem-node{width:38%;min-height:66px}.ecosystem-node strong{font-size:.94rem}.ecosystem-origin{width:12px;height:12px}.ecosystem-note{font-size:.49rem}}
+@media(prefers-reduced-motion:reduce){.ecosystem-stage{height:auto}.ecosystem-panel{position:relative;top:auto;height:auto;min-height:100svh;transform:none;border-radius:0}.ecosystem-inner{min-height:100svh}.ecosystem-transition,.ecosystem-composition{opacity:1;transform:none}.ecosystem-lines path{stroke-dashoffset:0}.ecosystem-node{opacity:1;transform:none}}
+</style>

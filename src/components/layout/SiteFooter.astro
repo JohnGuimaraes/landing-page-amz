@@ -1,29 +1,86 @@
 ---
 import BrandMark from '../ui/BrandMark.astro';
 import { site } from '../../config/site';
+import { privacy } from '../../lib/privacy';
 const baseHref = Astro.url.pathname === '/' ? '' : '/';
+const explore = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'O que fazemos', href: '#visao' },
+  { label: 'Nossa abordagem', href: '#abordagem' },
+  { label: 'Projetos e experiências', href: '#projetos' },
+  { label: 'Conexões', href: '#conexoes' },
+];
+const expertise = [
+  { label: 'Engenharia de software', href: '#engenharia' },
+  { label: 'Automação e IA', href: '#automacao' },
+  { label: 'Integrações', href: '#integracao' },
+  { label: 'Evolução tecnológica', href: '#modernizacao' },
+];
 ---
 <footer class="site-footer">
-  <div class="container footer-main">
-    <div class="footer-brand"><BrandMark inverse /><p>Espaço reservado para uma apresentação institucional validada.</p></div>
-    <div class="footer-column"><span class="footer-label mono">NAVEGAÇÃO</span><nav aria-label="Navegação do rodapé">{site.nav.map(item => <a href={`${baseHref}${item.href}`}>{item.label}</a>)}</nav></div>
-    <div class="footer-column"><span class="footer-label mono">CONTATO</span><a href={`${baseHref}#contato`}>Canal oficial a definir <span aria-hidden="true">↗</span></a><span class="footer-muted">Redes sociais a definir</span></div>
+  <div class="container">
+    <div class="footer-identity">
+      <div class="footer-brand"><BrandMark inverse href={`${baseHref}#inicio`} /><p>Tecnologia para desafios reais.</p></div>
+      <p class="footer-disciplines"><span class="mono">TECNOLOGIA APLICADA</span>Software <i aria-hidden="true">·</i> Automação <i aria-hidden="true">·</i> Inteligência artificial</p>
+    </div>
+    <div class="footer-columns">
+      <nav class="footer-column" aria-labelledby="footer-explore">
+        <h2 id="footer-explore">Explore</h2>
+        <ul>{explore.map(item => <li><a href={`${baseHref}${item.href}`}>{item.label}</a></li>)}</ul>
+      </nav>
+      <nav class="footer-column footer-company" aria-labelledby="footer-company">
+        <h2 id="footer-company">Empresa</h2>
+        <ul>
+          <li><a href={`${baseHref}#abordagem`}>Como trabalhamos</a></li>
+          <li><a class="footer-opportunity" href={site.opportunities.careers}>Trabalhe conosco <span aria-hidden="true">↗</span></a></li>
+          <li><a class="footer-opportunity" href={site.opportunities.partnerships}>Seja parceiro <span aria-hidden="true">↗</span></a></li>
+        </ul>
+        <p class="footer-note">Interesse em futuras oportunidades<br />e novas colaborações.</p>
+      </nav>
+      <nav class="footer-column footer-expertise" aria-labelledby="footer-expertise">
+        <h2 id="footer-expertise">O que fazemos</h2>
+        <ul>{expertise.map(item => <li><a href={`${baseHref}${item.href}`}>{item.label}</a></li>)}</ul>
+      </nav>
+      <div class="footer-column footer-connect">
+        <h2 id="footer-connect">Conecte-se</h2>
+        <a class="footer-channel" href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.2A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.5 3 2 4.5 5 5l1-1.5m-6-3.5L10.5 8"/></svg>
+          <span>WhatsApp comercial<span class="footer-channel-detail">Conversar com a AMZ</span></span><span class="footer-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="footer-channel" href={site.socials[0].url} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7"/></svg>
+          <span>Instagram<span class="footer-channel-detail">@amzdatasoftware</span></span><span class="footer-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="footer-channel footer-phone" href={site.contact.phone}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 3 3 5-2 2a15 15 0 0 0 6 6l2-2 5 3-1 4C10 22 2 14 3 4Z"/></svg>
+          <span><span class="sr-only">Telefone: </span>{site.contact.phoneLabel}</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} AMZ Data Software. <span>Todos os direitos reservados.</span></p>
+      <nav class="footer-utilities" aria-label="Privacidade e navegação final">
+        <a href={privacy.routes.privacy}>Privacidade</a>
+        <a href={privacy.routes.cookies}>Política de Cookies</a>
+        <a href={privacy.routes.preferences}>Preferências de cookies</a>
+        <a class="footer-top" href={`${baseHref}#inicio`}>Voltar ao topo <span aria-hidden="true">↑</span></a>
+      </nav>
+    </div>
   </div>
-  <div class="container footer-legal"><span>© {new Date().getFullYear()} AMZ Data Software</span><span>Informações legais a validar</span><a href={`${baseHref}#inicio`}>Voltar ao início ↑</a></div>
 </footer>
 <style>
-.site-footer { background:var(--brand-navy); color:white; padding:4.5rem 0 1.5rem; }
-.footer-main { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:4rem; }
-.footer-brand p { margin:1.4rem 0 0; max-width:20rem; color:#c9dae3; line-height:1.6; }
-.footer-column { display:flex; flex-direction:column; align-items:flex-start; gap:.8rem; }
-.footer-label { font-size:.63rem; letter-spacing:.13em; color:#9bc9d2; margin-bottom:.4rem; }
-.footer-column nav { display:grid; gap:.7rem; }
-.footer-column a,.footer-muted { font-size:.86rem; color:#e0ebef; }
-.footer-column a:hover,.footer-legal a:hover { color:white; text-decoration:underline; text-underline-offset:4px; }
-.footer-column a span { margin-left:.4rem; }
-.footer-muted { color:#a9bdc8; }
-.footer-legal { display:flex; justify-content:space-between; gap:1rem; border-top:1px solid rgba(255,255,255,.19); padding-top:1.25rem; color:#a9bdc8; font-size:.72rem; }
-.footer-legal a { color:white; }
-@media(max-width:720px){.footer-main{grid-template-columns:1fr 1fr;gap:2.5rem 1.5rem}.footer-brand{grid-column:1/-1}}
-@media(max-width:520px){.footer-main{grid-template-columns:1fr}.footer-brand{grid-column:auto}.footer-legal{flex-direction:column;align-items:flex-start}}
+.site-footer{--footer-muted:color-mix(in srgb,var(--text-inverse) 74%,var(--brand-navy));--footer-rule:color-mix(in srgb,var(--text-inverse) 17%,var(--brand-navy));background:var(--brand-navy);color:var(--text-inverse);padding:clamp(2.5rem,4vw,3.5rem) 0 1.25rem}
+.footer-identity{display:flex;justify-content:space-between;align-items:center;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--footer-rule)}
+.footer-brand p{margin:.85rem 0 0;color:var(--footer-muted);font-size:.95rem;line-height:1.5}
+.footer-disciplines{margin:0;color:var(--footer-muted);font-size:.875rem;line-height:1.7;text-align:right}.footer-disciplines .mono{display:block;margin-bottom:.4rem;color:var(--brand-coral);font-size:.75rem;letter-spacing:.12em}.footer-disciplines i{font-style:normal;padding:0 .35rem}
+.footer-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr) minmax(0,1.15fr) minmax(0,1.25fr);gap:clamp(1.5rem,4vw,4rem);padding:2.25rem 0 2rem}
+.footer-column{min-width:0}.footer-column h2{margin:0 0 1rem;font:600 .8125rem/1.5 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-coral)}
+.footer-column ul{list-style:none;padding:0;margin:0;display:grid;gap:.2rem}.footer-column a{display:inline-flex;align-items:center;min-height:2.35rem;color:var(--text-inverse);font-size:.9375rem;line-height:1.5;text-decoration:none;transition:color var(--duration-fast) ease}.site-footer a:hover{color:var(--brand-coral)}.site-footer a:focus-visible{outline:2px solid var(--text-inverse);outline-offset:5px;border-radius:2px}
+.footer-opportunity{gap:.6rem}.footer-opportunity span,.footer-arrow,.footer-top span{display:inline-block;transition:transform var(--duration-fast) ease}.footer-opportunity:hover span,.footer-channel:hover .footer-arrow{transform:translate(2px,-2px)}
+.footer-note{color:var(--footer-muted);font-size:.875rem;line-height:1.65;margin:.8rem 0 0}
+.footer-connect{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem}.footer-connect h2{margin-bottom:.1rem}.footer-connect .footer-channel{display:flex;gap:.65rem;align-items:flex-start;min-height:2.6rem}.footer-channel svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.footer-channel-detail{display:block;color:var(--footer-muted);font-size:.875rem;margin-top:.15rem}.footer-arrow{margin-left:.15rem;color:var(--footer-muted)}.footer-connect .footer-phone{min-height:2.3rem;align-items:center}.footer-phone svg{margin-top:0}
+.footer-bottom{border-top:1px solid var(--footer-rule);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:var(--footer-muted);font-size:.875rem;line-height:1.6}.footer-bottom p{margin:0;flex:0 1 auto}.footer-utilities{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:.25rem 1.25rem}.footer-utilities a{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--footer-muted);transition:color var(--duration-fast) ease}.footer-utilities .footer-top{color:var(--text-inverse);gap:.5rem;border:0;background:none;font-size:.875rem}.footer-utilities a:hover{color:var(--brand-coral)}.footer-top{display:inline-flex;align-items:center;gap:.8rem;min-height:2.75rem;color:var(--text-inverse);text-decoration:none;white-space:nowrap}.footer-top:hover span{transform:translateY(-2px)}
+@media(max-width:1000px){.footer-columns{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3rem}.footer-bottom{align-items:flex-start;flex-direction:column;gap:.5rem}.footer-utilities{justify-content:flex-start}.footer-identity{align-items:flex-start}.footer-disciplines{max-width:21rem}}
+@media(max-width:540px){.footer-identity{flex-direction:column;gap:1.25rem;padding-bottom:1.5rem}.footer-disciplines{text-align:left;font-size:.875rem}.footer-columns{grid-template-columns:1fr;gap:1.8rem;padding:1.8rem 0}.footer-company,.footer-connect,.footer-expertise{grid-column:auto;grid-row:auto}.footer-column h2{margin-bottom:.65rem}.footer-column ul{gap:.1rem}.footer-column a{min-height:2.75rem;font-size:.9375rem}.footer-note{margin-top:.45rem}.footer-bottom{align-items:flex-start;flex-direction:column;gap:.6rem}.footer-bottom p span{display:block}.footer-connect{gap:.85rem}.footer-connect h2{margin-bottom:0}}
+@media(prefers-reduced-motion:reduce){.site-footer a,.footer-opportunity span,.footer-arrow,.footer-top span{transition:none}}
 </style>

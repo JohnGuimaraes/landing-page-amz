@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { privacy } from '../lib/privacy';
+interface Props { title: string; description: string; sections: { id: string; label: string }[]; }
+const { title, description, sections } = Astro.props;
+---
+<BaseLayout title={`${title} — AMZ Data Software`} description={description} noindex>
+  <div class="institutional container">
+    <a class="institutional-back" href="/">← Voltar à AMZ</a>
+    <header class="institutional-heading">
+      <span class="section-eyebrow">AMZ / TRANSPARÊNCIA</span>
+      <h1>{title}</h1>
+      <p class="institutional-description">{description}</p>
+      <p class="institutional-date">Revisão técnica: <time datetime={privacy.reviewedAt}>{privacy.reviewedAtLabel}</time></p>
+    </header>
+    <aside class="institutional-notice" aria-label="Status do documento">
+      <strong>Versão preliminar para revisão.</strong>
+      <p>Estas informações descrevem a versão técnica examinada da landing. A aprovação institucional e a revisão jurídica são necessárias antes da publicação em produção. Este documento não constitui uma política definitiva.</p>
+    </aside>
+    <div class="institutional-grid">
+      <nav class="institutional-index" aria-label="Nesta página"><h2>Nesta página</h2><ol>{sections.map(section => <li><a href={`#${section.id}`}>{section.label}</a></li>)}</ol></nav>
+      <article class="institutional-content"><slot /></article>
+    </div>
+    <nav class="institutional-related" aria-label="Documentos relacionados"><a href={privacy.routes.privacy}>Privacidade</a><a href={privacy.routes.cookies}>Política de Cookies</a><a href="/#contato">Falar com a AMZ ↗</a></nav>
+  </div>
+</BaseLayout>
+<style>
+.institutional{--institutional-link:color-mix(in srgb,var(--brand-blue) 85%,var(--brand-navy));padding-top:3rem;padding-bottom:clamp(3rem,6vw,6rem);max-width:1200px}.institutional .section-eyebrow{color:var(--institutional-link)}.institutional-back{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--institutional-link);font-size:.9375rem}.institutional-heading{margin-top:2rem;max-width:48rem}.institutional-heading h1{font:650 clamp(2.75rem,6vw,5rem)/1.05 var(--font-display);letter-spacing:-.06em;color:var(--brand-navy);margin:1.2rem 0}.institutional-description{font-size:var(--type-lg);line-height:1.65;color:var(--text-secondary);margin:0}.institutional-date{font-size:.875rem;color:var(--text-secondary);margin:1.25rem 0 0}.institutional-notice{margin:2rem 0 3rem;padding:1rem 1.25rem;border-left:2px solid var(--brand-blue);background:var(--bg-soft);max-width:55rem;font-size:.9375rem;line-height:1.65}.institutional-notice p{margin:.35rem 0 0;color:var(--text-secondary)}.institutional-grid{display:grid;grid-template-columns:minmax(11rem,.45fr) minmax(0,1.55fr);gap:clamp(2rem,5vw,5rem);align-items:start}.institutional-index h2{font:600 .8125rem/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.07em;margin:0 0 .8rem}.institutional-index ol{list-style:none;padding:0;margin:0;display:grid;gap:.15rem}.institutional-index a{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--text-secondary);font-size:.9375rem;line-height:1.45}.institutional a:hover{color:var(--institutional-link);text-decoration:underline;text-underline-offset:4px}.institutional-related{display:flex;flex-wrap:wrap;gap:.5rem 2rem;border-top:1px solid var(--border-subtle);margin-top:3rem;padding-top:1.5rem}.institutional-related a{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--institutional-link);font-size:.9375rem}
+@media(max-width:760px){.institutional{padding-top:1.75rem}.institutional-grid{grid-template-columns:1fr;gap:2rem}.institutional-index{border-bottom:1px solid var(--border-subtle);padding-bottom:1.5rem}.institutional-heading{margin-top:1.5rem}.institutional-notice{margin-bottom:2rem}.institutional-index ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem 1rem}}
+@media(max-width:400px){.institutional-index ol{grid-template-columns:1fr}.institutional-heading h1{font-size:2.65rem}}
+</style>
+<style is:global>
+.institutional-content{max-width:70ch;min-width:0;line-height:1.75;color:var(--text-secondary)}.institutional-content section+section{margin-top:2.5rem}.institutional-content h2{font:650 clamp(1.4rem,2.2vw,1.8rem)/1.25 var(--font-display);letter-spacing:-.035em;color:var(--brand-navy);margin:0 0 1rem}.institutional-content p{margin:.8rem 0}.institutional-content ul{padding-left:1.2rem}.institutional-content li+li{margin-top:.55rem}.institutional-content a{color:var(--institutional-link);text-decoration:underline;text-underline-offset:3px}.institutional-content strong{font-weight:650;color:var(--brand-navy)}.institutional-table-wrap{max-width:100%;overflow-x:auto}.institutional-content table{width:100%;border-collapse:collapse;text-align:left;font-size:.9375rem;line-height:1.6}.institutional-content th{font-weight:650;color:var(--brand-navy);background:var(--bg-soft)}.institutional-content th,.institutional-content td{padding:.85rem .7rem;border-bottom:1px solid var(--border-subtle);vertical-align:top;overflow-wrap:anywhere}.institutional-content caption{text-align:left;font-weight:600;color:var(--brand-navy);margin-bottom:.8rem}
+@media(max-width:540px){.institutional-content table{font-size:.875rem}.institutional-content th,.institutional-content td{padding:.65rem .45rem}}
+</style>

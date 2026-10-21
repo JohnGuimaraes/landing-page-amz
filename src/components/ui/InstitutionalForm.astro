@@ -1,0 +1,49 @@
+---
+import { site } from '../../config/site';
+import { formEndpoints, type FormKind } from '../../config/forms';
+interface Props { kind?: FormKind; }
+const { kind = 'contact' } = Astro.props;
+const messageLabel = kind === 'careers' ? 'Área de interesse e breve apresentação' : kind === 'partnerships' ? 'Que colaboração você gostaria de propor?' : 'Qual desafio podemos ajudar a resolver?';
+const endpoint = formEndpoints[kind];
+---
+<form class="institutional-form" data-institutional-form data-kind={kind} data-endpoint={endpoint ?? ''} aria-label={kind === 'contact' ? 'Solicitação comercial' : kind === 'careers' ? 'Interesse profissional' : 'Proposta de parceria'} novalidate method="post" action={endpoint ?? undefined}>
+  <p class="form-kicker mono">{kind === 'contact' ? 'CONTE SEU CONTEXTO' : kind === 'careers' ? 'APRESENTE SEU INTERESSE' : 'VAMOS EXPLORAR POSSIBILIDADES'}</p>
+  <p class="form-required">Campos com * são obrigatórios.</p>
+  {!endpoint && <p class="form-availability" id={`${kind}-availability`}>Envio pelo formulário ainda indisponível. Por enquanto, fale com a AMZ pelo WhatsApp. Nenhum dado preenchido aqui será transmitido.</p>}
+  <div class="form-field">
+    <label for={`${kind}-message`}>{messageLabel} <span aria-hidden="true">*</span></label>
+    <textarea id={`${kind}-message`} name="message" required minlength="10" maxlength="2000" rows="3" aria-describedby={`${kind}-message-error`} placeholder={kind === 'contact' ? 'Conte um pouco sobre o que sua empresa precisa.' : 'Compartilhe apenas as informações necessárias para uma primeira conversa.'}></textarea>
+    <span class="field-error" id={`${kind}-message-error`}></span>
+  </div>
+  <div class="form-row">
+    <div class="form-field"><label for={`${kind}-name`}>Nome <span aria-hidden="true">*</span></label><input id={`${kind}-name`} name="name" autocomplete="name" required minlength="2" maxlength="120" aria-describedby={`${kind}-name-error`} /><span class="field-error" id={`${kind}-name-error`}></span></div>
+    <div class="form-field"><label for={`${kind}-email`}>E-mail <span aria-hidden="true">*</span></label><input id={`${kind}-email`} name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby={`${kind}-email-error`} /><span class="field-error" id={`${kind}-email-error`}></span></div>
+  </div>
+  {kind !== 'careers' && <div class="form-field"><label for={`${kind}-company`}>Empresa <span class="optional">(opcional)</span></label><input id={`${kind}-company`} name="company" autocomplete="organization" maxlength="160" /></div>}
+  <div class="form-trap" aria-hidden="true"><label for={`${kind}-website`}>Deixe este campo vazio</label><input id={`${kind}-website`} name="website" tabindex="-1" autocomplete="off" /></div>
+  <p class="form-purpose">{kind === 'careers' ? 'Finalidade prevista: avaliar seu interesse em futuras oportunidades. Não envie currículo, documentos ou dados sensíveis neste formulário.' : kind === 'partnerships' ? 'Finalidade prevista: analisar sua proposta e permitir um retorno sobre a colaboração.' : 'Finalidade prevista: compreender sua solicitação e permitir um retorno sobre o assunto.'} Consulte as <a href="/privacidade">informações preliminares de privacidade</a>.</p>
+  <button class="form-submit" type="submit" disabled><span>Enviar solicitação</span><span aria-hidden="true">↗</span></button>
+  <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <a class="form-whatsapp" href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer">Prefere conversar? WhatsApp da AMZ <span aria-hidden="true">↗</span></a>
+  <noscript><p>O envio eletrônico não está disponível nesta versão. Utilize o link de WhatsApp acima.</p></noscript>
+</form>
+<script>
+  import { initInstitutionalForms } from '../../scripts/institutionalForms';
+  initInstitutionalForms();
+</script>
+<style>
+.institutional-form{width:100%;min-width:0;color:var(--brand-navy)}
+.form-kicker{font-size:.65rem;letter-spacing:.14em;color:#245f8b;margin:0 0 .75rem}.form-required{font-size:.8rem;color:var(--text-secondary);margin:0 0 1rem}.form-availability{font-size:.85rem;line-height:1.55;padding:.8rem 1rem;background:#eaf2f5;border-left:2px solid var(--brand-blue);margin:0 0 1.5rem}
+.form-field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.1rem;min-width:0}.form-field label{font-size:.9rem;font-weight:650;line-height:1.5}.optional{font-weight:400;color:var(--text-secondary);font-size:.8rem}.form-field input,.form-field textarea{box-sizing:border-box;width:100%;min-width:0;border:1px solid #a8bac8;border-radius:4px;background:#fff;color:var(--brand-navy);padding:.8rem .85rem;font:inherit;font-size:1rem;line-height:1.5}.form-field textarea{resize:vertical;min-height:100px}.form-field :is(input,textarea)::placeholder{color:#687989;font-size:.9rem}.form-field :is(input,textarea):focus-visible{outline:2px solid var(--brand-blue);outline-offset:3px}.form-field [aria-invalid=true]{border-color:#aa3e2d}.field-error{font-size:.8rem;line-height:1.5;color:#9b3123}.field-error:empty{display:none}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.form-purpose{font-size:.78rem;line-height:1.65;color:var(--text-secondary);margin:.25rem 0 1.25rem}.form-purpose a{color:#245f8b;text-decoration:underline;text-underline-offset:3px}.form-submit{display:flex;justify-content:space-between;align-items:center;gap:2rem;min-height:50px;width:100%;border:0;border-radius:4px;padding:.85rem 1.1rem;background:var(--brand-navy);color:#fff;font:650 .95rem var(--font-body);cursor:pointer}.form-submit:hover{background:#245579}.form-submit:disabled{opacity:.6;cursor:wait}.form-submit:focus-visible,.form-whatsapp:focus-visible{outline:3px solid var(--brand-blue);outline-offset:4px}.form-status{font-size:.9rem;line-height:1.6;margin:.8rem 0}.form-status:empty{display:none}.form-whatsapp{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;margin-top:.5rem;color:#245f8b;font-size:.85rem;text-decoration:underline;text-underline-offset:4px}.form-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:540px){.form-row{grid-template-columns:1fr;gap:0}}
+form[data-kind="contact"] .form-kicker{display:flex;align-items:center;gap:.7rem;color:#a95138;font-weight:700}
+form[data-kind="contact"] .form-kicker::before{content:"";width:1.5rem;height:2px;background:var(--brand-coral);border-radius:2px}
+form[data-kind="contact"] .form-required{margin-bottom:1.2rem}
+form[data-kind="contact"] .form-field label span[aria-hidden="true"]{color:#c56549}
+form[data-kind="contact"] .form-field input,form[data-kind="contact"] .form-field textarea{border-color:#c5d0d9;border-radius:7px;background:#fff;transition:border-color .2s ease,box-shadow .2s ease}
+form[data-kind="contact"] .form-field :is(input,textarea):hover{border-color:#97aab9}
+form[data-kind="contact"] .form-field :is(input,textarea):focus-visible{outline:2px solid color-mix(in srgb,var(--brand-coral) 58%,white);outline-offset:2px;border-color:#cf7456;box-shadow:0 0 0 4px color-mix(in srgb,var(--brand-coral) 12%,transparent)}
+form[data-kind="contact"] .form-submit{border-radius:7px;border-bottom:2px solid #c96c4d;transition:background .2s ease,transform .2s ease}
+form[data-kind="contact"] .form-submit:hover{background:#244a67;transform:translateY(-1px)}
+form[data-kind="contact"] .form-submit:focus-visible,form[data-kind="contact"] .form-whatsapp:focus-visible{outline-color:#cf7456}
+</style>

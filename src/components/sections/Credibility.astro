@@ -1,17 +1,50 @@
-<section id="projetos" class="section credibility">
-  <div class="container credibility-inner" data-reveal>
-    <div><span class="section-eyebrow">05 / PROJETOS</span><h2 class="section-title">Um espaço para<br /><em>evidências reais.</em></h2></div>
-    <div class="credibility-reserve"><span class="reserve-index mono">CASE / A VALIDAR</span><span class="reserve-message">Área reservada para projetos autorizados.</span><span class="reserve-mark" aria-hidden="true">↗</span></div>
+---
+const examples = [
+  { src: '/images/applications/comercio-eletronico.png', alt: 'Exemplo de experiência digital para comércio, com navegação, vitrine e categorias.', label: 'COMÉRCIO DIGITAL', index: '01', className: 'showcase-main', caption: 'Uma visão ampla para organizar a descoberta e apresentar possibilidades.' },
+  { src: '/images/applications/bolos.png', alt: 'Exemplo de experiência digital para confeitaria, com produtos e detalhes da jornada de compra.', label: 'CONFEITARIA', index: '02', className: 'showcase-secondary showcase-bakery', caption: 'Um contexto próprio, com seus produtos no centro da experiência.' },
+  { src: '/images/applications/conecta-celulares.png', alt: 'Exemplo de loja digital de celulares, com destaque para produtos e navegação.', label: 'TECNOLOGIA', index: '03', className: 'showcase-secondary showcase-mobile', caption: 'Outra necessidade, outra forma de apresentar e orientar.' },
+];
+---
+<section id="projetos" class="section projects scroll-scene" data-scroll-scene="projects" aria-labelledby="projects-title">
+  <div class="container projects-inner">
+    <header class="projects-heading" data-scroll-reveal="projects">
+      <div class="projects-heading-title"><span class="section-eyebrow">05 / DA IDEIA À EXPERIÊNCIA</span><h2 id="projects-title" class="section-title">Quando a ideia <em>ganha forma.</em></h2></div>
+      <div class="projects-heading-copy"><span class="projects-lead">Seu negócio pode ir mais longe.</span><p class="section-description">Você traz o contexto e as necessidades. A AMZ ajuda a dar forma digital a esse ponto de partida, com clareza, estrutura e funcionalidade.</p></div>
+    </header>
+
+    <div class="showcase-composition" data-editorial-item aria-label="Três exemplos visuais de experiências digitais em contextos diferentes">
+      <span class="showcase-orbit" aria-hidden="true"></span>
+      {examples.map((example, index) => <figure class={example.className} data-editorial-print={index}>
+        <div class="showcase-label"><span><b>{example.index}</b> / {example.label}</span><span aria-hidden="true">EXEMPLO DE POSSIBILIDADE</span></div>
+        <div class="showcase-frame"><div class="showcase-window" aria-hidden="true"><i></i><i></i><i></i><span>EXPERIÊNCIA DIGITAL</span></div><img src={example.src} alt={example.alt} loading="lazy" decoding="async" /></div>
+        <figcaption>{example.caption}</figcaption>
+      </figure>)}
+      <div class="showcase-note" aria-hidden="true"><span>NECESSIDADE</span><i></i><span>EXPERIÊNCIA</span></div>
+    </div>
+
+    <div class="projects-supporting-copy"><span class="section-eyebrow">O CONTEXTO É SEU. O CAMINHO, CONSTRUÍDO EM CONJUNTO.</span><p>A tecnologia pode organizar informações, aproximar pessoas e materializar uma solução pensada para a realidade de cada negócio.</p></div>
+
   </div>
 </section>
 <style>
-.credibility { background:rgba(247,249,250,.86); }
-.credibility-inner { display:grid; grid-template-columns:1fr 1fr; gap:5vw; align-items:end; }
-.credibility .section-title { margin-bottom:0; }
-.credibility .section-title em { font:normal italic 1em Georgia,serif; color:var(--brand-blue); }
-.credibility-reserve { min-height:19rem; border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); display:flex; flex-direction:column; justify-content:space-between; padding:1rem 0; }
-.reserve-index { font-size:.65rem; color:var(--brand-blue); }
-.reserve-message { font:500 clamp(1.3rem,2.3vw,2.2rem)/1.15 var(--font-display); letter-spacing:-.04em; max-width:19ch; color:var(--text-secondary); }
-.reserve-mark { align-self:flex-end; color:var(--brand-teal); font-size:1.4rem; }
-@media(max-width:760px){.credibility-inner{grid-template-columns:1fr;gap:2rem}.credibility-reserve{min-height:13rem}}
+  .projects{position:relative;z-index:2;isolation:isolate;overflow-x:clip;overflow-y:visible;padding-block:3.25rem clamp(1.75rem,2.7vw,2.5rem);background:linear-gradient(180deg,var(--bg-canvas),#fff 48%,var(--bg-canvas))}
+  .projects-inner{position:relative;z-index:1;width:min(calc(100% - var(--gutter)*2),1680px)}
+  .projects::before{position:absolute;z-index:-1;top:18%;left:0;width:min(34rem,90vw);height:min(34rem,90vw);border:1px solid color-mix(in srgb,var(--brand-teal) 11%,transparent);border-radius:50%;box-shadow:0 0 0 3rem color-mix(in srgb,var(--brand-teal) 2%,transparent),0 0 0 7rem color-mix(in srgb,var(--brand-blue) 2%,transparent);content:'';pointer-events:none}
+  .projects-heading{--scroll-reveal-progress:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(18rem,.72fr);align-items:end;gap:clamp(2rem,7vw,8rem);margin-bottom:clamp(2.5rem,5vw,4rem);opacity:calc(.78 + var(--scroll-reveal-progress)*.22);transform:translate3d(0,calc((1 - var(--scroll-reveal-progress))*14px),0)}
+  .projects-heading .section-title{max-width:12ch;margin-bottom:0}.projects-heading .section-title em{color:var(--brand-teal);font:italic 500 1em Georgia,serif}
+  .projects-heading-copy{display:grid;gap:.7rem;padding-bottom:.35rem}.projects-lead{color:var(--brand-navy);font:650 clamp(1.35rem,2.1vw,1.9rem)/1.15 var(--font-display);letter-spacing:-.045em}.projects-heading .section-description{max-width:39rem;margin:0}
+  .showcase-composition{position:relative;display:grid;grid-template-columns:minmax(0,1.9fr) minmax(17rem,.78fr);grid-template-rows:auto auto;align-items:center;column-gap:clamp(1.2rem,3.5vw,3.5rem);row-gap:clamp(1rem,2.2vw,2rem);padding:clamp(.7rem,1.7vw,1.4rem) clamp(.25rem,1.5vw,1.25rem) 4.2rem;transform:translateY(calc((1 - var(--editorial-progress,1))*14px))}
+  .showcase-orbit{position:absolute;z-index:-1;top:10%;right:4%;width:42%;aspect-ratio:1;border:1px solid color-mix(in srgb,var(--brand-blue) 10%,transparent);border-radius:50%;box-shadow:0 0 0 2rem color-mix(in srgb,var(--brand-teal) 2%,transparent),0 0 0 4rem color-mix(in srgb,var(--brand-blue) 2%,transparent);pointer-events:none}
+  .showcase-composition figure{--print-progress:1;position:relative;min-width:0;margin:0;opacity:calc(.72 + var(--print-progress)*.28)}.showcase-main{grid-column:1;grid-row:1/3;z-index:1;transform:translate3d(0,calc((1 - var(--print-progress))*14px),0) scale(calc(.988 + var(--print-progress)*.012))}.showcase-bakery{grid-column:2;grid-row:1;z-index:2;transform:translate3d(0,calc(.7rem + (1 - var(--print-progress))*12px),0) rotate(1deg) scale(calc(.99 + var(--print-progress)*.01))}.showcase-mobile{grid-column:2;grid-row:2;z-index:2;transform:translate3d(0,calc(-.2rem + (1 - var(--print-progress))*12px),0) rotate(-1.2deg) scale(calc(.99 + var(--print-progress)*.01))}.showcase-composition figure .showcase-frame{clip-path:inset(0 0 calc((1 - var(--print-progress))*100%) 0 round 1rem)}.showcase-secondary .showcase-frame{clip-path:inset(0 0 calc((1 - var(--print-progress))*100%) 0 round .75rem)}
+  .showcase-label{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;margin:0 0 .7rem;color:var(--text-secondary);font:600 var(--type-micro)/1.4 var(--font-mono);letter-spacing:.07em}.showcase-label b{color:var(--brand-blue);font-weight:700}.showcase-label span:last-child{text-align:right}
+  .showcase-frame{overflow:hidden;padding:.5rem;border:1px solid color-mix(in srgb,var(--brand-navy) 14%,var(--border-subtle));border-radius:var(--radius-md);background:var(--bg-surface);box-shadow:var(--shadow-raised)}
+  .showcase-frame img{display:block;width:100%;height:auto;object-fit:contain;object-position:top center;border:1px solid color-mix(in srgb,var(--brand-navy) 8%,var(--border-subtle));border-radius:var(--radius-sm)}
+  .showcase-window{display:flex;align-items:center;gap:.35rem;min-height:1.8rem;padding:0 .35rem .4rem;color:var(--text-secondary);font:600 var(--type-micro-compact) var(--font-mono);letter-spacing:.08em}.showcase-window i{width:.43rem;height:.43rem;border-radius:50%;background:color-mix(in srgb,var(--brand-blue) 28%,var(--bg-surface))}.showcase-window i:first-child{background:color-mix(in srgb,var(--brand-coral) 70%,white)}.showcase-window i:nth-child(2){background:color-mix(in srgb,var(--brand-teal) 60%,white)}.showcase-window span{margin-left:auto}
+  .showcase-secondary .showcase-frame{padding:.38rem;border-radius:var(--radius-sm);box-shadow:0 18px 48px rgba(23,50,77,.14),0 5px 14px rgba(23,50,77,.06)}.showcase-secondary .showcase-window{min-height:1.5rem}.showcase-composition figcaption{margin:.6rem .1rem 0;color:var(--text-secondary);font-size:.75rem;line-height:1.5}.showcase-main figcaption{max-width:42rem}
+  .showcase-note{position:absolute;left:4%;right:8%;bottom:.65rem;display:flex;align-items:center;gap:.8rem;color:var(--brand-blue);font:600 var(--type-micro) var(--font-mono);letter-spacing:.12em}.showcase-note i{height:1px;flex:1;background:linear-gradient(90deg,var(--brand-coral),var(--brand-teal),var(--brand-electric))}
+  .projects-supporting-copy{max-width:52rem;margin:clamp(2rem,4.5vw,3.5rem) 0 0 auto}.projects-supporting-copy .section-eyebrow{color:var(--brand-teal)}.projects-supporting-copy p{margin:.75rem 0 0;color:var(--text-secondary);font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.7}
+  @media(max-width:760px){.projects{padding-block:3.5rem}.projects>.visual-effect--halo{top:-8rem;width:85vw;height:19rem;opacity:.14}.projects-heading{grid-template-columns:1fr;gap:1rem}.projects-heading .section-title{max-width:11ch}.showcase-composition{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;row-gap:1.5rem;padding:0 .15rem 2.2rem}.showcase-orbit{top:30%;right:-10%;width:75%}.showcase-main{grid-column:1;grid-row:auto}.showcase-bakery{grid-column:1;grid-row:auto;width:86%;justify-self:start;transform:translate3d(0,calc(.7rem + (1 - var(--print-progress))*12px),0) rotate(-1deg) scale(calc(.99 + var(--print-progress)*.01))}.showcase-mobile{grid-column:1;grid-row:auto;width:78%;justify-self:end;transform:translate3d(0,calc(-.2rem + (1 - var(--print-progress))*12px),0) rotate(1deg) scale(calc(.99 + var(--print-progress)*.01))}.showcase-label{font-size:var(--type-micro-compact);letter-spacing:.04em}.showcase-frame{padding:.35rem;border-radius:var(--radius-sm)}.showcase-window{min-height:1.35rem;font-size:var(--type-micro-compact)}.showcase-secondary .showcase-window{min-height:1.2rem}.showcase-note{left:0;right:0;bottom:0;font-size:var(--type-micro-compact)}.projects-supporting-copy{margin-top:2rem}.projects-next-step{grid-template-columns:1fr;gap:1.1rem}.projects-next-step h3{max-width:12ch;font-size:clamp(2rem,7vw,2.8rem)}.projects-next-copy p{max-width:44rem}}
+  @media(max-width:760px){.projects{padding-bottom:1.25rem}}
+  @media(max-width:390px){.showcase-label{gap:.35rem;font-size:var(--type-micro-compact)}.showcase-label span:last-child{max-width:8rem;text-align:right;letter-spacing:.01em}.showcase-note{gap:.45rem;font-size:var(--type-micro-compact);letter-spacing:.08em}.projects-next-step h3{font-size:2rem}}
+  @media(prefers-reduced-motion:reduce){.projects-heading,.showcase-composition,.showcase-composition figure,.showcase-composition .showcase-frame,.projects-next-link,.projects-next-link span{opacity:1;transform:none;clip-path:none;transition:none}}
 </style>

@@ -1,53 +1,389 @@
 ---
-const chapters = [
-  { id: 'organizar', number: '01', title: 'Organizar', note: 'ESTRUTURA / CONTEÚDO PROVISÓRIO', tone: 'organize' },
-  { id: 'conectar', number: '02', title: 'Conectar', note: 'RELAÇÃO / CONTEÚDO PROVISÓRIO', tone: 'connect' },
-  { id: 'evoluir', number: '03', title: 'Evoluir', note: 'CONTINUIDADE / CONTEÚDO PROVISÓRIO', tone: 'evolve' },
+const services = [
+  {
+    id: 'engenharia',
+    number: '01',
+    verb: 'CONSTRUIR',
+    name: 'Engenharia e desenvolvimento',
+    title: 'Sistemas feitos para a realidade do seu negócio.',
+    description: 'Projetamos e desenvolvemos soluções digitais orientadas às necessidades de cada operação, conectando processos, pessoas e tecnologia.',
+    objective: 'Transformar necessidades empresariais em sistemas funcionais, úteis e alinhados ao negócio.',
+    tone: 'navy',
+  },
+  {
+    id: 'integracao',
+    number: '02',
+    verb: 'CONECTAR',
+    name: 'Integração de sistemas',
+    title: 'Faça suas tecnologias trabalharem juntas.',
+    description: 'Integramos sistemas, ferramentas e informações para reduzir a fragmentação dos processos e favorecer operações mais conectadas.',
+    objective: 'Criar uma circulação mais consistente de informações entre diferentes sistemas e áreas da empresa.',
+    tone: 'blue',
+  },
+  {
+    id: 'automacao',
+    number: '03',
+    verb: 'OTIMIZAR',
+    name: 'Automação e inteligência artificial',
+    title: 'Automatize processos. Amplie possibilidades.',
+    description: 'Aplicamos automação e inteligência artificial a desafios concretos, estruturando fluxos e explorando oportunidades para reduzir atividades repetitivas.',
+    objective: 'Melhorar a eficiência operacional e utilizar IA onde sua aplicação fizer sentido para o negócio.',
+    tone: 'teal',
+  },
+  {
+    id: 'modernizacao',
+    number: '04',
+    verb: 'EVOLUIR',
+    name: 'Modernização e evolução tecnológica',
+    title: 'Sua tecnologia precisa acompanhar seu negócio.',
+    description: 'Evoluímos, integramos e modernizamos soluções tecnológicas considerando novas necessidades, processos e oportunidades empresariais.',
+    objective: 'Apoiar a continuidade e a evolução tecnológica das operações.',
+    tone: 'coral',
+  },
 ];
 ---
 
-<section id="capitulos" class="chapters section">
-  <div class="container chapters-heading" data-reveal>
-    <span class="section-eyebrow">02 / CAPÍTULOS VISUAIS</span>
-    <p class="section-description">Uma sequência contínua para organizar, conectar e evoluir ideias.</p>
+<section id="capitulos" class="chapters section scroll-scene" data-scroll-scene="chapters" aria-labelledby="chapters-title">
+  <div class="container chapters-heading" data-reveal-mask>
+    <div>
+      <span class="section-eyebrow">03 / SERVIÇOS E SOLUÇÕES</span>
+      <h2 id="chapters-title">Engenharia aplicada ao que move o negócio.</h2>
+    </div>
+    <p class="section-description">Construir, conectar, otimizar e evoluir: frentes de atuação para desafios reais de negócio.</p>
   </div>
-  <div class="chapter-track">
-    {chapters.map((chapter) => <article class={`chapter-step ${chapter.tone}`} data-chapter-step>
-      <div class="chapter-card container">
-        <div class="chapter-top"><span>{chapter.number} / 03</span><span>{chapter.note}</span></div>
-        <div class="chapter-content">
-          <div class="chapter-title"><span class="chapter-index">{chapter.number}</span><h2>{chapter.title}<span>.</span></h2></div>
-          <div class="chapter-aside"><div class="chapter-rule"></div><p>Área reservada para conteúdo aprovado.</p><span class="mono">CAPÍTULO {chapter.number}</span></div>
+
+  <div class="chapter-track" data-chapter-track>
+    <div class="chapter-deck" data-chapter-deck>
+      {services.map((service, index) => <article id={service.id} class={`chapter-step ${service.tone}`} data-chapter-step data-step-index={index} data-depth={index} data-visible="true" data-active={index === 0 ? 'true' : 'false'} style={index === 0 ? '--stack-y:0px' : '--stack-y:100svh'} aria-labelledby={`${service.id}-title`}>
+        <div class="chapter-card">
+          <div class="chapter-top">
+            <span class="chapter-index"><span>{service.number}</span><span aria-hidden="true">/ 04</span></span>
+            <span class="chapter-service">{service.name}</span>
+            <span class="chapter-verb">{service.verb}</span>
+          </div>
+
+          <div class="chapter-grid">
+            <div class="chapter-copy">
+              <h3 id={`${service.id}-title`}>{service.title}</h3>
+              <p class="chapter-description">{service.description}</p>
+              <div class="chapter-objective">
+                <span>OBJETIVO EMPRESARIAL</span>
+                <p>{service.objective}</p>
+              </div>
+            </div>
+
+            {service.id === 'engenharia' && <div class="service-visual architecture" role="img" aria-label="Representação ilustrativa: uma necessidade de negócio se organiza em requisitos e estrutura de sistema">
+              <div class="visual-heading"><span>DA NECESSIDADE AO SISTEMA</span><span>01 — 03</span></div>
+              <div class="architecture-flow" aria-hidden="true">
+                <div class="architecture-brief"><span class="visual-kicker">NECESSIDADE</span><strong>Desafio de negócio</strong><small>Contexto da operação</small></div>
+                <svg class="architecture-link" viewBox="0 0 70 24" fill="none"><path d="M2 12h62m0 0-8-8m8 8-8 8" /></svg>
+                <div class="architecture-plan">
+                  <span class="visual-kicker">ESTRUTURA DA SOLUÇÃO</span>
+                  <div class="plan-row"><i></i><span>Requisitos</span><b>01</b></div>
+                  <div class="plan-row"><i></i><span>Experiência</span><b>02</b></div>
+                  <div class="plan-row"><i></i><span>Sistema proposto</span><b>03</b></div>
+                </div>
+              </div>
+              <div class="visual-caption"><span>Leitura do contexto</span><span>→</span><span>Arquitetura organizada</span></div>
+              <span class="visual-footnote">REPRESENTAÇÃO ILUSTRATIVA</span>
+            </div>}
+
+            {service.id === 'integracao' && <div class="service-visual integrations" role="img" aria-label="Representação ilustrativa: ERP, CRM e sistema operacional conectados por um hub de integração">
+              <div class="visual-heading"><span>INFORMAÇÃO EM CIRCULAÇÃO</span><span>02 — 04</span></div>
+              <div class="integration-map" aria-hidden="true">
+                <svg viewBox="0 0 520 270" preserveAspectRatio="none" class="integration-lines" fill="none">
+                  <path class="integration-path" d="M93 62C170 62 177 133 240 133M93 204C170 204 177 133 240 133M427 62C350 62 343 133 280 133M427 204C350 204 343 133 280 133" />
+                  <path class="integration-flow flow-one" d="M93 62C170 62 177 133 240 133" />
+                  <path class="integration-flow flow-two" d="M427 204C350 204 343 133 280 133" />
+                </svg>
+                <div class="system-tile system-erp"><span>ERP</span><small>Gestão</small></div>
+                <div class="system-tile system-crm"><span>CRM</span><small>Relacionamento</small></div>
+                <div class="system-tile system-ops"><span>OPERAÇÃO</span><small>Sistema de negócio</small></div>
+                <div class="system-tile system-api"><span>API</span><small>Integração</small></div>
+                <div class="integration-hub"><span class="hub-mark" aria-hidden="true">↔</span><span>Hub</span></div>
+              </div>
+              <div class="visual-caption"><span>Ferramentas distintas</span><span>→</span><span>Informações conectadas</span></div>
+              <span class="visual-footnote">EXEMPLO CONCEITUAL · NÃO INDICA INTEGRAÇÃO HOMOLOGADA</span>
+            </div>}
+
+            {service.id === 'automacao' && <div class="service-visual automation" role="img" aria-label="Fluxo ilustrativo de automação: evento, validação, processamento com IA, atualização de sistema e conclusão">
+              <div class="visual-heading"><span>UM FLUXO, ETAPAS COORDENADAS</span><span>03 — 05</span></div>
+              <div class="automation-flow" aria-hidden="true">
+                <div class="automation-line"><i></i></div>
+                <div class="automation-step"><span class="automation-icon event-icon">↗</span><span>Evento</span><small>Receber</small></div>
+                <div class="automation-step"><span class="automation-icon check-icon">✓</span><span>Validar</span><small>Conferir</small></div>
+                <div class="automation-step ai-step"><span class="automation-icon ai-icon">IA</span><span>Processar</span><small>Interpretar</small></div>
+                <div class="automation-step"><span class="automation-icon update-icon">↻</span><span>Atualizar</span><small>Sistema</small></div>
+                <div class="automation-step done-step"><span class="automation-icon done-icon">✓</span><span>Concluir</span><small>Finalizado</small></div>
+              </div>
+              <div class="automation-result"><span class="result-check">✓</span><span>Etapas concluídas em sequência</span><span class="result-state">FLUXO ILUSTRATIVO</span></div>
+              <span class="visual-footnote">POSSIBILIDADE DE AUTOMAÇÃO · APLICAÇÃO A VALIDAR POR CONTEXTO</span>
+            </div>}
+
+            {service.id === 'modernizacao' && <div class="service-visual evolution" role="img" aria-label="Representação ilustrativa de uma estrutura tecnológica que evolui de módulos atuais para uma arquitetura ampliada">
+              <div class="visual-heading"><span>UMA ESTRUTURA QUE ACOMPANHA A MUDANÇA</span><span>04 — 06</span></div>
+              <div class="evolution-stages" aria-hidden="true">
+                <div class="evolution-stage current-stage"><span class="visual-kicker">ESTRUTURA ATUAL</span><div class="module-row"><i></i><i></i></div><div class="module-row"><i></i><i></i></div><small>Operação existente</small></div>
+                <svg class="evolution-arrow" viewBox="0 0 76 24" fill="none"><path d="M2 12h67m0 0-8-8m8 8-8 8" /></svg>
+                <div class="evolution-stage expanded-stage"><span class="visual-kicker">EVOLUÇÃO MODULAR</span><div class="module-row"><i></i><i></i><i class="new-module"></i></div><div class="module-row"><i></i><i></i><i class="new-module"></i></div><div class="module-row"><i class="new-module"></i><i class="new-module"></i><i class="new-module"></i></div><small>Novas necessidades integradas</small></div>
+              </div>
+              <div class="evolution-note"><span class="evolution-note-mark">+</span><span>Expandir com continuidade, por etapa.</span></div>
+              <span class="visual-footnote">ARQUITETURA CONCEITUAL · REPRESENTAÇÃO ILUSTRATIVA</span>
+            </div>}
+          </div>
+
+          <div class="chapter-baseline"><span>AMZ / DATA SOFTWARE</span><span class="stack-service-name">{service.name}</span><span class="narrative-link"><span>{service.verb}</span><i aria-hidden="true">—</i><span>{index < 3 ? services[index + 1].verb : 'CONTINUIDADE'}</span></span><span>{service.number} / 04</span></div>
         </div>
-        <div class="chapter-baseline"><span>AMZ / DATA SOFTWARE</span><span>ESTRUTURA EM DESENVOLVIMENTO</span></div>
-      </div>
-    </article>)}
+      </article>)}
+    </div>
+    <div class="chapter-markers" aria-hidden="true">
+      {services.map(() => <div class="chapter-marker" data-chapter-marker></div>)}
+    </div>
   </div>
 </section>
 
 <style>
-.chapters { padding-block:clamp(4rem,8vw,7rem) 0; overflow:clip; }
-.chapters-heading { display:flex; justify-content:space-between; align-items:end; gap:2rem; padding-bottom:2.5rem; }
-.chapters-heading .section-description { max-width:24rem; margin:0; }
+.chapters { padding-block:clamp(4.5rem,7vw,7rem) 0; overflow:visible; position:relative; }
+.chapters-heading { width:min(calc(100% - var(--gutter)*2),1680px); display:flex; justify-content:space-between; align-items:end; gap:2rem; padding-bottom:clamp(2rem,4vw,3.5rem); }
+.chapters-heading > div { max-width:55rem; }
+.chapters-heading .section-description { max-width:23rem; margin:0 0 .35rem; font-size:clamp(.98rem,1.25vw,1.16rem); }
+.chapters-heading h2 { margin:1rem 0 0; max-width:17ch; font:650 clamp(2.35rem,4.2vw,4.5rem)/1.02 var(--font-display); letter-spacing:-.065em; }
 .chapter-track { position:relative; }
-.chapter-step { min-height:100svh; padding:1.5rem var(--gutter) var(--space-chapter-overlap); position:relative; }
-.chapter-card { height:min(76svh,720px); min-height:520px; position:sticky; top:calc(50vh - min(38svh,360px)); overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1px solid rgba(23,50,77,.17); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,3rem); background:var(--surface-glass); box-shadow:var(--shadow-chapter); transform-origin:50% 10%; }
-.chapter-step:nth-child(2) .chapter-card { background:rgba(234,242,245,.96); }
-.chapter-step:nth-child(3) .chapter-card { background:rgba(23,50,77,.96); border-color:rgba(255,255,255,.18); color:white; }
-.chapter-top,.chapter-baseline { display:flex; justify-content:space-between; gap:1rem; font:600 .63rem var(--font-mono); letter-spacing:.1em; color:var(--text-secondary); }
-.chapter-top span:last-child { text-align:right; }
-.chapter-step:nth-child(3) .chapter-top,.chapter-step:nth-child(3) .chapter-baseline { color:#c9dae3; }
-.chapter-content { display:flex; align-items:end; justify-content:space-between; gap:2rem; }
-.chapter-title { position:relative; }
-.chapter-index { display:block; margin-bottom:1rem; font:500 .78rem var(--font-mono); letter-spacing:.12em; color:var(--brand-blue); }
-.chapter-title h2 { font:650 clamp(4.2rem,12vw,12rem)/.82 var(--font-display); letter-spacing:-.105em; margin:0; }
-.chapter-title h2 span { color:var(--brand-teal); }
-.chapter-step:nth-child(3) .chapter-title h2 span { color:#89bfb3; }
-.chapter-aside { width:min(23rem,32%); border-top:1px solid currentColor; padding-top:1.15rem; margin-bottom:.5rem; }
-.chapter-aside p { color:inherit; opacity:.76; line-height:1.55; margin:0 0 2rem; }
-.chapter-aside .mono { font:600 .62rem var(--font-mono); letter-spacing:.1em; opacity:.76; }
-.chapter-rule { width:100%; height:1px; margin-bottom:1rem; background:linear-gradient(90deg,var(--brand-blue),var(--brand-teal),transparent); }
-@media(max-width:700px){.chapters-heading{align-items:start;flex-direction:column;gap:1rem}.chapter-step{min-height:88svh;padding-inline:var(--gutter)}.chapter-card{height:70svh;min-height:470px;top:15vh;border-radius:var(--radius-md);padding:1.25rem}.chapter-content{align-items:start;flex-direction:column;gap:2rem}.chapter-title h2{font-size:clamp(4rem,17vw,7rem)}.chapter-aside{width:100%;max-width:24rem}.chapter-top span:last-child{max-width:54%;font-size:.55rem}.chapter-baseline{font-size:.54rem}.chapter-baseline span:last-child{text-align:right}}
-@media(max-width:420px){.chapter-step{min-height:82svh}.chapter-card{height:66svh;min-height:430px;top:17vh}.chapter-title h2{font-size:16vw}}
-@media(prefers-reduced-motion:reduce){.chapter-card{position:relative;top:auto;min-height:420px;height:auto;aspect-ratio:1.05}}
+.chapter-markers { position:relative; }
+.chapter-marker { height:60svh; }
+.chapter-deck { width:min(calc(100% - var(--gutter)*2),1680px); margin-inline:auto; height:min(72svh,700px); min-height:560px; padding-inline:0; position:sticky; top:max(calc(var(--header-height) + 1rem),calc((100svh - max(min(72svh,700px),560px))/2)); z-index:1; }
+.chapter-step { position:absolute; inset:0; z-index:var(--step-layer,1); visibility:visible; opacity:1; transform:translate3d(0,calc(var(--stack-y,0px) + var(--deck-exit-y,0px)),0); pointer-events:none; will-change:transform; scroll-margin-top:calc(var(--header-height) + 1rem); }
+.chapter-step[data-visible="true"] { visibility:visible; }
+.chapter-card { --card-bg:var(--brand-navy); width:100%; max-width:1680px; height:100%; min-height:inherit; margin-inline:auto; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1px solid rgba(255,255,255,.16); border-radius:var(--radius-lg); padding:clamp(1.75rem,3.5vw,3.75rem); color:#fff; background:var(--card-bg); box-shadow:0 22px 54px rgba(23,50,77,.17),0 4px 14px rgba(23,50,77,.09); }
+.chapter-card::before { content:''; position:absolute; left:clamp(1.75rem,3.5vw,3.75rem); top:0; width:4.5rem; height:3px; background:var(--brand-coral); }
+.navy .chapter-card { --card-bg:var(--brand-navy); }
+.blue .chapter-card { --card-bg:var(--brand-blue); }
+.teal .chapter-card { --card-bg:var(--surface-teal-strong); }
+.coral .chapter-card { --card-bg:color-mix(in srgb,var(--brand-coral) 48%,var(--bg-canvas)); color:var(--brand-navy); }
+.chapter-top,.chapter-baseline { display:flex; align-items:center; justify-content:space-between; gap:1rem; color:#fff; font:600 .68rem var(--font-mono); letter-spacing:.1em; }
+.chapter-index { display:flex; align-items:baseline; gap:.22rem; color:#fff; font-size:.78rem; }
+.chapter-index span:first-child { color:#fff; font-size:1rem; }
+.chapter-service { margin-right:auto; padding-left:1rem; letter-spacing:.055em; }
+.chapter-verb { color:#fff; }
+.chapter-grid { flex:1; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); align-items:center; gap:clamp(2rem,5vw,5.5rem); min-height:0; padding-block:clamp(1.5rem,3.5vh,2.75rem); }
+.chapter-copy { max-width:38rem; }
+.chapter-copy h3 { margin:0 0 1.25rem; max-width:15ch; font:650 clamp(2.45rem,4.1vw,4.5rem)/1.02 var(--font-display); letter-spacing:-.065em; text-wrap:pretty; }
+.chapter-description { max-width:39rem; margin:0; color:#fff; font-size:clamp(.98rem,1.2vw,1.12rem); line-height:1.58; }
+.chapter-objective { margin-top:clamp(1.25rem,3vh,2rem); max-width:34rem; padding:.85rem 0 0 1rem; border-left:2px solid var(--brand-coral); }
+.chapter-objective > span { display:block; margin-bottom:.45rem; color:#fff; font:600 .61rem var(--font-mono); letter-spacing:.13em; }
+.chapter-objective p { max-width:42ch; margin:0; color:#fff; font-size:.94rem; font-weight:580; line-height:1.5; }
+.chapter-baseline { color:#fff; font-size:var(--type-micro); }
+.stack-service-name { margin-right:auto; color:#fff; font:600 var(--type-micro) var(--font-mono); letter-spacing:.06em; }
+.narrative-link { display:flex; align-items:center; gap:.65rem; }
+.narrative-link span:first-child { color:#fff; }
+.narrative-link i { color:#fff; font-style:normal; }
+
+/* Custom service illustrations: each diagram explains a different kind of work. */
+.service-visual { --visual-ink:#fff; --visual-soft:#fff; position:relative; min-width:0; min-height:clamp(290px,39vh,380px); overflow:hidden; padding:1.35rem clamp(1rem,2.25vw,2rem) 1.1rem; border:1px solid rgba(255,255,255,.2); border-radius:18px; background:rgba(8,29,48,.16); color:var(--visual-ink); }
+.visual-heading { display:flex; justify-content:space-between; gap:.75rem; color:var(--visual-soft); font:600 var(--type-micro) var(--font-mono); letter-spacing:.11em; }
+.visual-heading span:last-child { white-space:nowrap; }
+.visual-kicker { color:var(--visual-soft); font:600 .56rem var(--font-mono); letter-spacing:.09em; }
+.visual-footnote { position:absolute; right:1.35rem; bottom:.82rem; color:#fff; max-width:calc(100% - 2.7rem); font:500 var(--type-micro-compact)/1.35 var(--font-mono); letter-spacing:.065em; text-align:right; }
+.visual-caption { display:flex; align-items:center; justify-content:center; gap:.75rem; margin-top:1rem; color:#fff; font-size:.68rem; }
+.visual-caption span:nth-child(2) { color:var(--brand-coral); }
+.service-visual.integrations { padding-bottom:3rem; } /* Reserve space for the illustrative disclaimer below the caption. */
+.architecture-flow { display:grid; grid-template-columns:minmax(0,.85fr) 48px minmax(0,1.15fr); align-items:center; gap:.65rem; min-height:212px; padding-top:1.25rem; }
+.architecture-brief { display:flex; flex-direction:column; gap:.65rem; padding:1rem .9rem; border:1px solid rgba(255,255,255,.2); border-radius:9px; background:rgba(255,255,255,.08); opacity:0; animation:architecture-appear .65s .25s var(--ease-standard) forwards; }
+.architecture-brief strong { font-size:.83rem; line-height:1.3; }
+.architecture-brief small { color:var(--visual-soft); font-size:.63rem; }
+.architecture-link,.evolution-arrow { width:100%; overflow:visible; }
+.architecture-link path,.evolution-arrow path { stroke:rgba(255,255,255,.48); stroke-width:1.4; stroke-dasharray:5 5; animation:diagram-flow 1.2s .5s ease-out both; }
+.architecture-plan { padding:.9rem; border:1px solid rgba(255,255,255,.24); border-radius:9px; background:rgba(9,31,47,.2); opacity:0; animation:architecture-appear .72s .78s var(--ease-standard) forwards; }
+.architecture-plan .visual-kicker { display:block; margin-bottom:.5rem; font-size:var(--type-micro-compact); }
+.plan-row { display:flex; align-items:center; gap:.55rem; min-height:32px; border-top:1px solid rgba(255,255,255,.13); font-size:.66rem; }
+.plan-row i { width:6px; height:6px; border-radius:50%; background:var(--brand-coral); }
+.plan-row b { margin-left:auto; color:#fff; font:500 .625rem var(--font-mono); }
+
+.integration-map { position:relative; height:clamp(200px,25vh,260px); margin-top:.65rem; }
+.integration-lines { position:absolute; inset:0; width:100%; height:100%; }
+.integration-path { stroke:rgba(255,255,255,.28); stroke-width:1.5; }
+.integration-flow { stroke:var(--brand-coral); stroke-width:2; stroke-dasharray:8 72; stroke-linecap:round; animation:data-flow 2.8s ease-in-out infinite; }
+.flow-two { animation-delay:1.35s; }
+.system-tile { position:absolute; display:flex; flex-direction:column; gap:.18rem; min-width:94px; padding:.66rem .78rem; border:1px solid rgba(255,255,255,.27); border-radius:8px; background:rgba(8,29,48,.18); box-shadow:0 7px 20px rgba(10,40,64,.08); }
+.system-tile span { color:#fff; font:650 .69rem var(--font-mono); letter-spacing:.04em; }
+.system-tile small { color:#fff; font-size:var(--type-micro); }
+.system-erp { top:8%; left:0; animation:tile-arrive .55s .1s both; }
+.system-crm { bottom:5%; left:0; animation:tile-arrive .55s .25s both; }
+.system-ops { top:8%; right:0; animation:tile-arrive .55s .4s both; }
+.system-api { bottom:5%; right:0; animation:tile-arrive .55s .55s both; }
+.integration-hub { position:absolute; left:50%; top:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.12rem; width:78px; height:78px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:var(--brand-blue); box-shadow:0 0 0 7px rgba(255,255,255,.08); transform:translate(-50%,-50%); font-size:.7rem; font-weight:650; }
+.hub-mark { color:var(--brand-coral); font-size:1.5rem; line-height:1; }
+
+.automation-flow { position:relative; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); align-items:start; gap:.25rem; margin-top:3.25rem; }
+.automation-line { position:absolute; top:21px; left:8%; right:8%; height:1px; overflow:hidden; background:rgba(255,255,255,.32); }
+.automation-line i { display:block; width:22%; height:100%; background:var(--brand-coral); animation:automation-progress 5s .4s ease-in-out infinite; }
+.automation-step { position:relative; z-index:1; display:flex; align-items:center; flex-direction:column; gap:.55rem; text-align:center; opacity:1; animation:automation-stage .55s ease-out both; }
+.automation-step:nth-child(2) { animation-delay:.2s; }
+.automation-step:nth-child(3) { animation-delay:.55s; }
+.automation-step:nth-child(4) { animation-delay:.9s; }
+.automation-step:nth-child(5) { animation-delay:1.25s; }
+.automation-step:nth-child(6) { animation-delay:1.6s; }
+.automation-icon { display:grid; place-items:center; width:42px; height:42px; border:1px solid rgba(255,255,255,.37); border-radius:12px; background:#258A78; color:#fff; font-size:1rem; box-shadow:0 0 0 5px rgba(12,82,72,.14); }
+.ai-icon { border-color:rgba(240,131,94,.8); color:#fff; background:#196f65; font:700 .72rem var(--font-mono); }
+.done-icon,.result-check { color:var(--brand-coral); }
+.automation-step > span:nth-child(2) { font-size:.62rem; font-weight:650; }
+.automation-step small { color:#fff; font-size:var(--type-micro-compact); }
+.automation-result { display:flex; align-items:center; gap:.55rem; margin-top:2rem; padding:.68rem .8rem; border:1px solid rgba(255,255,255,.18); border-radius:7px; background:rgba(8,29,48,.12); color:#fff; font-size:.64rem; }
+.result-check { font-size:.82rem; }
+.result-state { margin-left:auto; color:rgba(255,255,255,.55); font:500 .48rem var(--font-mono); letter-spacing:.05em; }
+
+.evolution-stages { display:grid; grid-template-columns:minmax(0,1fr) 54px minmax(0,1.25fr); align-items:center; gap:.65rem; min-height:210px; padding-top:.65rem; }
+.evolution-stage { min-width:0; padding:.85rem; border:1px solid rgba(255,255,255,.2); border-radius:9px; background:rgba(255,255,255,.08); }
+.evolution-stage .visual-kicker { display:block; margin-bottom:.85rem; font-size:var(--type-micro-compact); }
+.module-row { display:flex; gap:.32rem; margin-bottom:.32rem; }
+.module-row i { flex:1; height:22px; border:1px solid rgba(255,255,255,.38); border-radius:4px; background:rgba(255,255,255,.14); }
+.module-row i.new-module { border-color:rgba(240,131,94,.7); background:rgba(240,131,94,.28); opacity:0; animation:module-arrive .45s var(--ease-standard) forwards; }
+.module-row:nth-of-type(2) i.new-module { animation-delay:.8s; }
+.module-row:nth-of-type(3) i.new-module { animation-delay:1.05s; }
+.evolution-stage small { display:block; margin-top:.75rem; color:var(--visual-soft); font-size:var(--type-micro-compact); }
+.current-stage { opacity:0; animation:architecture-appear .55s .1s var(--ease-standard) forwards; }
+.expanded-stage { opacity:0; animation:architecture-appear .65s .55s var(--ease-standard) forwards; }
+.evolution-arrow path { stroke:var(--brand-coral); }
+.evolution-note { display:flex; align-items:center; gap:.65rem; width:max-content; max-width:100%; margin-top:.25rem; color:#fff; font-size:.67rem; }
+.evolution-note-mark { display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--brand-coral); color:var(--brand-navy); font-size:.9rem; font-weight:700; }
+
+.chapter-step[data-depth="1"] { filter:saturate(.94) brightness(.97); }
+.chapter-step[data-depth="2"] { filter:saturate(.88) brightness(.94); }
+.chapter-step[data-depth="3"] { filter:saturate(.82) brightness(.91); }
+.chapter-step[data-depth="0"] { filter:none; pointer-events:auto; }
+.chapter-card { transition:box-shadow .3s var(--ease-standard),border-color .3s var(--ease-standard); }
+.chapter-step[data-active="true"] .chapter-card { box-shadow:0 22px 54px rgba(23,50,77,.17),0 4px 14px rgba(23,50,77,.08); border-color:rgba(255,255,255,.3); }
+.coral .chapter-card::before { background:var(--brand-navy); }
+.coral .chapter-top,.coral .chapter-baseline { color:var(--brand-navy); }
+.coral .chapter-index,.coral .chapter-index span:first-child { color:var(--brand-navy); }
+.coral .chapter-verb,.coral .narrative-link span:first-child { color:var(--brand-navy); }
+.coral .chapter-copy h3 { color:var(--brand-navy); }
+.coral .chapter-description { color:var(--brand-navy); }
+.coral .chapter-objective { border-color:var(--brand-navy); }
+.coral .chapter-objective > span { color:var(--brand-navy); }
+.coral .chapter-objective p { color:var(--brand-navy); }
+.coral .service-visual { --visual-ink:var(--brand-navy); --visual-soft:var(--brand-navy); border-color:color-mix(in srgb,var(--brand-navy) 32%,transparent); background:rgba(255,255,255,.14); color:var(--brand-navy); }
+.coral .visual-footnote { color:var(--brand-navy); }
+.coral .visual-caption { color:var(--brand-navy); }
+.coral .visual-caption span:nth-child(2) { color:var(--brand-navy); }
+.coral .evolution-stage { border-color:color-mix(in srgb,var(--brand-navy) 32%,transparent); background:rgba(255,255,255,.18); }
+.coral .module-row i { border-color:color-mix(in srgb,var(--brand-navy) 42%,transparent); background:rgba(255,255,255,.2); }
+.coral .module-row i.new-module { border-color:var(--brand-navy); background:color-mix(in srgb,var(--brand-navy) 14%,transparent); }
+.coral .evolution-arrow path { stroke:var(--brand-navy); }
+.coral .evolution-note { color:var(--brand-navy); }
+.coral .evolution-note-mark { background:var(--brand-navy); color:var(--brand-coral); }
+.chapter-copy h3,.chapter-description,.chapter-objective { opacity:0; transform:translateY(9px); animation:copy-arrive .48s var(--ease-standard) both paused; }
+.chapter-description { animation-delay:.16s; }
+.chapter-objective { animation-delay:.3s; }
+.system-tile,.automation-step,.module-row i.new-module { animation-play-state:paused; }
+.chapter-step[data-active="true"] .chapter-copy h3,.chapter-step[data-active="true"] .chapter-description,.chapter-step[data-active="true"] .chapter-objective,.chapter-step[data-active="true"] .architecture-brief,.chapter-step[data-active="true"] .architecture-plan,.chapter-step[data-active="true"] .current-stage,.chapter-step[data-active="true"] .expanded-stage,.chapter-step[data-active="true"] .system-tile,.chapter-step[data-active="true"] .automation-step,.chapter-step[data-active="true"] .module-row i.new-module { animation-play-state:running; }
+.chapter-step[data-active="true"] .integration-flow,.chapter-step[data-active="true"] .automation-line i { animation-play-state:running; }
+.chapter-step:not([data-active="true"]) .integration-flow,.chapter-step:not([data-active="true"]) .automation-line i { animation-play-state:paused; }
+@keyframes copy-arrive { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+@keyframes architecture-appear { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes diagram-flow { from { stroke-dashoffset:30; opacity:.25; } to { stroke-dashoffset:0; opacity:1; } }
+@keyframes data-flow { 0%,100% { stroke-dashoffset:0; opacity:.25; } 48% { opacity:1; } 72% { stroke-dashoffset:-80; opacity:.9; } }
+@keyframes tile-arrive { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+@keyframes automation-stage { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes automation-progress { 0%,8% { transform:translateX(-120%); } 75%,100% { transform:translateX(520%); } }
+@keyframes module-arrive { from { opacity:0; transform:scale(.78); } to { opacity:1; transform:scale(1); } }
+
+@media(max-width:960px) and (min-width:701px) {
+  .chapter-deck { height:min(74svh,680px); min-height:560px; }
+  .chapter-grid { grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:1.5rem; }
+  .chapter-copy h3 { font-size:clamp(2.25rem,4vw,3.6rem); }
+  .chapter-description { font-size:.94rem; }
+  .service-visual { padding-inline:1rem; }
+  .system-tile { min-width:78px; padding:.55rem; }
+  .system-tile small { font-size:var(--type-micro-compact); }
+  .automation-icon { width:36px; height:36px; }
+  .automation-line { top:18px; }
+}
+@media(max-width:700px) {
+  .chapters { padding-top:4.5rem; }
+  .chapters-heading { align-items:start; flex-direction:column; gap:1.1rem; }
+  .chapters-heading h2 { max-width:14ch; font-size:clamp(2.2rem,8vw,3.5rem); }
+  .chapters-heading .section-description { max-width:34rem; }
+  .chapter-deck { position:relative; top:auto; width:100%; margin-inline:0; height:auto; min-height:0; padding-inline:var(--gutter); }
+  .chapter-step,.chapter-step[data-visible="false"] { position:relative; inset:auto; z-index:auto; visibility:visible; transform:none; filter:none; pointer-events:auto; margin-bottom:1rem; }
+  .chapter-markers { display:none; }
+  .chapter-card { min-height:0; height:auto; padding:1.4rem; border-radius:var(--radius-md); }
+  .chapter-card::before { left:1.4rem; }
+  .chapter-top { flex-wrap:wrap; font-size:var(--type-micro); }
+  .chapter-service { flex:1 1 60%; order:3; padding-left:0; }
+  .chapter-verb { margin-left:auto; }
+  .chapter-grid { grid-template-columns:1fr; gap:1.8rem; padding-block:2.2rem 1.4rem; }
+  .chapter-copy h3 { max-width:14ch; margin-bottom:.9rem; font-size:clamp(2.35rem,9vw,3.5rem); }
+  .chapter-description { font-size:.96rem; }
+  .chapter-objective { margin-top:1.2rem; }
+  .chapter-objective p { font-size:.9rem; }
+  .chapter-baseline { flex-wrap:wrap; font-size:var(--type-micro-compact); }
+  .stack-service-name { display:none; }
+  .narrative-link { gap:.35rem; order:3; flex-basis:100%; justify-content:center; padding-top:.45rem; border-top:1px solid rgba(255,255,255,.17); }
+  .service-visual { min-height:285px; padding:1.15rem 1rem 1rem; }
+  .visual-footnote { right:1rem; bottom:.7rem; font-size:var(--type-micro-compact); }
+  .architecture-flow { grid-template-columns:minmax(0,.85fr) 32px minmax(0,1.15fr); gap:.4rem; }
+  .architecture-brief,.architecture-plan { padding:.68rem; }
+  .architecture-brief strong { font-size:.72rem; }
+  .plan-row { font-size:.58rem; }
+  .integration-map { height:205px; }
+  .system-tile { min-width:78px; padding:.54rem; }
+  .system-tile span { font-size:.61rem; }
+  .system-tile small { font-size:var(--type-micro-compact); }
+  .integration-hub { width:65px; height:65px; }
+  .automation-flow { margin-top:2.8rem; }
+  .automation-icon { width:36px; height:36px; border-radius:10px; }
+  .automation-line { top:18px; }
+  .automation-step > span:nth-child(2) { font-size:var(--type-micro-compact); }
+  .automation-step small { font-size:var(--type-micro-compact); }
+  .automation-result { gap:.4rem; padding:.62rem .58rem; font-size:var(--type-micro-compact); }
+  .result-state { font-size:var(--type-micro-compact); }
+  .evolution-stages { grid-template-columns:minmax(0,1fr) 36px minmax(0,1.2fr); gap:.4rem; }
+  .evolution-stage { padding:.62rem; }
+  .module-row i { height:19px; }
+  .chapter-copy h3,.chapter-description,.chapter-objective,.architecture-brief,.architecture-plan,.current-stage,.expanded-stage,.system-tile,.automation-step { opacity:1; transform:none; animation:none; }
+  .integration-flow,.automation-line i,.module-row i.new-module,.architecture-link path,.evolution-arrow path { animation:none; }
+  .automation-line i { width:100%; opacity:.5; }
+}
+@media(max-width:390px) {
+  .chapter-card { padding:1.2rem; }
+  .chapter-card::before { left:1.2rem; }
+  .chapter-service { flex-basis:100%; }
+  .service-visual { min-height:268px; padding-inline:.78rem; }
+  .visual-heading { font-size:var(--type-micro-compact); }
+  .architecture-flow { grid-template-columns:minmax(0,.9fr) 24px minmax(0,1.1fr); gap:.25rem; }
+  .architecture-brief,.architecture-plan { padding:.52rem; }
+  .architecture-brief small { font-size:var(--type-micro-compact); }
+  .plan-row { gap:.32rem; font-size:var(--type-micro-compact); }
+  .system-tile { min-width:68px; padding:.48rem; }
+  .system-tile span { font-size:var(--type-micro-compact); }
+  .system-tile small { font-size:var(--type-micro-compact); }
+  .integration-hub { width:58px; height:58px; }
+  .automation-step > span:nth-child(2) { font-size:var(--type-micro-compact); }
+  .automation-step small { font-size:var(--type-micro-compact); }
+  .automation-icon { width:31px; height:31px; }
+  .automation-line { top:15px; }
+  .result-state { display:none; }
+  .evolution-stage { padding:.48rem; }
+  .evolution-stage .visual-kicker { font-size:var(--type-micro-compact); }
+  .module-row i { height:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .chapter-deck { position:relative; top:auto; width:100%; margin-inline:0; height:auto; min-height:0; padding-inline:var(--gutter); }
+  .chapter-step,.chapter-step:nth-child(1),.chapter-step:nth-child(2),.chapter-step:nth-child(3),.chapter-step:nth-child(4) { position:relative; inset:auto; z-index:auto; visibility:visible; opacity:1; transform:none; filter:none; pointer-events:auto; margin-bottom:1rem; }
+  .chapter-markers { display:none; }
+  .chapter-card { height:auto; min-height:0; }
+  .chapter-copy h3,.chapter-description,.chapter-objective,.architecture-brief,.architecture-plan,.current-stage,.expanded-stage,.system-tile,.automation-step,.module-row i.new-module { opacity:1; transform:none; animation:none; }
+  .chapter-step .service-visual * { animation:none !important; transition:none !important; }
+  .integration-flow,.automation-line i,.module-row i.new-module,.architecture-link path,.evolution-arrow path { animation:none; stroke-dasharray:none; opacity:1; }
+}
 </style>
+
+<noscript><style>
+  .chapter-deck { position:relative; top:auto; width:100%; margin-inline:0; height:auto; min-height:0; padding-inline:var(--gutter); }
+  .chapter-step,.chapter-step:nth-child(1),.chapter-step:nth-child(2),.chapter-step:nth-child(3),.chapter-step:nth-child(4) { position:relative; inset:auto; z-index:auto; visibility:visible; opacity:1; transform:none; filter:none; pointer-events:auto; margin-bottom:1rem; }
+  .chapter-card { height:auto; min-height:0; }
+  .chapter-copy h3,.chapter-description,.chapter-objective,.architecture-brief,.architecture-plan,.current-stage,.expanded-stage,.system-tile,.automation-step,.module-row i.new-module { opacity:1; transform:none; animation:none; }
+  .chapter-step .service-visual * { animation:none !important; transition:none !important; }
+  .chapter-markers { display:none; }
+</style></noscript>

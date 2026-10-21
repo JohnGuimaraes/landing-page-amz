@@ -38,10 +38,12 @@ Fonte única: `src/styles/tokens.css`. Nunca declarar valores de marca ad hoc em
 `BrandMark` (placeholder tipográfico, não marca oficial), `Button` (primary/secondary/light), `SiteHeader` (desktop/mobile), `SiteFooter`, `Atmosphere`, seções editoriais. Padrões ficam inspecionáveis em `/design-system`.
 
 ## Motion
-- Motion.dev controla `animate`, `inView` e progresso de scroll sem React.
-- Three.js cria apenas a atmosfera sutil (sem nuvens de partículas, sem logo formada por pontos, sem efeitos neon). O fundo CSS garante fallback.
+- Motion.dev controla uma única assinatura reversível de progresso de scroll, a entrada mascarada do Hero e revelações editoriais pontuais, sem React.
+- O progresso compartilhado coordena o empilhamento dos capítulos, a passagem para a superfície grafite, os caminhos SVG do ecossistema, soluções alternadas, trajetória da abordagem e elementos gráficos do CTA.
+- A atmosfera é CSS; não há renderer 3D, Three.js, efeitos neon ou partículas. A passagem de fundo é um painel editorial sticky e volta naturalmente com o scroll.
+- Conteúdo, serviços, etapas e projetos apresentados na narrativa são provisórios; nenhum placeholder representa resultado real.
 - Scroll nativo, sem scroll-jacking. Lenis/GSAP/Rive não fazem parte do baseline.
-- Revelação ~720ms; hover 160–320ms; animação atmosférica lenta.
+- Revelação mascarada ~700–780ms; hover 160–320ms; movimento de scroll contido, reversível e sem pausas longas.
 - Respeitar `prefers-reduced-motion`, pausar rendering quando aba não está visível e limitar DPR 1.5.
 
 ## Acessibilidade e governança

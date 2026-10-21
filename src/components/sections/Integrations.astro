@@ -1,0 +1,123 @@
+---
+const rails = [
+  {
+    label: 'Engenharia e sistemas',
+    speed: '48s',
+    direction: 'forward',
+    items: [
+      { label: 'Engenharia de software', tone: 'navy', size: 'wide', mark: 'grid' },
+      { label: 'APIs', tone: 'light', mark: 'link' },
+      { label: 'Dados', tone: 'teal', mark: 'data' },
+      { label: 'ERP', tone: 'light', mark: 'grid' },
+      { label: 'Sistemas', tone: 'light', mark: 'grid' },
+      { label: 'CRM', tone: 'light', mark: 'grid' },
+      { label: 'BI', tone: 'light', mark: 'data' },
+    ],
+  },
+  {
+    label: 'Integração e operação',
+    speed: '57s',
+    direction: 'reverse',
+    items: [
+      { label: 'Integrações', tone: 'teal', mark: 'link' },
+      { label: 'Automação', tone: 'navy', mark: 'flow' },
+      { label: 'Processos', tone: 'light', mark: 'flow' },
+      { label: 'CRM', tone: 'light', mark: 'grid' },
+      { label: 'BI', tone: 'light', mark: 'data' },
+      { label: 'ERP', tone: 'light', mark: 'grid' },
+      { label: 'Software', tone: 'light', mark: 'grid' },
+    ],
+  },
+  {
+    label: 'Dados e inteligência',
+    speed: '43s',
+    direction: 'forward',
+    items: [
+      { label: 'Inteligência Artificial', tone: 'blue', size: 'wide', mark: 'spark' },
+      { label: 'BI', tone: 'light', mark: 'data' },
+      { label: 'Dados', tone: 'navy', mark: 'data' },
+      { label: 'Software', tone: 'light', mark: 'grid' },
+      { label: 'APIs', tone: 'light', mark: 'link' },
+      { label: 'Integrações', tone: 'light', mark: 'link' },
+      { label: 'Processos', tone: 'light', mark: 'flow' },
+    ],
+  },
+];
+---
+
+<section id="conexoes" class="integration-strip scroll-scene" data-scroll-scene="integrations" aria-labelledby="integration-title">
+  <div class="container integration-inner" data-scroll-reveal="integrations">
+    <header class="integration-heading">
+      <span class="section-eyebrow">CONEXÕES · CONTEÚDO ILUSTRATIVO</span>
+      <button class="integration-pause" type="button" data-marquee-pause aria-pressed="false" aria-controls="integration-rails" hidden>Pausar movimento</button>
+      <h2 id="integration-title">Tecnologias em <em>conversa.</em></h2>
+      <p>Tecnologias diferentes. Possibilidades que se conectam.</p>
+    </header>
+
+    <div id="integration-rails" class="integration-rails" role="group" aria-label="Trilhas ilustrativas de tecnologia">
+      {rails.map((rail, index) => (
+        <div class:list={['integration-marquee', `integration-marquee--${rail.direction}`, `integration-marquee--${index + 1}`]} role="group" aria-label={rail.label}>
+          <div class="integration-track" style={`--rail-speed:${rail.speed}`}>
+            {Array.from({ length: 2 }, (_, copy) => (
+              <ul class="integration-set" aria-hidden={copy === 1 ? 'true' : undefined}>
+                {rail.items.map((item) => (
+                  <li>
+                    <span class:list={['integration-chip', `integration-chip--${item.tone}`, { 'integration-chip--wide': item.size === 'wide' }]}>
+                      <svg class:list={['integration-mark', `integration-mark--${item.mark}`]} viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        {item.mark === 'grid' && <><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></>}
+                        {item.mark === 'link' && <><path d="M6.5 10.5 5 12a2.1 2.1 0 0 1-3-3l2.5-2.5a2.1 2.1 0 0 1 3 0"/><path d="M9.5 5.5 11 4a2.1 2.1 0 0 1 3 3l-2.5 2.5a2.1 2.1 0 0 1-3 0M5.5 10.5l5-5"/></>}
+                        {item.mark === 'data' && <><path d="M2 13.5h12"/><path d="M4 11V8m4 3V4m4 7V6"/></>}
+                        {item.mark === 'flow' && <><circle cx="3" cy="4" r="1.5"/><circle cx="13" cy="12" r="1.5"/><path d="M4.5 4h3a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2H13"/></>}
+                        {item.mark === 'spark' && <><path d="m8 1.5 1.8 4.7 4.7 1.8-4.7 1.8L8 14.5l-1.8-4.7L1.5 8l4.7-1.8L8 1.5Z"/><path d="m13 1 .6 1.4L15 3l-1.4.6L13 5l-.6-1.4L11 3l1.4-.6L13 1Z"/></>}
+                      </svg>{item.label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="integration-note mono">TERMOS ILUSTRATIVOS · NÃO INDICAM INTEGRAÇÕES HOMOLOGADAS OU CONFIRMADAS PELA AMZ</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.integration-strip').forEach((strip) => {
+    const pause = strip.querySelector<HTMLButtonElement>('[data-marquee-pause]');
+    if (!pause) return;
+    pause.hidden = false;
+    const togglePause = () => {
+      const paused = pause.getAttribute('aria-pressed') !== 'true';
+      pause.setAttribute('aria-pressed', String(paused));
+      strip.dataset.paused = String(paused);
+      pause.textContent = paused ? 'Retomar movimento' : 'Pausar movimento';
+    };
+    pause.addEventListener('click', togglePause);
+    const cleanup = () => {
+      pause.removeEventListener('click', togglePause);
+      document.removeEventListener('astro:before-swap', cleanup);
+      window.removeEventListener('pagehide', cleanup);
+    };
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+    window.addEventListener('pagehide', cleanup, { once: true });
+  });
+</script>
+
+<style>
+.integration-strip{position:relative;isolation:isolate;overflow:hidden;padding:clamp(2.7rem,4.2vw,4rem) 0;background:var(--bg-soft);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.integration-inner{--scroll-reveal-progress:1;display:grid;grid-template-columns:1fr;gap:clamp(1.6rem,3vw,2.5rem);opacity:calc(.84 + var(--scroll-reveal-progress)*.16);transform:translate3d(0,calc((1 - var(--scroll-reveal-progress))*9px),0)}
+.integration-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(17rem,.95fr);align-items:end;column-gap:clamp(1.5rem,5vw,5rem);row-gap:.55rem}.integration-heading .section-eyebrow{grid-column:1}.integration-heading h2{margin:.1rem 0 0;color:var(--brand-navy);font:620 clamp(2.2rem,4vw,3.7rem)/.98 var(--font-display);letter-spacing:-.065em}.integration-heading h2 em{color:var(--brand-teal);font:italic 500 .95em Georgia,serif}.integration-heading p{max-width:30rem;margin:0 0 .2rem;color:var(--text-secondary);font-size:clamp(.96rem,1.2vw,1.08rem);line-height:1.55}
+.integration-pause{grid-column:2;grid-row:1;justify-self:end;align-self:center;min-height:2.25rem;padding:.4rem .65rem;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);background:var(--bg-surface);color:var(--brand-navy);font:600 var(--type-micro)/1.3 var(--font-mono);cursor:pointer}.integration-pause[hidden]{display:none}.integration-pause:hover{border-color:var(--brand-blue)}.integration-pause:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+.integration-rails{display:grid;gap:.15rem;min-width:0}.integration-marquee{min-width:0;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%)}
+.integration-track{display:flex;width:max-content;animation:integration-drift var(--rail-speed,48s) linear infinite;will-change:transform}.integration-marquee--reverse .integration-track{animation-direction:reverse}.integration-marquee:hover .integration-track,.integration-strip[data-paused="true"] .integration-track{animation-play-state:paused}
+.integration-set{display:flex;flex:none;align-items:center;gap:1rem;margin:0;padding:.38rem 1rem .38rem 0;list-style:none}.integration-marquee--2 .integration-set{gap:1.4rem;padding-top:.48rem;padding-bottom:.48rem}.integration-marquee--3 .integration-set{gap:1.2rem}
+.integration-chip{--chip-bg:#fff;--chip-fg:var(--brand-navy);--chip-border:#d5e0e6;display:inline-flex;align-items:center;gap:.7rem;min-height:3.5rem;padding:.85rem 1.35rem;border:1px solid var(--chip-border);border-radius:1rem;background:var(--chip-bg);color:var(--chip-fg);font:600 .84rem/1.2 var(--font-mono);letter-spacing:.005em;white-space:nowrap}.integration-chip--wide{padding-right:1.7rem;padding-left:1.7rem}.integration-chip--navy{--chip-bg:var(--brand-navy);--chip-fg:#fff;--chip-border:var(--brand-navy)}.integration-chip--blue{--chip-bg:var(--brand-blue);--chip-fg:#fff;--chip-border:var(--brand-blue)}.integration-chip--teal{--chip-bg:var(--surface-teal-strong);--chip-fg:#fff;--chip-border:var(--surface-teal-strong)}.integration-mark{width:.85rem;height:.85rem;flex:none;fill:none;stroke:var(--brand-coral);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.integration-chip--light .integration-mark{stroke:var(--brand-blue)}.integration-chip--teal .integration-mark,.integration-chip--blue .integration-mark{stroke:var(--brand-coral)}.integration-chip--navy .integration-mark{stroke:var(--brand-teal)}.integration-mark--grid{fill:currentColor;stroke:none}
+.integration-note{margin:-.3rem 0 0;color:var(--text-secondary);font-size:var(--type-micro);letter-spacing:.06em;line-height:1.5}
+@keyframes integration-drift{to{transform:translate3d(-50%,0,0)}}
+@media(max-width:800px){.integration-strip{padding:2.8rem 0}.integration-inner{gap:1.35rem}.integration-heading{grid-template-columns:minmax(0,1fr) auto;gap:.6rem}.integration-heading h2,.integration-heading p{grid-column:1/-1}.integration-heading .section-eyebrow{grid-column:1}.integration-heading h2{font-size:clamp(2.15rem,8vw,3.15rem)}.integration-heading p{max-width:35rem}.integration-set{gap:.65rem;padding-right:.65rem}.integration-marquee--2 .integration-set{gap:.85rem}.integration-chip{min-height:2.9rem;padding:.65rem .9rem;font-size:.76rem}.integration-chip--wide{padding-right:1rem;padding-left:1rem}}
+@media(max-width:460px){.integration-heading h2{max-width:12ch}.integration-chip{min-height:2.7rem;padding:.58rem .78rem;font-size:.71rem;gap:.55rem}.integration-set{gap:.55rem;padding-right:.55rem}.integration-marquee--2 .integration-set{gap:.7rem}}
+@media(prefers-reduced-motion:reduce){.integration-pause{display:none}.integration-inner{opacity:1;transform:none}.integration-track{width:100%;animation:none;will-change:auto}.integration-marquee{overflow:visible;mask-image:none;-webkit-mask-image:none}.integration-set{flex:1 1 100%;width:100%;min-width:0;flex-wrap:wrap;gap:.5rem;padding:.35rem 0}.integration-set[aria-hidden="true"]{display:none}}
+</style>

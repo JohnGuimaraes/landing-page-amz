@@ -1,0 +1,142 @@
+[
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\graphics\\Atmosphere.astro",
+    "hash": "2C6B2C2511540E871184484B008A995D48286913B90476354D6BAD5DA1D2E113"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\graphics\\VisualEffect.astro",
+    "hash": "0848C9875CCF71DF2DE3FA9556469A02A8EC468BA88000485B21399CE2F3DD6B"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\layout\\SiteFooter.astro",
+    "hash": "D60E4AC030987F9DFBA81747244F43F22F2E18B1D0AB07F7E0546C5C256330C5"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\layout\\SiteHeader.astro",
+    "hash": "35408990C857452C4C65351C5921977094AB36BF8E69BE27203B009971BE6070"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Approach.astro",
+    "hash": "53BFECA23C55EF9E596DCD75DF0B13D294F0F532285C3CA7A1DBFB6DB65574F2"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Chapters.astro",
+    "hash": "5CA0CB60ADEA9FE7C361753519B1F5BDDA3D9B71305AD316BDD241D708944BE2"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Contact.astro",
+    "hash": "5AEE27B11BA63B55E32E7147DC8382B2996A57B0155D6E53C8E29DF2CED7ECA3"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Credibility.astro",
+    "hash": "D33CEEC9D5C08290C71FAFE7591D3E7069DE442DC5E33E5CF11723739B65DD6F"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Ecosystem.astro",
+    "hash": "64CFDE2B1E069D37397716544BDB34D2CE9DC49DE79B61D73060EA3FB1BBCB70"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Hero.astro",
+    "hash": "D960A2DEAF8955C4FEE9A748F35602B4FB498BC7CD7F980FB0EF520FBF2C6E32"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Integrations.astro",
+    "hash": "6A8401E6D5628CEC4F6C68E9F0E5ED23662896A2279DEB2CC13FAE35F7BAE67A"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\sections\\Overview.astro",
+    "hash": "1C57262D00E62E0F6B2FC48D6456A637EC9971104D38E02CAC566EE5CCB4849A"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\ui\\BrandMark.astro",
+    "hash": "993BE19916944B05239CC99E461687B951300F194B77457A449FE689E23F10A6"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\ui\\Button.astro",
+    "hash": "016DCF868F0994FD5E91BE23CFDF37616CEAE27B7113341A2D2D7F50E608A8AF"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\components\\ui\\InstitutionalForm.astro",
+    "hash": "ADB68CBF88B3D2DD71FC70209680A8F4A97145D2F35AE6D1430A2144163317E3"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\config\\forms.ts",
+    "hash": "D8EB3029CA4679BB1DCBD432E53F3C69D253C9DF7F24DF9D76562976A7D8E6D6"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\config\\site.ts",
+    "hash": "78F7ED4FBD0F7E7786C07620D6CF4AA011D344E1634E694D7CFE72157CB69D4C"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\config\\visualPalettes.ts",
+    "hash": "66DDE0B3D3B0D5290C43E9B478B7E8056C29F1F0662ED03B419AB4C66C6D49D3"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\layouts\\BaseLayout.astro",
+    "hash": "753DDD61CA3264C0AA247C8F15D3E4AF59491C4D4351AC5E17E167F7F59AB66B"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\layouts\\InstitutionalLayout.astro",
+    "hash": "B355A0BE6F0C6348C6E00F669EE87CCDFB5DB18BEAB398A226D83085746E1B57"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\layouts\\OpportunityLayout.astro",
+    "hash": "5F57F8A4493900488A4DA77D99390C6520B3DE749783079A2D414712B737015E"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\lib\\privacy.ts",
+    "hash": "84F09D9BC39538F9415B62C62CFB583411EF4AB7C6EC79274058E2A8A2298A2C"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\lib\\vantaTopology.ts",
+    "hash": "7B8917B449F49EB78A18E0E8998D0555490167DAE83C53B34752DA4FBFD4EE17"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\carreiras.astro",
+    "hash": "539B4E39F584052CE375D2D60ED0EEC26D0691CFCA23E247817728C49807F7DD"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\cookies.astro",
+    "hash": "FA616A1852B9D0C215EC73EB797AC4D41ABBB3CC23AC263FB6B030FBAB076EED"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\design-system.astro",
+    "hash": "ADACC1F7DBE7230E609E680A5A5E586DF3E3BFBA6D76A70FA5D6917924812338"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\index.astro",
+    "hash": "7543F9810BA0627BC221590820D42C2DFFBA6C7EC527A848709B95823D713AC4"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\parcerias.astro",
+    "hash": "F924C84CFE68B4C21C1E95618485DA82B6D11E3CA6C960825B02CA6E00FEE421"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\pages\\privacidade.astro",
+    "hash": "EAC210028B0D4B267E1660FEB389B6C510E1509A9F7EE142039F4A806C2A48FE"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\scripts\\institutionalForms.ts",
+    "hash": "919FD43A12DE24D4CB5170D5F4D12B3FB8129914807D49BE948B73F623380199"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\scripts\\pageMotion.ts",
+    "hash": "748956CD31D735BEFC06C30D5DFC1B9599DB6D5C5A9D1CBCFDF085BA23DCB072"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\scripts\\visualEffects.ts",
+    "hash": "9FBEF7AE8DEF27B0694325EFED94A2147899CB9A33AA1884B1525B29D06B225B"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\styles\\global.css",
+    "hash": "3E2DA4171D8D70B9D31DECFD78B81B050BA4B9B7C7F7DDEDD5D5645412BECD57"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\styles\\tokens.css",
+    "hash": "B07C0B940DA6E7B525BB52E839FBE0BCAA24C5064DECFEC58DADA18C4A059E92"
+  },
+  {
+    "path": "D:\\dev\\repositorios\\landing-page\\amz-landing-starter\\src\\types\\vanta.d.ts",
+    "hash": "C4ABD7DBEE79F0F2400A9966BB68D07BC823A131E6DCD5F4C178B18308D5D9F9"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "astro",
+    "version": "5.18.2"
+  },
+  {
+    "name": "motion",
+    "version": "14.3.0"
+  },
+  {
+    "name": "three",
+    "version": "0.134.0"
+  },
+  {
+    "name": "p5",
+    "version": "1.1.9"
+  },
+  {
+    "name": "vanta",
+    "version": "0.5.24"
+  }
+]

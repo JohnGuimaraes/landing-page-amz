@@ -1,15 +1,26 @@
 ---
-interface Props { inverse?: boolean; }
-const { inverse = false } = Astro.props;
+interface Props { inverse?: boolean; prominent?: boolean; href?: string; }
+const { inverse = false, prominent = false, href = '/' } = Astro.props;
 ---
-<a class:list={['brand-mark', { inverse }]} href="/" aria-label="AMZ Data Software — início">
-  <strong>amz<span>.</span></strong>
-  <span class="brand-caption">DATA<br />SOFTWARE</span>
+<a class:list={['brand-mark', { inverse, prominent }]} href={href} aria-label="AMZ Data Software — início">
+  <span class="brand-emblem-wrap" aria-hidden="true">
+    <img class="brand-emblem" src="/amz-logo-transparent.png" width="1254" height="1254" alt="" />
+  </span>
+  <span class="brand-type">
+    <strong>AMZ</strong>
+    <span class="brand-caption">DATA SOFTWARE</span>
+  </span>
 </a>
 <style>
-.brand-mark { display: inline-flex; align-items: center; gap: .7rem; width: fit-content; color: var(--brand-navy); }
-.brand-mark strong { font-size: 2.25rem; letter-spacing: -.105em; line-height: 1; font-family: var(--font-display); font-weight: 800; }
-.brand-mark strong span { color: var(--brand-coral); }
-.brand-caption { font-family: var(--font-mono); font-size: .54rem; line-height: 1.33; letter-spacing: .1em; font-weight: 700; border-left: 1px solid currentColor; padding-left: .65rem; }
+/* Both variants share the header wordmark; only scale and surface colors vary. */
+.brand-mark { --mark-emblem-size:2.9rem; --mark-wordmark-size:2.15rem; --mark-caption-size:.5rem; display:inline-flex; align-items:center; gap:.62rem; width:fit-content; color:var(--brand-navy); }
+.brand-emblem-wrap { display:grid; place-items:center; width:var(--mark-emblem-size); height:var(--mark-emblem-size); flex:none; }
+.brand-emblem { display:block; width:100%; height:100%; object-fit:contain; }
+.brand-type { display:flex; flex-direction:column; align-items:flex-start; gap:.16rem; width:max-content; min-width:max-content; transform:translateY(1px); }
+.brand-mark strong { font-family:'Sora','Segoe UI Variable Display',var(--font-display); font-size:var(--mark-wordmark-size); font-weight:800; letter-spacing:-.075em; line-height:.88; font-kerning:normal; }
+.brand-caption { width:100%; font-family:'Manrope',var(--font-body); font-size:var(--mark-caption-size); font-weight:600; letter-spacing:.17em; line-height:1.15; white-space:nowrap; text-align:justify; text-align-last:justify; color:var(--text-secondary); }
 .inverse { color: var(--text-inverse); }
+.inverse .brand-caption { color:#d5e2ee; }
+.prominent { --mark-emblem-size:var(--header-emblem-size); --mark-wordmark-size:var(--header-wordmark-size); --mark-caption-size:var(--header-caption-size); gap:.7rem; }
+@media(max-width:480px){.brand-mark{gap:.55rem}.brand-caption{letter-spacing:.14em}}
 </style>

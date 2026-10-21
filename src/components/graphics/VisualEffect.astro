@@ -1,0 +1,17 @@
+---
+interface Props { effect: 'halo' | 'topology'; }
+const { effect } = Astro.props;
+---
+<div class:list={['visual-effect', `visual-effect--${effect}`]} data-vanta-effect={effect} data-effect-state="static" aria-hidden="true"></div>
+<script>
+  import { initVisualEffects } from '../../scripts/visualEffects';
+  initVisualEffects();
+</script>
+<style>
+.visual-effect{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:var(--effect-bg,#102c46)}
+.visual-effect::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 65% 60%,color-mix(in srgb,var(--effect-accent,#24d9e6) 25%,transparent),transparent 65%);z-index:0}
+.visual-effect--halo{mask-image:radial-gradient(ellipse,#000 25%,transparent 72%)}
+.visual-effect--halo:not([data-effect-state=active]){background:transparent}
+.visual-effect--topology{opacity:1}
+.visual-effect :global(canvas){pointer-events:none!important}
+</style>

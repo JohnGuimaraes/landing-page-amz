@@ -5,6 +5,7 @@
   --brand-blue: #2878b5;
   --brand-electric: #1f6fe5;
   --brand-teal: #258a78;
+  --surface-teal-strong: #1f7566; /* Small white text on filled teal surfaces. */
   --brand-coral: #f0835e; /* Decorative accents only */
 
   /* Semantic colors */
@@ -20,9 +21,12 @@
 
   /* Typography: system-first and self-host-ready; no CDN requirement */
   --font-display: 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+  --font-hero-display: 'Segoe UI Variable Display', 'Segoe UI', 'Avenir Next', Arial, sans-serif;
   --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   --type-xs: .75rem;
+  --type-micro: .625rem;
+  --type-micro-compact: .5625rem;
   --type-sm: .875rem;
   --type-md: 1rem;
   --type-lg: clamp(1.125rem, 1.3vw, 1.3rem);
@@ -48,9 +52,15 @@
   --space-24: 6rem;
   --space-32: 8rem;
   --section-space: clamp(5rem, 10vw, 9rem);
-  --gutter: clamp(1.25rem, 5.2vw, 6rem);
+  --gutter: clamp(1rem, 2.5vw, 2.5rem);
   --container-max: 1440px;
   --measure: 67ch;
+
+  /* Institutional header: stable height across scroll states. */
+  --header-height: 92px;
+  --header-emblem-size: 4.35rem;
+  --header-wordmark-size: 3.15rem;
+  --header-caption-size: .6rem;
 
   /* Surfaces */
   --radius-sm: 8px;
@@ -59,7 +69,7 @@
   --radius-pill: 999px;
   --shadow-soft: 0 20px 65px rgba(23, 50, 77, .075);
   --shadow-raised: 0 32px 90px rgba(23, 50, 77, .11);
-  --shadow-chapter: 0 28px 100px rgba(23, 50, 77, .12);
+  --shadow-chapter: 0 34px 100px rgba(23, 50, 77, .16), 0 8px 24px rgba(23, 50, 77, .06);
   --surface-glass: rgba(255, 255, 255, .86);
 
   /* Motion */
@@ -73,4 +83,13 @@
   --layer-content: 1;
   --layer-ambient: 0;
   --layer-progress: 100;
+}
+
+@media (max-width:1060px) {
+  :root {
+    --header-height: 76px;
+    --header-emblem-size: 3.15rem;
+    --header-wordmark-size: 2.35rem;
+    --header-caption-size: .52rem;
+  }
 }

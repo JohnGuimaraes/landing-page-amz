@@ -1,0 +1,227 @@
+{
+  "viewports": [
+    {
+      "effects": [
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "canvases": 1,
+          "state": "active",
+          "type": "topology"
+        }
+      ],
+      "fieldOverflow": false,
+      "form": 565.138916015625,
+      "overflow": false,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "effects": [
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "canvases": 1,
+          "state": "active",
+          "type": "topology"
+        }
+      ],
+      "fieldOverflow": false,
+      "form": 501.3020935058594,
+      "overflow": false,
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "effects": [
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "topology"
+        }
+      ],
+      "fieldOverflow": false,
+      "form": 327.3611145019531,
+      "overflow": false,
+      "viewport": [
+        768,
+        1024
+      ]
+    },
+    {
+      "effects": [
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "topology"
+        }
+      ],
+      "fieldOverflow": false,
+      "form": 291.1111145019531,
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "effects": [
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "canvases": 0,
+          "state": "static",
+          "type": "topology"
+        }
+      ],
+      "fieldOverflow": false,
+      "form": 261.1111145019531,
+      "overflow": false,
+      "viewport": [
+        360,
+        800
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "active": "integracao",
+      "focus": "integracao",
+      "hash": "#integracao"
+    },
+    {
+      "active": "automacao",
+      "focus": "automacao",
+      "hash": "#automacao"
+    },
+    {
+      "active": "modernizacao",
+      "focus": "modernizacao",
+      "hash": "#modernizacao"
+    },
+    {
+      "active": "engenharia",
+      "focus": "engenharia",
+      "hash": "#engenharia"
+    }
+  ],
+  "lifecycle": [
+    {
+      "effects": [
+        {
+          "count": 1,
+          "state": "active",
+          "type": "halo"
+        },
+        {
+          "count": 0,
+          "state": "static",
+          "type": "topology"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "hero"
+    },
+    {
+      "effects": [
+        {
+          "count": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "count": 1,
+          "state": "active",
+          "type": "topology"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "contact"
+    },
+    {
+      "effects": [
+        {
+          "count": 1,
+          "state": "active",
+          "type": "halo"
+        },
+        {
+          "count": 0,
+          "state": "static",
+          "type": "topology"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "hero-repeat"
+    },
+    {
+      "effects": [
+        {
+          "count": 0,
+          "state": "static",
+          "type": "halo"
+        },
+        {
+          "count": 1,
+          "state": "active",
+          "type": "topology"
+        }
+      ],
+      "palette": "violeta-ciano",
+      "where": "contact-repeat"
+    }
+  ],
+  "palettes": {
+    "beforeReload": "ciano-azul",
+    "afterReload": "violeta-ciano"
+  },
+  "mobileEngineRequests": {
+    "result": {
+      "type": "string",
+      "value": "[]"
+    }
+  },
+  "finalContact": {
+    "effects": [
+      {
+        "count": 0,
+        "state": "static",
+        "type": "halo"
+      },
+      {
+        "count": 1,
+        "state": "active",
+        "type": "topology"
+      }
+    ],
+    "overflow": false,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  "console": []
+}

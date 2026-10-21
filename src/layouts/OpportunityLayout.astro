@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import InstitutionalForm from '../components/ui/InstitutionalForm.astro';
+interface Props { title: string; eyebrow: string; description: string; kind: 'careers' | 'partnerships'; }
+const { title, eyebrow, description, kind } = Astro.props;
+---
+<BaseLayout title={`${title} — AMZ Data Software`} description={description}>
+  <div class="opportunity container">
+    <a class="back" href="/">← Voltar à página inicial</a>
+    <div class="opportunity-grid">
+      <div class="opportunity-copy">
+        <span class="section-eyebrow">{eyebrow}</span>
+        <h1>{title}</h1>
+        <p class="intro">{description}</p>
+        <div class="opportunity-context"><slot /></div>
+      </div>
+      <div class="opportunity-form"><InstitutionalForm kind={kind} /></div>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+.opportunity{padding-block:2rem 6rem}.back{display:inline-flex;align-items:center;min-height:44px;color:#245f8b;font-size:.9rem}.opportunity-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,7rem);margin-top:3rem;align-items:start}.opportunity-copy{padding-top:1rem}.opportunity h1{font:650 clamp(3rem,5.3vw,5.5rem)/1.02 var(--font-hero-display);letter-spacing:-.06em;max-width:12ch;margin:1.6rem 0}.intro{font-size:1.15rem;line-height:1.7;max-width:38ch;color:var(--text-secondary)}.opportunity-context{border-top:1px solid var(--border-subtle);margin-top:2.5rem;padding-top:1.5rem;line-height:1.75;color:var(--text-secondary);max-width:45ch}.opportunity-form{background:#fff;border:1px solid #d2dfe7;border-radius:8px;padding:clamp(1.5rem,3vw,3rem);min-width:0}
+@media(max-width:820px){.opportunity-grid{grid-template-columns:1fr;gap:2rem;margin-top:1.5rem}.opportunity h1{max-width:18ch}.intro,.opportunity-context{max-width:60ch}.opportunity{padding-bottom:3rem}}
+</style>

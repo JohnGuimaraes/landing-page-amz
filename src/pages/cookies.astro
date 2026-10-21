@@ -1,0 +1,26 @@
+---
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+import { privacy, getPrivacyState } from '../lib/privacy';
+import { site } from '../config/site';
+const state = getPrivacyState();
+const sections = [
+  { id: 'sobre', label: 'Cookies e armazenamento' },
+  { id: 'inventario', label: 'O que esta versão utiliza' },
+  { id: 'preferencias', label: 'Suas preferências' },
+  { id: 'externos', label: 'Plataformas externas' },
+  { id: 'atualizacoes', label: 'Atualizações e contato' },
+];
+---
+<InstitutionalLayout title="Política de Cookies" description="O que a versão examinada da landing utiliza — e por que não há um banner solicitando consentimento." sections={sections}>
+  <section id="sobre"><h2>1. Cookies e armazenamento no navegador</h2><p>Cookies são pequenos registros que um site pode armazenar no navegador e receber em visitas posteriores. Tecnologias como localStorage e sessionStorage também podem guardar informações no dispositivo, com formas diferentes de persistência.</p><p>Esta página trata apenas da landing institucional da AMZ, não dos softwares independentes nem das plataformas abertas pelos links de contato.</p></section>
+  <section id="inventario"><h2>2. O que esta versão utiliza</h2><p>Na inspeção do código e da prévia estática local, não foram encontrados cookies instalados pela aplicação, armazenamento persistente criado pelo site ou rastreadores opcionais. O carregamento inicial observado utilizou recursos da própria origem.</p>
+    <div class="institutional-table-wrap"><table><caption>Inventário técnico da versão {privacy.version}</caption><thead><tr><th scope="col">Recurso</th><th scope="col">Finalidade e origem</th><th scope="col">Persistência</th></tr></thead><tbody>
+      <tr><th scope="row">Arquivos da página</th><td>HTML, estilos, imagens, fontes e scripts da própria aplicação; apresentação e navegação.</td><td>Podem usar cache HTTP do navegador, conforme as respostas do servidor. Não são cookies.</td></tr>
+      <tr><th scope="row">Estado de interface</th><td>Menu, accordion, animações, paleta visual sorteada e pausa das trilhas, mantidos em memória. Vanta, Three e p5 são servidos pela própria aplicação para os efeitos decorativos; sem identificadores de visitantes.</td><td>Durante a execução da página, sem gravação persistente pelo código examinado.</td></tr>
+    </tbody></table></div>
+    <p>Esses recursos sustentam a apresentação da página e não foram usados como identificadores de análise ou publicidade na versão examinada. Não há fornecedores opcionais ou categorias de rastreamento a listar.</p><p>A inspeção local não substitui a verificação do domínio e da infraestrutura de produção. Serviços adicionados pela hospedagem devem ser auditados antes da publicação.</p>
+  </section>
+  <section id="preferencias" data-privacy-mode={state.mode}><h2>3. Suas preferências</h2><p><strong>Não há cookies opcionais para configurar nesta versão.</strong> Por esse motivo, o acesso “Preferências de cookies” leva a estas informações, sem apresentar controles de aceite ou rejeição para finalidades inexistentes.</p><p>A aplicação não grava uma escolha de consentimento e não cria um identificador apenas para lembrar que você leu este aviso. Não existe autorização opcional anterior gerada por esta versão a ser revogada.</p><p>Você pode consultar, bloquear ou remover cookies e dados de sites pelas configurações do seu navegador. Uma chave antiga eventualmente presente no dispositivo não implica que o código atual a utilize; esta página não apaga dados preexistentes automaticamente.</p></section>
+  <section id="externos"><h2>4. Plataformas externas</h2><p>WhatsApp e Instagram são acessados por links. Quando você os abre, passa a utilizar plataformas externas, com regras próprias. Os links não carregam um pixel ou uma conversa incorporada dentro da landing.</p><p>As informações desta página não descrevem os cookies dessas plataformas ou de outros produtos da AMZ.</p></section>
+  <section id="atualizacoes"><h2>5. Atualizações e contato</h2><p>Se a AMZ decidir adotar tecnologias opcionais, será necessário atualizar o inventário, avaliar a base legal e, quando aplicável, implementar controles que bloqueiem a ativação antes da escolha, permitam rejeição e possibilitem revisão e revogação.</p><p>Esses recursos não estão ativos nesta versão. A configuração técnica central impede cadastrar serviços opcionais sem revisar a implementação do gerenciamento.</p><p>Dúvidas podem ser encaminhadas pelo <a href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp comercial da AMZ</a>. Consulte também as <a href={privacy.routes.privacy}>informações de privacidade</a>.</p></section>
+</InstitutionalLayout>

@@ -3,11 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Overview from '../components/sections/Overview.astro';
 import Chapters from '../components/sections/Chapters.astro';
-import Solutions from '../components/sections/Solutions.astro';
 import Approach from '../components/sections/Approach.astro';
 import Credibility from '../components/sections/Credibility.astro';
+import Integrations from '../components/sections/Integrations.astro';
 import Contact from '../components/sections/Contact.astro';
 ---
-<BaseLayout title="AMZ Data Software — Tecnologia clara, humana e confiável">
- <Hero /><Overview /><Chapters /><Solutions /><Approach /><Credibility /><Contact />
+<BaseLayout title="AMZ Data Software — Desafios reais. Engenharia inteligente." description="Desafios reais. Engenharia inteligente. Engenharia de software, inteligência artificial e automação orientadas aos desafios de cada negócio.">
+ <Hero /><Overview /><Chapters /><Approach /><Credibility /><Contact /><Integrations />
+ <script>
+ import { initPageMotion } from '../scripts/pageMotion';
+ initPageMotion();
+ </script>
 </BaseLayout>
